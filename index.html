@@ -3,846 +3,967 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bioniq — структура главной страницы</title>
+<title>Bioniq — персональные витамины по анализу крови</title>
+<link rel="icon" href="logos/sign-blue.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* ============================================================
+   BIONIQ — бренд-платформа 2025
+   Палитра: только #1098D4, #05131A, #63BCE3, #EDF8FC, #fff
+   Шрифт: Montserrat. Заголовки 600, текст 400, кнопки 600.
+   Текст — только #05131A или белый. Голубой — графика и акценты.
+   ============================================================ */
 :root{
-  --ink:#1a1a1a;
-  --gray-1:#666;
-  --gray-2:#999;
-  --gray-3:#c9c9c9;
-  --line:#dcdcdc;
-  --fill:#f2f2f2;
-  --fill-2:#e8e8e8;
-  --white:#fff;
-  --num:#8a8a8a;
+  --blue:#1098D4;
+  --blue-light:#63BCE3;
+  --dark:#05131A;
+  --bg-light:#EDF8FC;
+  --white:#ffffff;
+  --grad:linear-gradient(135deg,#1098D4 0%,#63BCE3 100%);
+  --muted:#5b6b73;
+  --muted-2:#8b9aa2;
+  --line:#e3edf2;
+  --radius:20px;
+  --shadow:0 12px 44px rgba(5,19,26,.07);
+  --shadow-sm:0 3px 14px rgba(5,19,26,.05);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   font-family:"Montserrat",Arial,Helvetica,sans-serif;
-  color:var(--ink);background:#fafafa;
-  font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased;
+  color:var(--dark);background:var(--white);
+  font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;
 }
 .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+h1,h2,h3{font-weight:600;line-height:1.12;letter-spacing:-.022em}
+img{max-width:100%;display:block}
 
-/* ---------- каркас блока ---------- */
-.block{position:relative;background:var(--white);border:1px solid var(--line);margin-bottom:14px}
-.block-head{display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--line);background:var(--fill)}
-.block-num{font-size:11px;font-weight:600;background:var(--ink);color:#fff;padding:3px 8px;min-width:26px;text-align:center}
-.block-name{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-1)}
-.block-note{margin-left:auto;font-size:11px;color:var(--gray-2)}
-.block-body{padding:28px}
+/* надзаголовок-метка */
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:14px}
 
-/* ---------- элементы-заглушки ---------- */
-.el{position:relative}
-.el-num{font-size:10px;font-weight:600;color:var(--num);letter-spacing:.06em;display:block;margin-bottom:4px}
-.ph-h1{font-size:32px;font-weight:600;letter-spacing:-.02em;color:var(--ink)}
-.ph-h2{font-size:22px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
-.ph-h3{font-size:16px;font-weight:600;color:var(--ink)}
-.ph-txt{color:var(--gray-1);font-size:13px;max-width:46ch}
-.ph-small{color:var(--gray-2);font-size:12px}
+/* кнопки */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:14px;
+  border-radius:100px;padding:13px 24px;transition:.22s;white-space:nowrap}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:#0d84ba;transform:translateY(-1px)}
+.btn-dark{background:var(--dark);color:#fff}
+.btn-dark:hover{background:#123243;transform:translateY(-1px)}
+.btn-ghost{background:#fff;color:var(--dark);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--dark)}
+.btn-white{background:#fff;color:var(--dark)}
+.btn-white:hover{transform:translateY(-1px)}
+.btn-outline-light{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+.btn-outline-light:hover{border-color:#fff}
+.btn-sm{padding:10px 18px;font-size:13px}
+.link-arrow{color:var(--dark);font-weight:600;font-size:13px;border-bottom:1px solid var(--line);padding-bottom:3px;transition:.2s}
+.link-arrow:hover{border-color:var(--dark)}
 
-.box{border:1px dashed var(--gray-3);background:var(--fill);display:flex;align-items:center;justify-content:center;color:var(--gray-2);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
-.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--ink);background:var(--white);
-  padding:10px 20px;font-size:12.5px;font-weight:600;color:var(--ink);transition:.15s}
-.btn:hover{background:var(--ink);color:#fff}
-.btn-fill{background:var(--ink);color:#fff}
-.btn-fill:hover{background:#000}
-.btn-sm{padding:7px 14px;font-size:11.5px}
-.field{border:1px solid var(--gray-3);background:var(--white);padding:12px 14px;color:var(--gray-2);font-size:13px;display:flex;align-items:center;gap:10px}
-.pill{border:1px solid var(--gray-3);background:var(--white);padding:7px 14px;font-size:12px;color:var(--gray-1)}
-.pill:hover{border-color:var(--ink);color:var(--ink)}
-.pill.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+/* ============ ХЕДЕР ============ */
+header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.topbar{display:flex;align-items:center;gap:32px;padding:18px 0}
+.logo{height:26px;width:auto}
+.nav-main{display:flex;gap:26px}
+.nav-main a{font-size:13.5px;font-weight:500;color:var(--muted);transition:.2s}
+.nav-main a:hover{color:var(--dark)}
+.header-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.bonus{display:inline-flex;align-items:center;gap:7px;background:var(--bg-light);color:var(--dark);
+  font-weight:600;padding:8px 14px;border-radius:100px;font-size:13px}
+.bonus svg{width:14px;height:14px;stroke:var(--blue);fill:none;stroke-width:1.8}
+.icn-btn{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;transition:.2s}
+.icn-btn:hover{background:var(--bg-light)}
+.icn-btn svg{width:21px;height:21px;stroke:var(--dark);fill:none;stroke-width:1.5}
 
-/* ---------- 1. служебная строка ---------- */
-.strip{display:flex;align-items:center;gap:12px;justify-content:center;padding:12px;font-size:12px;color:var(--gray-1)}
+/* ============ ПРОМО ============ */
+.promo{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0 8px}
+.promo-card{border-radius:var(--radius);padding:28px;min-height:190px;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:space-between;transition:.25s}
+.promo-card:hover{transform:translateY(-3px)}
+.promo-card h3{font-size:19px;margin-bottom:6px;max-width:74%;position:relative;z-index:2}
+.promo-card p{font-size:12.5px;max-width:70%;position:relative;z-index:2}
+.promo-card .btn{align-self:flex-start;position:relative;z-index:2}
+.promo-tag{position:absolute;top:18px;right:18px;font-size:10.5px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;padding:4px 10px;border-radius:100px;z-index:2}
+/* 1 — фирменный градиент */
+.promo-1{background:var(--grad);color:#fff}
+.promo-1 p{color:rgba(255,255,255,.9)}
+.promo-1 .promo-tag{background:rgba(255,255,255,.22)}
+/* 2 — тёмный */
+.promo-2{background:var(--dark);color:#fff}
+.promo-2 p{color:#a9bdc7}
+.promo-2 .promo-tag{background:rgba(255,255,255,.14)}
+/* 3 — светлый фирменный */
+.promo-3{background:var(--bg-light);color:var(--dark)}
+.promo-3 p{color:var(--muted)}
+.promo-3 .promo-tag{background:#fff;color:var(--blue)}
+.promo-art{position:absolute;right:-30px;bottom:-30px;width:170px;height:170px;opacity:.9;z-index:1}
+.promo-art svg{width:100%;height:100%;fill:none;stroke-width:1}
+.promo-1 .promo-art svg,.promo-2 .promo-art svg{stroke:rgba(255,255,255,.34)}
+.promo-3 .promo-art svg{stroke:rgba(16,152,212,.32)}
 
-/* ---------- 2. хедер ---------- */
-.hdr{display:flex;align-items:center;gap:28px}
-.hdr-logo{font-weight:600;font-size:16px;letter-spacing:-.02em}
-.hdr-nav{display:flex;gap:18px}
-.hdr-nav a{font-size:12.5px;color:var(--gray-1)}
-.hdr-nav a:hover{color:var(--ink)}
-.hdr-right{margin-left:auto;display:flex;align-items:center;gap:14px}
-
-/* ---------- 3. первый экран ---------- */
-.hero-cols{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:start}
-.hero-search{display:flex;gap:8px;margin-bottom:14px}
-.hero-search .field{flex:1}
-.hero-chips{display:flex;gap:8px;flex-wrap:wrap}
-.hero-media{height:280px}
-.facts{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:32px}
-.fact{padding:18px 20px 0;border-right:1px solid var(--line)}
-.fact:first-child{padding-left:0}
-.fact:last-child{border-right:none}
-
-/* дропдауны */
+/* ============ ГЕРОЙ ============ */
+.hero{text-align:center;padding:60px 0 40px}
+.hero h1{font-size:clamp(30px,3.9vw,46px);max-width:860px;margin:0 auto 18px}
+/* подчёркивание фирменным градиентом — текст остаётся тёмным */
+.hero h1 b{font-weight:600;background:var(--grad);background-repeat:no-repeat;
+  background-position:0 90%;background-size:100% 9px;padding-bottom:2px}
+.hero .sub{color:var(--muted);font-size:15.5px;max-width:520px;margin:0 auto 34px}
+.hero .sub b{color:var(--dark);font-weight:600}
+.searchbar{display:flex;gap:10px;max-width:700px;margin:0 auto;justify-content:center}
 .search-wrap{flex:1;position:relative}
 .cat-wrap{position:relative}
-.drop{position:absolute;top:calc(100% + 5px);left:0;right:0;background:#fff;border:1px solid var(--ink);
-  padding:6px;display:none;z-index:40;max-height:340px;overflow:auto}
-.cat-menu{left:auto;width:260px}
-.drop.open{display:block}
-.drop-label{padding:8px 10px 4px;font-size:10px;color:var(--gray-2);text-transform:uppercase;letter-spacing:.1em;font-weight:600}
-.drop-item{display:flex;align-items:center;gap:12px;padding:9px 10px;cursor:pointer;border-bottom:1px solid #f0f0f0}
-.drop-item:last-child{border-bottom:none}
-.drop-item:hover{background:var(--fill)}
-.drop-item .di-box{width:32px;height:32px;border:1px dashed var(--gray-3);background:var(--fill);flex:none}
-.drop-item .di-t{flex:1;min-width:0}
-.drop-item .di-t b{display:block;font-size:12.5px;font-weight:600}
-.drop-item .di-t span{font-size:10px;color:var(--gray-2);text-transform:uppercase;letter-spacing:.08em}
-.drop-item .di-p{font-size:12px;color:var(--gray-1);white-space:nowrap}
-.drop-empty{padding:16px;text-align:center;color:var(--gray-2);font-size:12px}
+.search-input{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);
+  border-radius:100px;padding:0 22px;box-shadow:var(--shadow-sm);transition:.2s}
+.search-input:focus-within{border-color:var(--blue);box-shadow:0 0 0 4px rgba(16,152,212,.1)}
+.search-input input{border:none;outline:none;flex:1;font-family:inherit;font-size:14.5px;padding:15px 0;
+  background:transparent;color:var(--dark)}
+.search-input input::placeholder{color:var(--muted-2)}
+.search-input svg{width:18px;height:18px;stroke:var(--muted-2);fill:none;stroke-width:1.7}
+.chips{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);
+  border-radius:100px;padding:10px 18px;font-weight:600;font-size:13px;transition:.2s}
+.chip:hover{border-color:var(--blue);transform:translateY(-1px)}
+.chip svg{width:15px;height:15px;stroke:var(--blue);fill:none;stroke-width:1.6}
 
-/* ---------- 4. логотипы ---------- */
-.logos{display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap}
-.logos .box{width:120px;height:38px}
+/* выпадающие списки */
+.search-drop,.cat-menu{position:absolute;top:calc(100% + 8px);left:0;right:0;background:#fff;
+  border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 64px rgba(5,19,26,.16);
+  padding:8px;display:none;z-index:70;text-align:left;max-height:400px;overflow:auto}
+.cat-menu{left:auto;width:280px}
+.search-drop.open,.cat-menu.open{display:block}
+.sd-label{padding:9px 14px 5px;font-size:10px;color:var(--muted-2);text-transform:uppercase;
+  letter-spacing:.13em;font-weight:600}
+.sd-item{display:flex;align-items:center;gap:13px;padding:10px 14px;border-radius:12px;cursor:pointer;transition:.15s}
+.sd-item:hover{background:var(--bg-light)}
+.sd-item .se{width:40px;height:40px;border-radius:11px;background:var(--bg-light);display:grid;place-items:center;flex:none}
+.sd-item .se svg{width:20px;height:20px;stroke:var(--blue);fill:none;stroke-width:1.4}
+.sd-item .st{flex:1;min-width:0}
+.sd-item .st b{display:block;font-size:13.5px;font-weight:600}
+.sd-item .st span{font-size:10px;color:var(--muted-2);text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+.sd-item .sp{font-weight:600;font-size:13px;white-space:nowrap}
+.sd-empty{padding:18px;text-align:center;color:var(--muted);font-size:13px}
 
-/* ---------- 5. шаги ---------- */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.step{border:1px solid var(--line);padding:20px}
-.step .s-n{font-size:11px;font-weight:600;color:var(--num);margin-bottom:26px;display:block}
-.step .box{height:40px;width:40px;margin-bottom:14px}
+/* ============ СЕКЦИИ ============ */
+.section{padding:88px 0}
+.section-head{margin-bottom:36px}
+.section-head h2{font-size:clamp(26px,3vw,36px);margin-bottom:12px}
+.section-head p{color:var(--muted);font-size:15px;max-width:500px}
+.head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:32px}
+.head-row .section-head{margin-bottom:0}
 
-/* ---------- 6. каталог ---------- */
-.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:20px}
-.products{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.product{border:1px solid var(--line);padding:16px;display:flex;flex-direction:column;background:#fff}
-.product:hover{border-color:var(--gray-2)}
-.p-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;gap:8px}
-.p-code{font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--gray-1);border:1px solid var(--gray-3);padding:2px 7px}
-.p-badge{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:#fff;padding:2px 7px}
-.p-media{height:110px;margin-bottom:14px}
-.p-cat{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-2);margin-bottom:6px}
-.product h3{font-size:14px;font-weight:600;margin-bottom:5px}
-.product .p-desc{font-size:12px;color:var(--gray-1);flex:1;margin-bottom:14px}
-.p-foot{border-top:1px solid var(--line);padding-top:12px}
-.p-price{font-size:15px;font-weight:600;margin-bottom:10px;display:flex;align-items:baseline;gap:6px}
-.p-price s{font-size:11px;color:var(--gray-2);font-weight:400}
+/* ============ КАТЕГОРИИ ============ */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cat{background:var(--bg-light);border-radius:var(--radius);padding:28px 26px;display:flex;flex-direction:column;
+  transition:.25s;border:1px solid transparent}
+.cat:hover{background:#fff;border-color:var(--line);box-shadow:var(--shadow);transform:translateY(-3px)}
+.cat-ic{width:52px;height:52px;border-radius:50%;background:#fff;display:grid;place-items:center;margin-bottom:20px}
+.cat-ic svg{width:24px;height:24px;stroke:var(--blue);fill:none;stroke-width:1.5}
+.cat h3{font-size:19px;margin-bottom:9px}
+.cat p{color:var(--muted);font-size:13px;flex:1;margin-bottom:20px;line-height:1.55}
+.cat .btn{align-self:flex-start}
+
+/* ============ ПРОГРАММА ============ */
+.feature{background:var(--bg-light);border-radius:26px;padding:56px;display:grid;
+  grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.feature h2{font-size:clamp(24px,2.6vw,32px);margin-bottom:12px}
+.feature .lead{color:var(--muted);margin-bottom:30px;font-size:14.5px;max-width:400px}
+.flist{display:flex;flex-direction:column;gap:18px;margin-bottom:32px}
+.fitem{display:flex;gap:15px;align-items:flex-start}
+.fitem .num{flex:none;width:40px;height:40px;border-radius:50%;background:#fff;display:grid;place-items:center}
+.fitem .num svg{width:19px;height:19px;stroke:var(--blue);fill:none;stroke-width:1.6}
+.fitem b{display:block;font-weight:600;margin-bottom:3px}
+.fitem span{color:var(--muted);font-size:13px}
+.feature-visual{background:#fff;border-radius:20px;padding:34px;border:1px solid var(--line)}
+.pill-list{display:flex;flex-direction:column;gap:10px}
+.pill{background:var(--bg-light);border-radius:14px;padding:15px 18px;display:flex;align-items:center;gap:13px;
+  font-weight:600;font-size:14px}
+.pill svg{width:20px;height:20px;stroke:var(--blue);fill:none;stroke-width:1.5;flex:none}
+.pill .plus{margin-left:auto;color:var(--blue);font-weight:600}
+.feature-visual .eq{text-align:center;margin:14px 0;color:var(--muted-2)}
+.feature-visual .result{background:var(--grad);color:#fff;border-radius:14px;padding:18px;font-weight:600;text-align:center}
+
+/* ============ ПОПУЛЯРНОЕ — ОДНА СТРОКА ============ */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.tab{border:1px solid var(--line);border-radius:100px;padding:9px 18px;font-weight:500;font-size:12.5px;
+  color:var(--muted);background:#fff;transition:.2s}
+.tab:hover{border-color:var(--dark);color:var(--dark)}
+.tab.active{background:var(--dark);color:#fff;border-color:var(--dark);font-weight:600}
+.rail-wrap{position:relative}
+.rail{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 14px;
+  scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.rail::-webkit-scrollbar{height:4px}
+.rail::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+.rail::-webkit-scrollbar-track{background:transparent}
+.product{flex:0 0 272px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);
+  border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;transition:.25s}
+.product:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.p-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:14px;min-height:21px}
+.p-code{font-size:10px;font-weight:600;letter-spacing:.11em;color:var(--muted-2);border:1px solid var(--line);
+  border-radius:100px;padding:3px 9px}
+.badge{font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;background:var(--blue);
+  color:#fff;padding:3px 9px;border-radius:100px}
+.badge.soft{background:var(--bg-light);color:var(--dark)}
+.thumb{height:132px;border-radius:14px;background:var(--bg-light);margin-bottom:16px;display:grid;place-items:center}
+.thumb svg{width:46px;height:46px;stroke:var(--blue);fill:none;stroke-width:1.1}
+.p-cat{font-size:10px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted-2);margin-bottom:7px}
+.product h3{font-size:16px;margin-bottom:7px}
+.product .desc{color:var(--muted);font-size:12.5px;line-height:1.5;flex:1;margin-bottom:16px}
+.p-foot{border-top:1px solid var(--line);padding-top:14px}
+.price-row{display:flex;align-items:baseline;gap:7px;margin-bottom:12px}
+.price{font-size:18px;font-weight:600;letter-spacing:-.02em}
+.per,.old{font-size:12px;color:var(--muted-2)}
+.old{text-decoration:line-through}
 .product .btn{width:100%}
-@keyframes flash{0%{background:var(--fill-2)}100%{background:#fff}}
-.product.hit{animation:flash 1.2s ease-out;border-color:var(--ink)}
+@keyframes hitPulse{0%{box-shadow:0 0 0 0 rgba(16,152,212,.45)}100%{box-shadow:0 0 0 20px rgba(16,152,212,0)}}
+.product.hit{animation:hitPulse 1.2s ease-out;border-color:var(--blue)}
+.rail-nav{display:flex;gap:8px}
+.rail-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:#fff;
+  display:grid;place-items:center;transition:.2s}
+.rail-btn:hover{border-color:var(--dark)}
+.rail-btn:disabled{opacity:.3;cursor:default}
+.rail-btn:disabled:hover{border-color:var(--line)}
+.rail-btn svg{width:16px;height:16px;stroke:var(--dark);fill:none;stroke-width:1.8}
 
-/* ---------- 7. таблица ---------- */
-.compare{border:1px solid var(--line);max-width:840px}
-.crow{display:grid;grid-template-columns:1fr 150px 150px;border-bottom:1px solid var(--line)}
-.crow:last-child{border-bottom:none}
-.crow>div{padding:12px 16px;font-size:12.5px}
-.crow .c-us,.crow .c-them{text-align:center;border-left:1px solid var(--line);color:var(--gray-1)}
-.chead{background:var(--fill)}
-.chead>div{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-1)}
-.chead .c-us{color:var(--ink)}
-.mark{font-weight:600;color:var(--ink)}
-.mark-no{color:var(--gray-3)}
+/* ============ РИЧ-КОНТЕНТ ============ */
+/* Место под сторителлинг: фото, видео, инфографика, наука.
+   Медиа-слоты рассчитаны на подстановку реального контента. */
+.rich{background:var(--dark);color:#fff;padding:88px 0}
+.rich .eyebrow{color:var(--blue-light)}
+.rich h2{font-size:clamp(26px,3vw,38px);max-width:640px;margin-bottom:14px}
+.rich .lead{color:#a9bdc7;font-size:15px;max-width:520px;margin-bottom:44px}
+.rich-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
+.rich-media{border-radius:20px;border:1px solid rgba(255,255,255,.14);background:
+  radial-gradient(600px 320px at 30% 20%, rgba(16,152,212,.3) 0%, rgba(16,152,212,0) 70%),rgba(255,255,255,.03);
+  min-height:340px;padding:36px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+.rich-media h3{font-size:22px;margin-bottom:8px}
+.rich-media p{color:#a9bdc7;font-size:13.5px;max-width:340px}
+.rich-side{display:grid;grid-template-rows:1fr 1fr;gap:16px}
+.rich-cell{border-radius:20px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.03);
+  padding:30px;display:flex;flex-direction:column;justify-content:center}
+.rich-cell .big{font-size:38px;font-weight:600;letter-spacing:-.03em;margin-bottom:6px}
+.rich-cell b{display:block;font-size:14px;margin-bottom:5px}
+.rich-cell p{color:#a9bdc7;font-size:12.5px}
+.rich-slot{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.rich-slot svg{width:120px;height:120px;stroke:rgba(99,188,227,.3);fill:none;stroke-width:.7}
 
-/* ---------- 8. показатели ---------- */
-.markers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.marker{border:1px solid var(--line);padding:20px}
-.marker .m-cnt{font-size:11px;color:var(--gray-2);margin-bottom:12px;display:block}
-.marker ul{list-style:none}
-.marker li{font-size:12px;color:var(--gray-1);padding:2px 0;border-bottom:1px dotted #ededed}
-.marker li:last-child{border-bottom:none}
+/* ============ БЛОГ ============ */
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.post{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.25s;background:#fff}
+.post:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.post-media{height:180px;background:var(--bg-light);display:grid;place-items:center;border-bottom:1px solid var(--line)}
+.post-media svg{width:44px;height:44px;stroke:var(--blue);fill:none;stroke-width:1.1}
+.post-body{padding:22px}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.post-cat{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}
+.post-date{font-size:11.5px;color:var(--muted-2)}
+.post h3{font-size:16px;margin-bottom:8px;line-height:1.3}
+.post p{color:var(--muted);font-size:12.5px;line-height:1.5}
 
-/* ---------- 9. врачи ---------- */
-.docs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.doc{border:1px solid var(--line);padding:20px}
-.doc .box{width:52px;height:52px;border-radius:50%;margin-bottom:14px}
+/* ============ ПРИЛОЖЕНИЕ ============ */
+.app{background:var(--bg-light);border-radius:26px;padding:56px;display:grid;
+  grid-template-columns:.85fr 1fr;gap:52px;align-items:center}
+.app h2{font-size:clamp(24px,2.6vw,34px);margin-bottom:12px}
+.app .lead{color:var(--muted);margin-bottom:32px;font-size:14.5px;max-width:400px}
+.afeat{display:flex;gap:15px;margin-bottom:20px;max-width:430px}
+.afeat .ic{flex:none;width:40px;height:40px;border-radius:50%;background:#fff;display:grid;place-items:center}
+.afeat .ic svg{width:19px;height:19px;stroke:var(--blue);fill:none;stroke-width:1.5}
+.afeat b{display:block;margin-bottom:3px}
+.afeat span{color:var(--muted);font-size:13px;line-height:1.5}
+.app-cta{display:flex;gap:10px;margin-top:32px;flex-wrap:wrap}
+.phone-mock{justify-self:center;width:262px;height:530px;background:var(--dark);border-radius:42px;
+  border:8px solid #16242d;box-shadow:0 32px 70px rgba(5,19,26,.25);position:relative;overflow:hidden}
+.phone-notch{position:absolute;top:14px;left:50%;transform:translateX(-50%);width:86px;height:23px;
+  background:var(--dark);border-radius:14px;z-index:3}
+.phone-screen{position:absolute;inset:0;background:#fff;padding:50px 18px 18px}
+.ps-head{font-weight:600;font-size:13px;margin-bottom:2px}
+.ps-sub{font-size:10.5px;color:var(--muted);margin-bottom:18px}
+.ps-ring{width:130px;height:130px;border-radius:50%;margin:0 auto 20px;
+  background:conic-gradient(var(--blue) 0 76%,var(--bg-light) 76% 100%);display:grid;place-items:center}
+.ps-ring .in{width:104px;height:104px;border-radius:50%;background:#fff;display:flex;align-items:center;
+  justify-content:center;flex-direction:column}
+.ps-ring .in b{font-size:27px;line-height:1;font-weight:600;letter-spacing:-.03em}
+.ps-ring .in span{font-size:9px;color:var(--muted);margin-top:3px}
+.ps-row{background:#f7fbfd;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px;
+  display:flex;align-items:center;gap:10px}
+.ps-row .dot{width:26px;height:26px;border-radius:8px;background:#fff;border:1px solid var(--line);
+  display:grid;place-items:center;flex:none}
+.ps-row .dot svg{width:13px;height:13px;stroke:var(--blue);fill:none;stroke-width:1.6}
+.ps-row .t{flex:1;min-width:0}
+.ps-row .t b{font-size:11px;display:block}
+.ps-row .t span{font-size:9px;color:var(--muted)}
+.ps-row .bar{width:40px;height:5px;border-radius:6px;background:var(--bg-light);overflow:hidden;flex:none}
+.ps-row .bar i{display:block;height:100%;background:var(--blue)}
 
-/* ---------- 10. приложение ---------- */
-.app{display:grid;grid-template-columns:240px 1fr;gap:36px;align-items:center}
-.app-media{height:400px}
-.afeat{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
-.afeat .box{width:32px;height:32px;flex:none}
-.app-cta{display:flex;gap:8px;margin-top:22px}
+/* ============ СЕРТИФИКАТ + ПАРТНЁРЫ ============ */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.duo-card{border-radius:26px;padding:48px;position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:330px}
+.duo-gift{background:var(--grad);color:#fff}
+.duo-partner{background:var(--dark);color:#fff}
+.duo-card .eyebrow{color:rgba(255,255,255,.7)}
+.duo-partner .eyebrow{color:var(--blue-light)}
+.duo-card h2{font-size:25px;margin-bottom:11px;max-width:84%;position:relative;z-index:2}
+.duo-card p{margin-bottom:24px;max-width:78%;font-size:13.5px;line-height:1.6;position:relative;z-index:2}
+.duo-gift p{color:rgba(255,255,255,.9)}
+.duo-partner p{color:#a9bdc7}
+.duo-list{display:flex;flex-direction:column;gap:10px;margin-bottom:30px;position:relative;z-index:2}
+.duo-list span{display:flex;align-items:center;gap:10px;font-size:13px}
+.duo-list svg{width:14px;height:14px;fill:none;stroke-width:2;flex:none;stroke:#fff}
+.duo-partner .duo-list svg{stroke:var(--blue-light)}
+.duo-partner .duo-list span{color:#c3d5de}
+.duo-cta{display:flex;gap:10px;margin-top:auto;flex-wrap:wrap;position:relative;z-index:2}
+.duo-art{position:absolute;right:-40px;bottom:-40px;width:230px;height:230px;z-index:1}
+.duo-art svg{width:100%;height:100%;fill:none;stroke-width:.8;stroke:rgba(255,255,255,.22)}
 
-/* ---------- 11/12. дуо ---------- */
-.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.duo>.block{margin-bottom:0}
-.duo-list{list-style:none;margin:16px 0 20px}
-.duo-list li{font-size:12.5px;color:var(--gray-1);padding:4px 0 4px 16px;position:relative}
-.duo-list li::before{content:'—';position:absolute;left:0;color:var(--gray-3)}
-.duo-cta{display:flex;gap:8px;flex-wrap:wrap}
+/* ============ ФИНАЛ ============ */
+.cta{background:var(--bg-light);border-radius:26px;padding:76px 48px;text-align:center;position:relative;overflow:hidden}
+.cta h2{font-size:clamp(26px,3.2vw,40px);margin-bottom:14px;max-width:620px;margin-inline:auto;position:relative;z-index:2}
+.cta p{color:var(--muted);max-width:440px;margin:0 auto 30px;font-size:15px;position:relative;z-index:2}
+.cta .btn{position:relative;z-index:2}
+.cta .note{font-size:12px;color:var(--muted-2);margin-top:18px;position:relative;z-index:2}
 
-/* ---------- 14. футер ---------- */
-.foot{display:grid;grid-template-columns:1fr 2.2fr;gap:40px}
-.foot-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.foot-col h4{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--gray-2);margin-bottom:10px;font-weight:600}
-.foot-col a{display:block;font-size:12px;color:var(--gray-1);padding:4px 0}
-.foot-col a:hover{color:var(--ink)}
-.foot-bottom{border-top:1px solid var(--line);margin-top:24px;padding-top:16px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.socials{display:flex;gap:6px}
-.socials .box{width:30px;height:30px}
+/* ============ ФУТЕР ============ */
+footer{background:var(--dark);color:#fff;padding:72px 0 32px;margin-top:20px}
+.foot-top{display:flex;justify-content:space-between;gap:52px;flex-wrap:wrap;margin-bottom:48px}
+.foot-logo{height:24px;width:auto;margin-bottom:16px}
+.foot-brand p{color:#a9bdc7;font-size:12.5px;max-width:250px;line-height:1.6;margin-bottom:20px}
+.foot-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:36px;flex:1;max-width:720px}
+.foot-col h4{font-size:10.5px;margin-bottom:14px;color:var(--muted-2);text-transform:uppercase;
+  letter-spacing:.12em;font-weight:600}
+.foot-col a{display:block;color:#c3d5de;padding:5px 0;font-size:12.5px;transition:.2s}
+.foot-col a:hover{color:#fff}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;
+  align-items:center;gap:22px;flex-wrap:wrap;color:var(--muted-2);font-size:11.5px;line-height:1.6}
+.socials{display:flex;gap:8px}
+.socials a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.07);display:grid;place-items:center;transition:.2s}
+.socials a:hover{background:var(--blue)}
+.socials svg{width:17px;height:17px;fill:#fff}
 
-/* ---------- легенда ---------- */
-.legend{background:var(--ink);color:#fff;padding:20px 0;margin-bottom:14px}
-.legend .wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.legend h1{font-size:15px;font-weight:600;letter-spacing:-.01em}
-.legend p{font-size:12px;color:#bbb;margin-left:auto}
-.legend .lg-link{border:1px solid #555;padding:7px 14px;font-size:11.5px;font-weight:600}
-.legend .lg-link:hover{background:#fff;color:var(--ink);border-color:#fff}
-
+/* ============ АДАПТИВ ============ */
 @media(max-width:1000px){
-  .hero-cols,.app,.foot{grid-template-columns:1fr}
-  .products,.steps,.markers,.docs,.duo,.foot-cols{grid-template-columns:repeat(2,1fr)}
+  .promo,.cats,.posts{grid-template-columns:repeat(2,1fr)}
+  .feature,.app,.rich-grid,.duo{grid-template-columns:1fr}
+  .rich-side{grid-template-rows:auto auto}
+  .foot-cols{grid-template-columns:repeat(2,1fr)}
+  .nav-main{display:none}
+  .feature,.app{padding:40px;gap:36px}
 }
-@media(max-width:680px){
-  .wrap{padding:0 16px}
-  .products,.steps,.markers,.docs,.duo,.facts,.foot-cols{grid-template-columns:1fr}
-  .fact{border-right:none;border-bottom:1px solid var(--line);padding-left:0;padding-bottom:14px}
-  .hero-search{flex-direction:column}
-  .crow{grid-template-columns:1fr 70px 70px}
-  .crow>div{padding:10px;font-size:11px}
-  .hdr-nav,.hdr-right .h-lnk{display:none}
-  .block-body{padding:20px}
-  .legend p{margin-left:0;width:100%}
+@media(max-width:700px){
+  .wrap{padding:0 18px}
+  .section,.rich{padding:60px 0}
+  .promo,.cats,.posts{grid-template-columns:1fr}
+  .searchbar{flex-direction:column}
+  .cat-menu{width:100%}
+  .bonus span{display:none}
+  .duo-card,.cta{padding:36px 26px}
+  .duo-card h2,.duo-card p{max-width:100%}
+  .feature,.app{padding:30px}
+  .product{flex-basis:250px}
 }
 </style>
 </head>
 <body>
 
-<!-- ЛЕГЕНДА -->
-<div class="legend">
+<!-- ============ ХЕДЕР ============ -->
+<header>
   <div class="wrap">
-    <h1>Bioniq — структура главной</h1>
-    <a class="lg-link" href="design.html">Версия в дизайне →</a>
-    <p>14 блоков, 67 элементов. Номера — для замены контента.</p>
+    <div class="topbar">
+      <a href="#"><img class="logo" src="logos/wordmark-blue.svg" alt="Bioniq"></a>
+      <nav class="nav-main">
+        <a href="#how">Как это работает</a>
+        <a href="#">Доставка</a>
+        <a href="#">Помощь</a>
+      </nav>
+      <div class="header-right">
+        <span class="bonus">
+          <svg viewBox="0 0 24 24"><path d="M12 3l2.5 5.5 6 .8-4.4 4.2 1.1 6-5.2-2.9-5.2 2.9 1.1-6L3.5 9.3l6-.8L12 3z"/></svg>
+          5000 <span>баллов</span>
+        </span>
+        <button class="icn-btn" title="Корзина">
+          <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.6 9H7.5z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg>
+        </button>
+        <a class="btn btn-ghost btn-sm" href="#">Войти</a>
+      </div>
+    </div>
   </div>
-</div>
+</header>
 
 <div class="wrap">
 
-<!-- 1 -->
-<section class="block">
-  <div class="block-head">
-    <span class="block-num">1</span>
-    <span class="block-name">Служебная строка</span>
-    <span class="block-note">Одна акция, меняется</span>
+<!-- ============ ПРОМО ============ -->
+<div class="promo">
+  <div class="promo-card promo-1">
+    <span class="promo-tag">до 31 июля</span>
+    <div>
+      <h3>Персональные витамины по анализу крови</h3>
+      <p>Скидка 20% на первый набор</p>
+    </div>
+    <button class="btn btn-white btn-sm" data-goto="vitamins">Подробнее</button>
+    <span class="promo-art"><svg viewBox="0 0 100 100"><path d="M30 5c0 22 40 28 40 45S30 73 30 95"/><path d="M70 5c0 22-40 28-40 45s40 23 40 45"/><path d="M34 25h32M31 40h38M31 60h38M34 75h32"/></svg></span>
   </div>
-  <div class="strip">
-    <span class="el-num" style="margin:0">1.1</span> Текст акции
-    <span class="el-num" style="margin:0">1.2</span> Ссылка
+  <div class="promo-card promo-2">
+    <span class="promo-tag">хит</span>
+    <div>
+      <h3>Программа «Год здоровья»</h3>
+      <p>Витамины, два чек-апа и врач</p>
+    </div>
+    <button class="btn btn-white btn-sm" data-goto="programma">Выбрать</button>
+    <span class="promo-art"><svg viewBox="0 0 100 100"><path d="M25 12v26a20 20 0 0040 0V12"/><path d="M18 12h14M58 12h14"/><path d="M45 58v6a18 18 0 0036 0v-8"/><circle cx="81" cy="48" r="8"/></svg></span>
+  </div>
+  <div class="promo-card promo-3">
+    <span class="promo-tag">1 ₽</span>
+    <div>
+      <h3>Чек-ап за 1 ₽</h3>
+      <p>При оформлении программы</p>
+    </div>
+    <button class="btn btn-primary btn-sm" data-goto="checkup">Получить</button>
+    <span class="promo-art"><svg viewBox="0 0 100 100"><path d="M38 8h24M42 8v28l-19 33a13 13 0 0011 20h32a13 13 0 0011-20L58 36V8"/><path d="M30 62h40"/></svg></span>
+  </div>
+</div>
+
+<!-- ============ ГЕРОЙ ============ -->
+<section class="hero">
+  <h1>Персональные витамины, чек-апы и программы — <b>здоровье под вас</b>, а не для всех</h1>
+  <p class="sub">Сдайте кровь, получите свою формулу и врача, который ведёт программу. <b>От 3 990 ₽ в месяц</b></p>
+  <div class="searchbar">
+    <div class="search-wrap">
+      <div class="search-input">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+        <input id="searchInput" placeholder="Найти витамины, чек-ап или программу" autocomplete="off">
+      </div>
+      <div class="search-drop" id="searchDrop"></div>
+    </div>
+    <button class="btn btn-primary" id="searchBtn">Найти</button>
+    <div class="cat-wrap">
+      <button class="btn btn-ghost" id="catBtn">Каталог</button>
+      <div class="cat-menu" id="catMenu"></div>
+    </div>
+  </div>
+  <div class="chips">
+    <a class="chip" data-goto="checkup" href="#products">
+      <svg viewBox="0 0 24 24"><path d="M9 2h6M10 2v6.5l-4.6 7.6A3 3 0 008 21h8a3 3 0 002.6-4.9L14 8.5V2"/><path d="M7.5 15h9"/></svg>Чек-апы</a>
+    <a class="chip" data-goto="vitamins" href="#products">
+      <svg viewBox="0 0 24 24"><rect x="2.5" y="8.5" width="19" height="7" rx="3.5"/><path d="M12 8.5v7"/></svg>Витамины</a>
+    <a class="chip" data-goto="nabor" href="#products">
+      <svg viewBox="0 0 24 24"><path d="M12 2.5l9 4.5-9 4.5-9-4.5 9-4.5z"/><path d="M3 7v10l9 4.5 9-4.5V7"/><path d="M12 11.5v10"/></svg>Наборы</a>
+    <a class="chip" data-goto="programma" href="#products">
+      <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.4-9.1C.4 8 2.5 4 6 4c2 0 3 1 6 4 3-3 4-4 6-4 3.5 0 5.6 4 3.4 7.9C19 16.4 12 21 12 21z"/></svg>Программы</a>
+    <a class="chip" data-goto="cert" href="#products">
+      <svg viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="12" rx="2"/><path d="M2 9h20M12 9v12"/><path d="M12 9S9.5 3.5 7 5s2 4 5 4zM12 9s2.5-5.5 5-4-2 4-5 4z"/></svg>Сертификаты</a>
+    <a class="chip" href="#blog">
+      <svg viewBox="0 0 24 24"><path d="M4 4.5h11a3 3 0 013 3v13H7a3 3 0 01-3-3v-13z"/><path d="M18 7.5h2v10a3 3 0 01-3 3"/><path d="M8 9h6M8 13h6"/></svg>Блог</a>
+    <a class="chip" href="#app">
+      <svg viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 5.5h3"/></svg>Приложение</a>
   </div>
 </section>
 
-<!-- 2 -->
-<section class="block">
-  <div class="block-head">
-    <span class="block-num">2</span>
-    <span class="block-name">Хедер</span>
-    <span class="block-note">Липкий при скролле</span>
+<!-- ============ КАТЕГОРИИ ============ -->
+<section class="section" id="cats">
+  <div class="head-row">
+    <div class="section-head">
+      <span class="eyebrow">С чего начать</span>
+      <h2>Четыре способа начать</h2>
+    </div>
+    <a class="link-arrow" href="#products">Весь каталог →</a>
   </div>
-  <div class="block-body">
-    <div class="hdr">
-      <div class="el">
-        <span class="el-num">2.1</span>
-        <span class="hdr-logo">Логотип</span>
+  <div class="cats">
+    <div class="cat">
+      <div class="cat-ic"><svg viewBox="0 0 24 24"><path d="M9 2h6M10 2v6.5l-4.6 7.6A3 3 0 008 21h8a3 3 0 002.6-4.9L14 8.5V2"/><path d="M7.5 15h9"/></svg></div>
+      <h3>Чек-апы</h3>
+      <p>Сдайте кровь и узнайте, каких витаминов и минералов вам не хватает.</p>
+      <button class="btn btn-ghost btn-sm" data-goto="checkup">Выбрать чек-ап</button>
+    </div>
+    <div class="cat">
+      <div class="cat-ic"><svg viewBox="0 0 24 24"><rect x="2.5" y="8.5" width="19" height="7" rx="3.5"/><path d="M12 8.5v7"/></svg></div>
+      <h3>Витамины</h3>
+      <p>Персональные саше по вашему анализу крови. Ровно то, что нужно организму.</p>
+      <button class="btn btn-ghost btn-sm" data-goto="vitamins">Подобрать витамины</button>
+    </div>
+    <div class="cat">
+      <div class="cat-ic"><svg viewBox="0 0 24 24"><path d="M12 2.5l9 4.5-9 4.5-9-4.5 9-4.5z"/><path d="M3 7v10l9 4.5 9-4.5V7"/><path d="M12 11.5v10"/></svg></div>
+      <h3>Наборы</h3>
+      <p>Готовые комплексы под цель: энергия, сон, иммунитет, красота, спорт.</p>
+      <button class="btn btn-ghost btn-sm" data-goto="nabor">Смотреть наборы</button>
+    </div>
+    <div class="cat">
+      <div class="cat-ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.4-9.1C.4 8 2.5 4 6 4c2 0 3 1 6 4 3-3 4-4 6-4 3.5 0 5.6 4 3.4 7.9C19 16.4 12 21 12 21z"/></svg></div>
+      <h3>Программы</h3>
+      <p>Витамины, чек-ап и консультация врача. Полный цикл заботы о здоровье.</p>
+      <button class="btn btn-primary btn-sm" data-goto="programma">Выбрать программу</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ПРОГРАММА ============ -->
+<section class="section" id="how" style="padding-top:0">
+  <div class="feature">
+    <div>
+      <span class="eyebrow">Программа</span>
+      <h2>Программа — это не просто витамины</h2>
+      <p class="lead">Анализируем, подбираем, ведём и корректируем — вместе с врачом.</p>
+      <div class="flist">
+        <div class="fitem">
+          <div class="num"><svg viewBox="0 0 24 24"><path d="M9 2h6M10 2v6.5l-4.6 7.6A3 3 0 008 21h8a3 3 0 002.6-4.9L14 8.5V2"/></svg></div>
+          <div><b>Чек-ап крови</b><span>60+ показателей: витамины, минералы, гормоны</span></div>
+        </div>
+        <div class="fitem">
+          <div class="num"><svg viewBox="0 0 24 24"><rect x="2.5" y="8.5" width="19" height="7" rx="3.5"/><path d="M12 8.5v7"/></svg></div>
+          <div><b>Персональные витамины</b><span>Формула саше пересобирается под ваш результат</span></div>
+        </div>
+        <div class="fitem">
+          <div class="num"><svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M4 9h16M5 5h14a1 1 0 011 1v13a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1z"/><path d="M9 14l2 2 4-4"/></svg></div>
+          <div><b>Консультация врача</b><span>Разбор результатов и план на 3–12 месяцев</span></div>
+        </div>
       </div>
-      <div class="el">
-        <span class="el-num">2.2</span>
-        <nav class="hdr-nav">
+      <button class="btn btn-primary" data-goto="programma">Собрать программу</button>
+    </div>
+    <div class="feature-visual">
+      <div class="pill-list">
+        <div class="pill">
+          <svg viewBox="0 0 24 24"><path d="M9 2h6M10 2v6.5l-4.6 7.6A3 3 0 008 21h8a3 3 0 002.6-4.9L14 8.5V2"/></svg>
+          Чек-ап <span class="plus">+</span>
+        </div>
+        <div class="pill">
+          <svg viewBox="0 0 24 24"><rect x="2.5" y="8.5" width="19" height="7" rx="3.5"/><path d="M12 8.5v7"/></svg>
+          Витамины <span class="plus">+</span>
+        </div>
+        <div class="pill">
+          <svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M4 9h16M5 5h14a1 1 0 011 1v13a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1z"/></svg>
+          Врач
+        </div>
+      </div>
+      <div class="eq">↓</div>
+      <div class="result">Персональная программа здоровья</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ПОПУЛЯРНОЕ — ОДНА СТРОКА ============ -->
+<section class="section" id="products" style="padding-top:0">
+  <div class="head-row">
+    <div class="section-head">
+      <span class="eyebrow">Каталог</span>
+      <h2>Популярное сейчас</h2>
+      <p>Программы, витамины, чек-апы, наборы и сертификаты — в одной ленте.</p>
+    </div>
+    <div class="rail-nav">
+      <button class="rail-btn" id="railPrev" title="Назад"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="rail-btn" id="railNext" title="Вперёд"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-filter="all">Все</button>
+    <button class="tab" data-filter="programma">Программы</button>
+    <button class="tab" data-filter="vitamins">Витамины</button>
+    <button class="tab" data-filter="checkup">Чек-апы</button>
+    <button class="tab" data-filter="nabor">Наборы</button>
+    <button class="tab" data-filter="cert">Сертификаты</button>
+  </div>
+
+  <div class="rail-wrap">
+    <div class="rail" id="rail">
+      <div class="product" data-cat="programma" data-ic="heart">
+        <div class="p-top"><span class="p-code">PR-01</span><span class="badge">Хит</span></div>
+        <div class="thumb"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.4-9.1C.4 8 2.5 4 6 4c2 0 3 1 6 4 3-3 4-4 6-4 3.5 0 5.6 4 3.4 7.9C19 16.4 12 21 12 21z"/></svg></div>
+        <div class="p-cat">Программа</div>
+        <h3>Год здоровья</h3>
+        <p class="desc">Два чек-апа, витамины на 12 месяцев и врач весь год.</p>
+        <div class="p-foot">
+          <div class="price-row"><span class="price">24 900 ₽</span><span class="old">32 000 ₽</span></div>
+          <button class="btn btn-primary btn-sm">В корзину</button>
+        </div>
+      </div>
+      <div class="product" data-cat="vitamins" data-ic="sachet">
+        <div class="p-top"><span class="p-code">BQ-01</span><span class="badge">Подписка</span></div>
+        <div class="thumb"><svg viewBox="0 0 24 24"><rect x="2.5" y="8.5" width="19" height="7" rx="3.5"/><path d="M12 8.5v7"/></svg></div>
+        <div class="p-cat">Витамины</div>
+        <h3>Персональные витамины</h3>
+        <p class="desc">Дневные саше по вашему анализу крови, доставка каждый месяц.</p>
+        <div class="p-foot">
+          <div class="price-row"><span class="price">от 3 990 ₽</span><span class="per">/ месяц</span></div>
+          <button class="btn btn-primary btn-sm">Подобрать</button>
+        </div>
+      </div>
+      <div class="product" data-cat="checkup" data-ic="vial">
+        <div class="p-top"><span class="p-code">CH-01</span></div>
+        <div class="thumb"><svg viewBox="0 0 24 24"><path d="M9 2h6M10 2v6.5l-4.6 7.6A3 3 0 008 21h8a3 3 0 002.6-4.9L14 8.5V2"/><path d="M7.5 15h9"/></svg></div>
+        <div class="p-cat">Чек-ап</div>
+        <h3>Базовый чек-ап</h3>
+        <p class="desc">Ключевые витамины и минералы — старт для подбора формулы.</p>
+        <div class="p-foot">
+          <div class="price-row"><span class="price">2 990 ₽</span></div>
+          <button class="btn btn-primary btn-sm">В корзину</button>
+        </div>
+      </div>
+      <div class="product" data-cat="nabor" data-ic="bolt">
+        <div class="p-top"><span class="p-code">NB-01</span><span class="badge soft">Бестселлер</span></div>
+        <div class="thumb"><svg viewBox="0 0 24 24"><path d="M13 2L4.5 13.5H11L10 22l8.5-11.5H12L13 2z"/></svg></div>
+        <div class="p-cat">Набор</div>
+        <h3>Энергия и тонус</h3>
+        <p class="desc">B-комплекс, магний, железо и CoQ10 против усталости.</p>
+        <div class="p-foot">
+          <div class="price-row"><span class="price">4 490 ₽</span><span class="old">5 600 ₽</span></div>
+          <button class="btn btn-primary btn-sm">В корзину</button>
+        </div>
+      </div>
+      <div class="product" data-cat="programma" data-ic="rocket">
+        <div class="p-top"><span class="p-code">PR-02</span></div>
+        <div class="thumb"><svg viewBox="0 0 24 24"><path d="M12 2c3.5 2.4 5.5 6 5.5 10.2L17 18H7l-.5-5.8C6.5 8 8.5 4.4 12 2z"/><circle cx="12" cy="10" r="2"/><path d="M7 18l-2.5 3.5M17 18l2.5 3.5"/></svg></div>
+        <div class="p-cat">Программа</div>
+        <h3>Старт</h3>
+        <p class="desc">Чек-ап, витамины на три месяца и консультация врача.</p>
+        <div class="p-foot">
+          <div class="price-row"><span class="price">9 900 ₽</span></div>
+          <button class="btn btn-primary btn-sm">В корзину</button>
+        </div>
+      </div>
+      <div class="product" data-cat="checkup" data-ic="micro">
+        <div class="p-top"><span class="p-code">CH-02</span><span class="badge soft">60+ маркеров</span></div>
+        <div class="thumb"><svg viewBox="0 0 24 24"><path d="M6 20h13"/><path d="M9 20V9a3 3 0 016 0v11"/><circle cx="12" cy="6" r="2.5"/><path d="M4 16c2-5 6-7 8-7"/></svg></div>
+        <div class="p-cat">Чек-ап</div>
+        <h3>Расширенный чек-ап</h3>
+        <p class="desc">Витамины, минералы, гормоны, ферритин и воспаление.</p>
+        <div class="p-foot">
+          <div class="price-row"><span class="price">5 990 ₽</span></div>
+          <button class="btn btn-primary btn-sm">В корзину</button>
+        </div>
+      </div>
+      <div class="product" data-cat="nabor" data-ic="moon">
+        <div class="p-top"><span class="p-code">NB-02</span></div>
+        <div class="thumb"><svg viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z"/></svg></div>
+        <div class="p-cat">Набор</div>
+        <h3>Спокойный сон</h3>
+        <p class="desc">Магний, глицин, L-теанин и витамин D для восстановления.</p>
+        <div class="p-foot">
+          <div class="price-row"><span class="price">3 890 ₽</span></div>
+          <button class="btn btn-primary btn-sm">В корзину</button>
+        </div>
+      </div>
+      <div class="product" data-cat="cert" data-ic="gift">
+        <div class="p-top"><span class="p-code">GC-01</span></div>
+        <div class="thumb"><svg viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="12" rx="2"/><path d="M2 9h20M12 9v12"/><path d="M12 9S9.5 3.5 7 5s2 4 5 4zM12 9s2.5-5.5 5-4-2 4-5 4z"/></svg></div>
+        <div class="p-cat">Сертификат</div>
+        <h3>Подарочный сертификат</h3>
+        <p class="desc">На чек-ап, витамины или программу — получатель выберет сам.</p>
+        <div class="p-foot">
+          <div class="price-row"><span class="price">от 5 000 ₽</span></div>
+          <button class="btn btn-primary btn-sm">Выбрать номинал</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /wrap -->
+
+<!-- ============ РИЧ-КОНТЕНТ ============ -->
+<!-- Место под сторителлинг: сюда встают фото продукта, видео, инфографика.
+     Слоты рассчитаны на реальные материалы — сейчас в них заглушки. -->
+<section class="rich">
+  <div class="wrap">
+    <span class="eyebrow">Наука</span>
+    <h2>Одно саше вместо горсти банок</h2>
+    <p class="lead">Формула собирается под ваши показатели крови и пересобирается после каждого чек-апа.</p>
+    <div class="rich-grid">
+      <div class="rich-media">
+        <span class="rich-slot"><svg viewBox="0 0 100 100"><path d="M30 5c0 22 40 28 40 45S30 73 30 95"/><path d="M70 5c0 22-40 28-40 45s40 23 40 45"/><path d="M34 25h32M31 40h38M31 60h38M34 75h32"/></svg></span>
+        <h3>Как собирается формула</h3>
+        <p>Место под видео или разворот с фото производства и составом саше.</p>
+      </div>
+      <div class="rich-side">
+        <div class="rich-cell">
+          <div class="big">60+</div>
+          <b>показателей крови</b>
+          <p>Витамины, минералы, гормоны, ферритин и маркеры воспаления</p>
+        </div>
+        <div class="rich-cell">
+          <div class="big">1</div>
+          <b>саше в день</b>
+          <p>Вместо пяти-восьми отдельных банок на столе</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+<!-- ============ БЛОГ ============ -->
+<section class="section" id="blog">
+  <div class="head-row">
+    <div class="section-head">
+      <span class="eyebrow">Блог</span>
+      <h2>Разбираемся в здоровье</h2>
+      <p>Статьи врачей о витаминах, анализах и том, как читать свои показатели.</p>
+    </div>
+    <a class="link-arrow" href="#">Все статьи →</a>
+  </div>
+  <div class="posts">
+    <article class="post">
+      <div class="post-media"><svg viewBox="0 0 24 24"><path d="M12 3s6 6.4 6 10.4A6 6 0 016 13.4C6 9.4 12 3 12 3z"/></svg></div>
+      <div class="post-body">
+        <div class="post-meta"><span class="post-cat">Дефициты</span><span class="post-date">12 июля</span></div>
+        <h3>Заголовок статьи</h3>
+        <p>Краткое описание материала в две строки — о чём статья и зачем её читать.</p>
+      </div>
+    </article>
+    <article class="post">
+      <div class="post-media"><svg viewBox="0 0 24 24"><path d="M3 13h4l2.5 6 4-15 2.5 9h5"/></svg></div>
+      <div class="post-body">
+        <div class="post-meta"><span class="post-cat">Анализы</span><span class="post-date">5 июля</span></div>
+        <h3>Заголовок статьи</h3>
+        <p>Краткое описание материала в две строки — о чём статья и зачем её читать.</p>
+      </div>
+    </article>
+    <article class="post">
+      <div class="post-media"><svg viewBox="0 0 24 24"><rect x="2.5" y="8.5" width="19" height="7" rx="3.5"/><path d="M12 8.5v7"/></svg></div>
+      <div class="post-body">
+        <div class="post-meta"><span class="post-cat">Витамины</span><span class="post-date">28 июня</span></div>
+        <h3>Заголовок статьи</h3>
+        <p>Краткое описание материала в две строки — о чём статья и зачем её читать.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ ПРИЛОЖЕНИЕ ============ -->
+<section class="section" id="app" style="padding-top:0">
+  <div class="app">
+    <div class="phone-mock">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="ps-head">Ваш прогресс</div>
+        <div class="ps-sub">Марина, программа «Год здоровья»</div>
+        <div class="ps-ring"><div class="in"><b>76%</b><span>цель месяца</span></div></div>
+        <div class="ps-row">
+          <div class="dot"><svg viewBox="0 0 24 24"><rect x="2.5" y="8.5" width="19" height="7" rx="3.5"/><path d="M12 8.5v7"/></svg></div>
+          <div class="t"><b>Витамин D</b><span>в норме</span></div>
+          <div class="bar"><i style="width:90%"></i></div>
+        </div>
+        <div class="ps-row">
+          <div class="dot"><svg viewBox="0 0 24 24"><path d="M12 3s6 6.4 6 10.4A6 6 0 016 13.4C6 9.4 12 3 12 3z"/></svg></div>
+          <div class="t"><b>Ферритин</b><span>растёт</span></div>
+          <div class="bar"><i style="width:64%"></i></div>
+        </div>
+        <div class="ps-row">
+          <div class="dot"><svg viewBox="0 0 24 24"><path d="M13 2L4.5 13.5H11L10 22l8.5-11.5H12L13 2z"/></svg></div>
+          <div class="t"><b>B12</b><span>в норме</span></div>
+          <div class="bar"><i style="width:82%"></i></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <span class="eyebrow">Приложение</span>
+      <h2>Вся программа — в кармане</h2>
+      <p class="lead">Результаты, динамика и врач в одном месте. Без папок с бумажными анализами.</p>
+      <div class="afeat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 13h4l2.5 6 4-15 2.5 9h5"/></svg></div>
+        <div><b>Динамика показателей</b><span>Видно, как меняются витамины от чек-апа к чек-апу</span></div>
+      </div>
+      <div class="afeat">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+        <div><b>Напоминания о приёме</b><span>Не пропустите саше и вовремя обновите набор</span></div>
+      </div>
+      <div class="afeat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M8 10.5h8M8 14h5"/><path d="M21 12a8.5 8.5 0 01-8.5 8.5H4l2.2-3.2A8.5 8.5 0 1121 12z"/></svg></div>
+        <div><b>Чат с врачом</b><span>Вопросы по программе — прямо в приложении</span></div>
+      </div>
+      <div class="app-cta">
+        <button class="btn btn-dark btn-sm">App Store</button>
+        <button class="btn btn-ghost btn-sm">Google Play</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ СЕРТИФИКАТ + ПАРТНЁРЫ ============ -->
+<section class="section" id="gift" style="padding-top:0">
+  <div class="duo">
+    <div class="duo-card duo-gift">
+      <span class="eyebrow">Сертификаты</span>
+      <h2>Подарите здоровье</h2>
+      <p>Чек-ап, витамины или целая программа — получатель выберет сам.</p>
+      <div class="duo-list">
+        <span><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Номинал от 5 000 до 50 000 ₽</span>
+        <span><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Электронный или в подарочном конверте</span>
+        <span><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Действует 12 месяцев</span>
+      </div>
+      <div class="duo-cta">
+        <button class="btn btn-white btn-sm" data-goto="cert">Выбрать сертификат</button>
+      </div>
+      <span class="duo-art"><svg viewBox="0 0 100 100"><rect x="12" y="38" width="76" height="52" rx="4"/><path d="M8 38h84M50 38v52"/><path d="M50 38S38 10 26 18s10 20 24 20zM50 38s12-28 24-20-10 20-24 20z"/></svg></span>
+    </div>
+    <div class="duo-card duo-partner" id="partner">
+      <span class="eyebrow">Партнёрам</span>
+      <h2>Партнёрский кабинет</h2>
+      <p>Для врачей, нутрициологов, тренеров и компаний. Рекомендуйте Bioniq — получайте вознаграждение с каждого заказа.</p>
+      <div class="duo-list">
+        <span><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Вознаграждение с каждого заказа</span>
+        <span><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Личные промокоды и ссылки</span>
+        <span><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Статистика и выплаты в кабинете</span>
+      </div>
+      <div class="duo-cta">
+        <button class="btn btn-primary btn-sm">Стать партнёром</button>
+        <button class="btn btn-outline-light btn-sm">Войти в кабинет</button>
+      </div>
+      <span class="duo-art"><svg viewBox="0 0 100 100"><circle cx="34" cy="30" r="13"/><circle cx="70" cy="30" r="13"/><path d="M10 82c0-14 11-25 24-25s24 11 24 25"/><path d="M46 82c0-14 11-25 24-25s24 11 24 25"/></svg></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ФИНАЛ ============ -->
+<section class="section" style="padding-top:0">
+  <div class="cta">
+    <span class="eyebrow">Начните сегодня</span>
+    <h2>Начните с чек-апа — остальное соберём под вас</h2>
+    <p>Одна пробирка крови, персональная формула и врач рядом. Первый шаг занимает пять минут.</p>
+    <button class="btn btn-primary" data-goto="checkup" style="padding:15px 32px;font-size:15px">Пройти чек-ап</button>
+    <p class="note">Первый чек-ап за 1 ₽ при оформлении программы</p>
+  </div>
+</section>
+
+</div><!-- /wrap -->
+
+<!-- ============ ФУТЕР ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img class="foot-logo" src="logos/wordmark-white.svg" alt="Bioniq">
+        <p>Персональные витамины, собранные по вашему анализу крови. С врачами — с 2016 года.</p>
+        <a class="btn btn-primary btn-sm" href="#app">Скачать приложение</a>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Каталог</h4>
           <a href="#" data-goto="checkup">Чек-апы</a>
           <a href="#" data-goto="vitamins">Витамины</a>
           <a href="#" data-goto="nabor">Наборы</a>
           <a href="#" data-goto="programma">Программы</a>
           <a href="#" data-goto="cert">Сертификаты</a>
-        </nav>
-      </div>
-      <div class="hdr-right">
-        <div class="el">
-          <span class="el-num">2.3</span>
-          <a class="h-lnk ph-small" href="#b12">Партнёрам</a>
         </div>
-        <div class="el">
-          <span class="el-num">2.4</span>
-          <a class="h-lnk ph-small" href="#">Войти</a>
+        <div class="foot-col">
+          <h4>Клиентам</h4>
+          <a href="#how">Как это работает</a>
+          <a href="#">Доставка и оплата</a>
+          <a href="#">Личный кабинет</a>
+          <a href="#">Помощь</a>
         </div>
-        <div class="el">
-          <span class="el-num">2.5</span>
-          <div class="box" style="width:32px;height:32px">—</div>
+        <div class="foot-col">
+          <h4>Партнёрам</h4>
+          <a href="#partner">Партнёрский кабинет</a>
+          <a href="#partner">Врачам и нутрициологам</a>
+          <a href="#partner">Корпоративным клиентам</a>
         </div>
-        <div class="el">
-          <span class="el-num">2.6</span>
-          <a class="btn btn-sm btn-fill" href="#b6">Кнопка</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 3 -->
-<section class="block">
-  <div class="block-head">
-    <span class="block-num">3</span>
-    <span class="block-name">Первый экран</span>
-    <span class="block-note">Поиск — главный вход в каталог</span>
-  </div>
-  <div class="block-body">
-    <div class="hero-cols">
-      <div>
-        <div class="el" style="margin-bottom:18px">
-          <span class="el-num">3.1</span>
-          <span class="pill" style="display:inline-block">Метка</span>
-        </div>
-        <div class="el" style="margin-bottom:16px">
-          <span class="el-num">3.2</span>
-          <div class="ph-h1">Заголовок</div>
-        </div>
-        <div class="el" style="margin-bottom:26px">
-          <span class="el-num">3.3</span>
-          <p class="ph-txt">Описание. Одно-два предложения: что это и сколько стоит.</p>
-        </div>
-
-        <div class="el" style="margin-bottom:14px">
-          <span class="el-num">3.4 — поиск с подсказками, 3.5 — кнопка каталога</span>
-          <div class="hero-search">
-            <div class="search-wrap">
-              <div class="field"><input id="searchInput" placeholder="Поиск по каталогу" autocomplete="off" style="border:none;outline:none;flex:1;font-family:inherit;font-size:13px;color:var(--ink);background:none"></div>
-              <div class="drop" id="searchDrop"></div>
-            </div>
-            <button class="btn btn-fill" id="searchBtn">Найти</button>
-            <div class="cat-wrap">
-              <button class="btn" id="catBtn">Каталог</button>
-              <div class="drop cat-menu" id="catMenu"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="el">
-          <span class="el-num">3.6 — быстрый переход в категорию</span>
-          <div class="hero-chips">
-            <button class="pill" data-goto="checkup">Чек-апы</button>
-            <button class="pill" data-goto="vitamins">Витамины</button>
-            <button class="pill" data-goto="nabor">Наборы</button>
-            <button class="pill" data-goto="programma">Программы</button>
-            <button class="pill" data-goto="cert">Сертификаты</button>
-          </div>
-        </div>
-      </div>
-      <div class="el">
-        <span class="el-num">3.7</span>
-        <div class="box hero-media">Изображение</div>
-      </div>
-    </div>
-
-    <div class="facts">
-      <div class="fact el">
-        <span class="el-num">3.8</span>
-        <div class="ph-h3">Заголовок</div>
-        <p class="ph-small">Описание</p>
-      </div>
-      <div class="fact el">
-        <span class="el-num">3.9</span>
-        <div class="ph-h3">Заголовок</div>
-        <p class="ph-small">Описание</p>
-      </div>
-      <div class="fact el">
-        <span class="el-num">3.10</span>
-        <div class="ph-h3">Заголовок</div>
-        <p class="ph-small">Описание</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 4 -->
-<section class="block">
-  <div class="block-head">
-    <span class="block-num">4</span>
-    <span class="block-name">Логотипы партнёров</span>
-    <span class="block-note">Доверие</span>
-  </div>
-  <div class="block-body">
-    <p class="ph-small el" style="text-align:center;margin-bottom:16px"><span class="el-num">4.1</span>Подпись</p>
-    <div class="logos">
-      <div class="box">4.2</div>
-      <div class="box">4.3</div>
-      <div class="box">4.4</div>
-      <div class="box">4.5</div>
-      <div class="box">4.6</div>
-    </div>
-  </div>
-</section>
-
-<!-- 5 -->
-<section class="block" id="b5">
-  <div class="block-head">
-    <span class="block-num">5</span>
-    <span class="block-name">Как это работает</span>
-    <span class="block-note">Четыре шага</span>
-  </div>
-  <div class="block-body">
-    <div class="el" style="margin-bottom:8px"><span class="el-num">5.1</span><div class="ph-h2">Заголовок</div></div>
-    <p class="ph-txt el" style="margin-bottom:26px"><span class="el-num">5.2</span>Описание</p>
-    <div class="steps">
-      <div class="step">
-        <span class="s-n">01</span>
-        <div class="box">5.3</div>
-        <div class="ph-h3">Заголовок</div>
-        <p class="ph-small">Описание</p>
-      </div>
-      <div class="step">
-        <span class="s-n">02</span>
-        <div class="box">5.4</div>
-        <div class="ph-h3">Заголовок</div>
-        <p class="ph-small">Описание</p>
-      </div>
-      <div class="step">
-        <span class="s-n">03</span>
-        <div class="box">5.5</div>
-        <div class="ph-h3">Заголовок</div>
-        <p class="ph-small">Описание</p>
-      </div>
-      <div class="step">
-        <span class="s-n">04</span>
-        <div class="box">5.6</div>
-        <div class="ph-h3">Заголовок</div>
-        <p class="ph-small">Описание</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 6 -->
-<section class="block" id="b6">
-  <div class="block-head">
-    <span class="block-num">6</span>
-    <span class="block-name">Каталог</span>
-    <span class="block-note">Фильтры + карточки, сюда ведут поиск и категории</span>
-  </div>
-  <div class="block-body">
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:20px">
-      <div>
-        <div class="el" style="margin-bottom:6px"><span class="el-num">6.1</span><div class="ph-h2">Заголовок</div></div>
-        <p class="ph-txt el"><span class="el-num">6.2</span>Описание</p>
-      </div>
-      <a class="btn btn-sm el" href="#"><span class="el-num" style="position:absolute;top:-14px;left:0">6.3</span>Весь каталог</a>
-    </div>
-
-    <div class="el" style="margin-bottom:6px"><span class="el-num">6.4 — фильтры по типу продукта</span></div>
-    <div class="tabs">
-      <button class="pill active" data-filter="all">Все</button>
-      <button class="pill" data-filter="checkup">Чек-апы</button>
-      <button class="pill" data-filter="vitamins">Витамины</button>
-      <button class="pill" data-filter="nabor">Наборы</button>
-      <button class="pill" data-filter="programma">Программы</button>
-      <button class="pill" data-filter="cert">Сертификаты</button>
-    </div>
-
-    <div class="el" style="margin-bottom:6px"><span class="el-num">6.5 — карточки продуктов</span></div>
-    <div class="products">
-      <div class="product" data-cat="programma">
-        <div class="p-top"><span class="p-code">PR-01</span><span class="p-badge">Метка</span></div>
-        <div class="box p-media">Изображение</div>
-        <div class="p-cat">Программа</div>
-        <h3>Заголовок</h3>
-        <p class="p-desc">Описание</p>
-        <div class="p-foot">
-          <div class="p-price">0 000 ₽ <s>0 000 ₽</s></div>
-          <button class="btn btn-fill btn-sm">Кнопка</button>
-        </div>
-      </div>
-      <div class="product" data-cat="programma">
-        <div class="p-top"><span class="p-code">PR-02</span></div>
-        <div class="box p-media">Изображение</div>
-        <div class="p-cat">Программа</div>
-        <h3>Заголовок</h3>
-        <p class="p-desc">Описание</p>
-        <div class="p-foot">
-          <div class="p-price">0 000 ₽</div>
-          <button class="btn btn-fill btn-sm">Кнопка</button>
-        </div>
-      </div>
-      <div class="product" data-cat="checkup">
-        <div class="p-top"><span class="p-code">CH-01</span></div>
-        <div class="box p-media">Изображение</div>
-        <div class="p-cat">Чек-ап</div>
-        <h3>Заголовок</h3>
-        <p class="p-desc">Описание</p>
-        <div class="p-foot">
-          <div class="p-price">0 000 ₽</div>
-          <button class="btn btn-fill btn-sm">Кнопка</button>
-        </div>
-      </div>
-      <div class="product" data-cat="checkup">
-        <div class="p-top"><span class="p-code">CH-02</span><span class="p-badge">Метка</span></div>
-        <div class="box p-media">Изображение</div>
-        <div class="p-cat">Чек-ап</div>
-        <h3>Заголовок</h3>
-        <p class="p-desc">Описание</p>
-        <div class="p-foot">
-          <div class="p-price">0 000 ₽</div>
-          <button class="btn btn-fill btn-sm">Кнопка</button>
-        </div>
-      </div>
-      <div class="product" data-cat="vitamins">
-        <div class="p-top"><span class="p-code">BQ-01</span><span class="p-badge">Метка</span></div>
-        <div class="box p-media">Изображение</div>
-        <div class="p-cat">Витамины</div>
-        <h3>Заголовок</h3>
-        <p class="p-desc">Описание</p>
-        <div class="p-foot">
-          <div class="p-price">от 0 000 ₽ <s style="text-decoration:none">/ месяц</s></div>
-          <button class="btn btn-fill btn-sm">Кнопка</button>
-        </div>
-      </div>
-      <div class="product" data-cat="nabor">
-        <div class="p-top"><span class="p-code">NB-01</span><span class="p-badge">Метка</span></div>
-        <div class="box p-media">Изображение</div>
-        <div class="p-cat">Набор</div>
-        <h3>Заголовок</h3>
-        <p class="p-desc">Описание</p>
-        <div class="p-foot">
-          <div class="p-price">0 000 ₽ <s>0 000 ₽</s></div>
-          <button class="btn btn-fill btn-sm">Кнопка</button>
-        </div>
-      </div>
-      <div class="product" data-cat="nabor">
-        <div class="p-top"><span class="p-code">NB-02</span></div>
-        <div class="box p-media">Изображение</div>
-        <div class="p-cat">Набор</div>
-        <h3>Заголовок</h3>
-        <p class="p-desc">Описание</p>
-        <div class="p-foot">
-          <div class="p-price">0 000 ₽</div>
-          <button class="btn btn-fill btn-sm">Кнопка</button>
-        </div>
-      </div>
-      <div class="product" data-cat="cert">
-        <div class="p-top"><span class="p-code">GC-01</span></div>
-        <div class="box p-media">Изображение</div>
-        <div class="p-cat">Сертификат</div>
-        <h3>Заголовок</h3>
-        <p class="p-desc">Описание</p>
-        <div class="p-foot">
-          <div class="p-price">от 0 000 ₽</div>
-          <button class="btn btn-fill btn-sm">Кнопка</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 7 -->
-<section class="block">
-  <div class="block-head">
-    <span class="block-num">7</span>
-    <span class="block-name">Сравнение</span>
-    <span class="block-note">Программа против обычных витаминов</span>
-  </div>
-  <div class="block-body">
-    <div class="el" style="margin-bottom:6px"><span class="el-num">7.1</span><div class="ph-h2">Заголовок</div></div>
-    <p class="ph-txt el" style="margin-bottom:22px"><span class="el-num">7.2</span>Описание</p>
-    <div class="el" style="margin-bottom:6px"><span class="el-num">7.3 — строки сравнения</span></div>
-    <div class="compare">
-      <div class="crow chead">
-        <div>Критерий</div>
-        <div class="c-us">Bioniq</div>
-        <div class="c-them">Альтернатива</div>
-      </div>
-      <div class="crow"><div>Критерий 1</div><div class="c-us mark">Да</div><div class="c-them mark-no">Нет</div></div>
-      <div class="crow"><div>Критерий 2</div><div class="c-us mark">Да</div><div class="c-them mark-no">Нет</div></div>
-      <div class="crow"><div>Критерий 3</div><div class="c-us mark">Да</div><div class="c-them mark-no">Нет</div></div>
-      <div class="crow"><div>Критерий 4</div><div class="c-us mark">Да</div><div class="c-them mark-no">Нет</div></div>
-      <div class="crow"><div>Критерий 5</div><div class="c-us mark">Да</div><div class="c-them mark-no">Нет</div></div>
-      <div class="crow"><div>Критерий 6</div><div class="c-us mark">Значение</div><div class="c-them">Значение</div></div>
-      <div class="crow"><div>Критерий 7</div><div class="c-us mark">Да</div><div class="c-them mark-no">Нет</div></div>
-    </div>
-    <div class="el" style="margin-top:20px"><span class="el-num">7.4</span><button class="btn btn-fill" data-goto="programma">Кнопка</button></div>
-  </div>
-</section>
-
-<!-- 8 -->
-<section class="block">
-  <div class="block-head">
-    <span class="block-num">8</span>
-    <span class="block-name">Что измеряем</span>
-    <span class="block-note">Категории показателей</span>
-  </div>
-  <div class="block-body">
-    <div class="el" style="margin-bottom:6px"><span class="el-num">8.1</span><div class="ph-h2">Заголовок</div></div>
-    <p class="ph-txt el" style="margin-bottom:22px"><span class="el-num">8.2</span>Описание</p>
-    <div class="markers">
-      <div class="marker">
-        <span class="el-num">8.3</span>
-        <div class="ph-h3">Категория</div>
-        <span class="m-cnt">00 показателей</span>
-        <ul><li>Показатель</li><li>Показатель</li><li>Показатель</li><li>Показатель</li></ul>
-      </div>
-      <div class="marker">
-        <span class="el-num">8.4</span>
-        <div class="ph-h3">Категория</div>
-        <span class="m-cnt">00 показателей</span>
-        <ul><li>Показатель</li><li>Показатель</li><li>Показатель</li><li>Показатель</li></ul>
-      </div>
-      <div class="marker">
-        <span class="el-num">8.5</span>
-        <div class="ph-h3">Категория</div>
-        <span class="m-cnt">00 показателей</span>
-        <ul><li>Показатель</li><li>Показатель</li><li>Показатель</li><li>Показатель</li></ul>
-      </div>
-      <div class="marker">
-        <span class="el-num">8.6</span>
-        <div class="ph-h3">Категория</div>
-        <span class="m-cnt">00 показателей</span>
-        <ul><li>Показатель</li><li>Показатель</li><li>Показатель</li><li>Показатель</li></ul>
-      </div>
-      <div class="marker">
-        <span class="el-num">8.7</span>
-        <div class="ph-h3">Категория</div>
-        <span class="m-cnt">00 показателей</span>
-        <ul><li>Показатель</li><li>Показатель</li><li>Показатель</li><li>Показатель</li></ul>
-      </div>
-      <div class="marker" style="background:var(--fill);display:flex;flex-direction:column;justify-content:center">
-        <span class="el-num">8.8</span>
-        <div class="ph-h3" style="margin-bottom:6px">Заголовок</div>
-        <p class="ph-small" style="margin-bottom:14px">Описание</p>
-        <button class="btn btn-sm" style="align-self:flex-start">Кнопка</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 9 -->
-<section class="block">
-  <div class="block-head">
-    <span class="block-num">9</span>
-    <span class="block-name">Врачи</span>
-    <span class="block-note">Экспертиза</span>
-  </div>
-  <div class="block-body">
-    <div class="el" style="margin-bottom:6px"><span class="el-num">9.1</span><div class="ph-h2">Заголовок</div></div>
-    <p class="ph-txt el" style="margin-bottom:22px"><span class="el-num">9.2</span>Описание</p>
-    <div class="docs">
-      <div class="doc">
-        <span class="el-num">9.3</span>
-        <div class="box">Фото</div>
-        <div class="ph-h3">Имя</div>
-        <p class="ph-small" style="margin-bottom:10px">Должность</p>
-        <p class="ph-small">Описание</p>
-      </div>
-      <div class="doc">
-        <span class="el-num">9.4</span>
-        <div class="box">Фото</div>
-        <div class="ph-h3">Имя</div>
-        <p class="ph-small" style="margin-bottom:10px">Должность</p>
-        <p class="ph-small">Описание</p>
-      </div>
-      <div class="doc">
-        <span class="el-num">9.5</span>
-        <div class="box">Фото</div>
-        <div class="ph-h3">Имя</div>
-        <p class="ph-small" style="margin-bottom:10px">Должность</p>
-        <p class="ph-small">Описание</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 10 -->
-<section class="block" id="b10">
-  <div class="block-head">
-    <span class="block-num">10</span>
-    <span class="block-name">Приложение</span>
-    <span class="block-note">Экран + функции</span>
-  </div>
-  <div class="block-body">
-    <div class="app">
-      <div class="el">
-        <span class="el-num">10.1</span>
-        <div class="box app-media">Экран приложения</div>
-      </div>
-      <div>
-        <div class="el" style="margin-bottom:6px"><span class="el-num">10.2</span><div class="ph-h2">Заголовок</div></div>
-        <p class="ph-txt el" style="margin-bottom:22px"><span class="el-num">10.3</span>Описание</p>
-        <div class="afeat el">
-          <span class="el-num" style="position:absolute;top:-13px;left:0">10.4</span>
-          <div class="box">—</div>
-          <div><div class="ph-h3" style="font-size:14px">Заголовок</div><p class="ph-small">Описание</p></div>
-        </div>
-        <div class="afeat el">
-          <span class="el-num" style="position:absolute;top:-13px;left:0">10.5</span>
-          <div class="box">—</div>
-          <div><div class="ph-h3" style="font-size:14px">Заголовок</div><p class="ph-small">Описание</p></div>
-        </div>
-        <div class="afeat el">
-          <span class="el-num" style="position:absolute;top:-13px;left:0">10.6</span>
-          <div class="box">—</div>
-          <div><div class="ph-h3" style="font-size:14px">Заголовок</div><p class="ph-small">Описание</p></div>
-        </div>
-        <div class="app-cta el">
-          <span class="el-num" style="position:absolute;top:-13px;left:0">10.7</span>
-          <button class="btn">App Store</button>
-          <button class="btn">Google Play</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 11 + 12 -->
-<div class="duo">
-  <section class="block">
-    <div class="block-head">
-      <span class="block-num">11</span>
-      <span class="block-name">Сертификаты</span>
-    </div>
-    <div class="block-body">
-      <div class="el" style="margin-bottom:6px"><span class="el-num">11.1</span><div class="ph-h2">Заголовок</div></div>
-      <p class="ph-txt el"><span class="el-num">11.2</span>Описание</p>
-      <ul class="duo-list el">
-        <span class="el-num">11.3</span>
-        <li>Пункт</li>
-        <li>Пункт</li>
-        <li>Пункт</li>
-      </ul>
-      <div class="duo-cta el">
-        <span class="el-num" style="position:absolute;top:-13px;left:0">11.4</span>
-        <button class="btn btn-fill" data-goto="cert">Кнопка</button>
-      </div>
-    </div>
-  </section>
-  <section class="block" id="b12">
-    <div class="block-head">
-      <span class="block-num">12</span>
-      <span class="block-name">Партнёрский кабинет</span>
-    </div>
-    <div class="block-body">
-      <div class="el" style="margin-bottom:6px"><span class="el-num">12.1</span><div class="ph-h2">Заголовок</div></div>
-      <p class="ph-txt el"><span class="el-num">12.2</span>Описание</p>
-      <ul class="duo-list el">
-        <span class="el-num">12.3</span>
-        <li>Пункт</li>
-        <li>Пункт</li>
-        <li>Пункт</li>
-      </ul>
-      <div class="duo-cta el">
-        <span class="el-num" style="position:absolute;top:-13px;left:0">12.4 — регистрация, 12.5 — вход</span>
-        <button class="btn btn-fill">Кнопка</button>
-        <button class="btn">Кнопка</button>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- 13 -->
-<section class="block">
-  <div class="block-head">
-    <span class="block-num">13</span>
-    <span class="block-name">Финальный призыв</span>
-  </div>
-  <div class="block-body" style="text-align:center;padding:48px 28px">
-    <div class="el" style="margin-bottom:8px"><span class="el-num">13.1</span><div class="ph-h2">Заголовок</div></div>
-    <p class="ph-txt el" style="margin:0 auto 22px"><span class="el-num">13.2</span>Описание</p>
-    <div class="el"><span class="el-num">13.3</span><button class="btn btn-fill" data-goto="checkup">Кнопка</button></div>
-    <p class="ph-small el" style="margin-top:14px"><span class="el-num">13.4</span>Уточнение</p>
-  </div>
-</section>
-
-<!-- 14 -->
-<section class="block">
-  <div class="block-head">
-    <span class="block-num">14</span>
-    <span class="block-name">Футер</span>
-  </div>
-  <div class="block-body">
-    <div class="foot">
-      <div>
-        <div class="el" style="margin-bottom:10px"><span class="el-num">14.1</span><span class="hdr-logo">Логотип</span></div>
-        <p class="ph-small el" style="margin-bottom:16px"><span class="el-num">14.2</span>Описание</p>
-        <div class="el"><span class="el-num">14.3</span><button class="btn btn-sm btn-fill">Кнопка</button></div>
-      </div>
-      <div>
-        <div class="el" style="margin-bottom:6px"><span class="el-num">14.4 — колонки ссылок</span></div>
-        <div class="foot-cols">
-          <div class="foot-col">
-            <h4>Каталог</h4>
-            <a href="#" data-goto="checkup">Чек-апы</a>
-            <a href="#" data-goto="vitamins">Витамины</a>
-            <a href="#" data-goto="nabor">Наборы</a>
-            <a href="#" data-goto="programma">Программы</a>
-            <a href="#" data-goto="cert">Сертификаты</a>
-          </div>
-          <div class="foot-col">
-            <h4>Клиентам</h4>
-            <a href="#b5">Как это работает</a>
-            <a href="#">Ссылка</a>
-            <a href="#">Ссылка</a>
-            <a href="#">Ссылка</a>
-          </div>
-          <div class="foot-col">
-            <h4>Партнёрам</h4>
-            <a href="#b12">Партнёрский кабинет</a>
-            <a href="#">Ссылка</a>
-            <a href="#">Ссылка</a>
-          </div>
-          <div class="foot-col">
-            <h4>Компания</h4>
-            <a href="#">Ссылка</a>
-            <a href="#">Ссылка</a>
-            <a href="#">Ссылка</a>
-            <a href="#">Ссылка</a>
-          </div>
+        <div class="foot-col">
+          <h4>Компания</h4>
+          <a href="#blog">Блог</a>
+          <a href="#">О Bioniq</a>
+          <a href="#">Наука</a>
+          <a href="#">Оферта</a>
         </div>
       </div>
     </div>
     <div class="foot-bottom">
-      <span class="ph-small el"><span class="el-num">14.5</span>Правовая информация</span>
-      <div class="el">
-        <span class="el-num">14.6</span>
-        <div class="socials"><div class="box">—</div><div class="box">—</div><div class="box">—</div></div>
+      <span>© 2026 Bioniq. БАД. Не является лекарственным средством. Есть противопоказания, необходима консультация специалиста.</span>
+      <div class="socials">
+        <a href="#" title="Telegram"><svg viewBox="0 0 24 24"><path d="M21 4L3 11l5 2 2 6 3-4 5 4 3-15z"/></svg></a>
+        <a href="#" title="VK"><svg viewBox="0 0 24 24"><path d="M4 7h2c0 4 2 7 4 7V7h2v3c1 0 2-1 3-3h2c-.5 2-2 3-2 3s1.5 1 2.5 4h-2c-1-2-2-3-3-3v3h-1c-4 0-7-4-7-11z"/></svg></a>
+        <a href="#" title="YouTube"><svg viewBox="0 0 24 24"><path d="M22 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16 4.7 12 4.7 12 4.7s-4 0-7 .3c-.4.1-1.3.1-2.1.9C2.2 6.5 2 8 2 8s-.2 1.7-.2 3.5v1c0 1.8.2 3.5.2 3.5s.2 1.5.8 2.1c.8.8 1.8.8 2.3.9 1.7.2 6.9.3 6.9.3s4 0 7-.3c.4-.1 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.7.2-3.5v-1C22.2 9.7 22 8 22 8zM10 14.5v-5l4.5 2.5-4.5 2.5z"/></svg></a>
       </div>
     </div>
   </div>
-</section>
-
-</div>
+</footer>
 
 <script>
-/* типы продуктов — структурные сущности каталога */
+var ICONS={
+  vial:'<path d="M9 2h6M10 2v6.5l-4.6 7.6A3 3 0 008 21h8a3 3 0 002.6-4.9L14 8.5V2"/><path d="M7.5 15h9"/>',
+  micro:'<path d="M6 20h13"/><path d="M9 20V9a3 3 0 016 0v11"/><circle cx="12" cy="6" r="2.5"/>',
+  sachet:'<rect x="2.5" y="8.5" width="19" height="7" rx="3.5"/><path d="M12 8.5v7"/>',
+  bolt:'<path d="M13 2L4.5 13.5H11L10 22l8.5-11.5H12L13 2z"/>',
+  moon:'<path d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z"/>',
+  heart:'<path d="M12 21s-7-4.6-9.4-9.1C.4 8 2.5 4 6 4c2 0 3 1 6 4 3-3 4-4 6-4 3.5 0 5.6 4 3.4 7.9C19 16.4 12 21 12 21z"/>',
+  rocket:'<path d="M12 2c3.5 2.4 5.5 6 5.5 10.2L17 18H7l-.5-5.8C6.5 8 8.5 4.4 12 2z"/><circle cx="12" cy="10" r="2"/>',
+  gift:'<rect x="3" y="9" width="18" height="12" rx="2"/><path d="M2 9h20M12 9v12"/>',
+  all:'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>'
+};
+function svgIcon(k){return '<svg viewBox="0 0 24 24">'+(ICONS[k]||ICONS.all)+'</svg>'}
+
 var CATS={checkup:'Чек-ап',vitamins:'Витамины',nabor:'Набор',programma:'Программа',cert:'Сертификат'};
 var CATS_PLURAL={checkup:'Чек-апы',vitamins:'Витамины',nabor:'Наборы',programma:'Программы',cert:'Сертификаты'};
+var CAT_ICON={checkup:'vial',vitamins:'sachet',nabor:'bolt',programma:'heart',cert:'gift'};
 
+var rail=document.getElementById('rail');
+
+/* ---------- фильтры ленты ---------- */
 function activateTab(f){
-  document.querySelectorAll('.tabs .pill').forEach(function(x){x.classList.toggle('active',x.dataset.filter===f)});
+  document.querySelectorAll('.tab').forEach(function(x){x.classList.toggle('active',x.dataset.filter===f)});
   document.querySelectorAll('.product').forEach(function(p){
     p.style.display=(f==='all'||p.dataset.cat===f)?'':'none';
   });
+  rail.scrollLeft=0;
+  updateRailNav();
 }
-document.querySelectorAll('.tabs .pill').forEach(function(t){
+document.querySelectorAll('.tab').forEach(function(t){
   t.addEventListener('click',function(){activateTab(t.dataset.filter)});
 });
 
+/* ---------- стрелки ленты ---------- */
+function updateRailNav(){
+  var nav=document.querySelector('.rail-nav');
+  var scrollable=rail.scrollWidth-rail.clientWidth>1;
+  nav.style.display=scrollable?'':'none';   /* листать нечего — стрелок нет */
+  if(!scrollable) return;
+  var max=rail.scrollWidth-rail.clientWidth-1;
+  document.getElementById('railPrev').disabled=rail.scrollLeft<=0;
+  document.getElementById('railNext').disabled=rail.scrollLeft>=max;
+}
+function railStep(dir){
+  var card=rail.querySelector('.product:not([style*="none"])');
+  var w=card?card.offsetWidth+16:288;
+  rail.scrollBy({left:dir*w*2,behavior:'smooth'});
+}
+document.getElementById('railPrev').addEventListener('click',function(){railStep(-1)});
+document.getElementById('railNext').addEventListener('click',function(){railStep(1)});
+rail.addEventListener('scroll',updateRailNav);
+window.addEventListener('resize',updateRailNav);
+
+/* ---------- индекс продуктов ---------- */
 var products=[].map.call(document.querySelectorAll('.product'),function(p){
-  return {el:p, cat:p.dataset.cat, code:p.querySelector('.p-code').textContent,
-          price:p.querySelector('.p-price').firstChild.textContent.trim()};
+  return {el:p, cat:p.dataset.cat, ic:p.dataset.ic,
+    name:p.querySelector('h3').textContent,
+    desc:p.querySelector('.desc').textContent,
+    price:p.querySelector('.price').textContent,
+    code:p.querySelector('.p-code').textContent};
 });
 
+/* ---------- переходы ---------- */
 function goProducts(f){
   activateTab(f);
-  document.getElementById('b6').scrollIntoView({behavior:'smooth',block:'start'});
+  document.getElementById('products').scrollIntoView({behavior:'smooth',block:'start'});
 }
 document.querySelectorAll('[data-goto]').forEach(function(el){
   el.addEventListener('click',function(e){e.preventDefault();goProducts(el.dataset.goto)});
 });
 
-/* поиск: по коду продукта и типу — контент подставится позже */
+/* ---------- живой поиск ---------- */
 var input=document.getElementById('searchInput');
 var drop=document.getElementById('searchDrop');
+/* совпадение в начале слова весит больше, чем внутри:
+   «сон» → «Спокойный сон», а не «Персональные витамины» */
 function score(text,q,weight){
   var t=text.toLowerCase(), i=t.indexOf(q);
   if(i<0) return 0;
-  return weight*(i===0?3:(/[\s(-]/.test(t[i-1])?2:1));
+  return weight*(i===0?3:(/[\s(«"-]/.test(t[i-1])?2:1));
 }
 function findMatches(q){
   q=q.trim().toLowerCase();
   if(!q) return null;
   return products.map(function(p){
-    return {p:p, s:score(p.code,q,40)+score(CATS[p.cat],q,10)};
+    return {p:p, s:score(p.code,q,40)+score(p.name,q,20)+score(CATS[p.cat],q,10)+score(p.desc,q,2)};
   }).filter(function(x){return x.s>0})
     .sort(function(a,b){return b.s-a.s})
     .map(function(x){return x.p});
@@ -850,15 +971,15 @@ function findMatches(q){
 function renderDrop(){
   var m=findMatches(input.value);
   var list=m===null?products.slice(0,4):m;
-  var head=m===null?'<div class="drop-label">Подсказки</div>':'';
+  var head=m===null?'<div class="sd-label">Часто ищут</div>':'';
   if(!list.length){
-    drop.innerHTML='<div class="drop-empty">Ничего не найдено</div>';
+    drop.innerHTML='<div class="sd-empty">Ничего не нашли. Попробуйте «чек-ап», «магний» или «программа»</div>';
   }else{
     drop.innerHTML=head+list.slice(0,8).map(function(p){
-      return '<div class="drop-item" data-i="'+products.indexOf(p)+'">'+
-        '<div class="di-box"></div>'+
-        '<div class="di-t"><b>Заголовок</b><span>'+CATS[p.cat]+', '+p.code+'</span></div>'+
-        '<div class="di-p">'+p.price+'</div></div>';
+      return '<div class="sd-item" data-i="'+products.indexOf(p)+'">'+
+        '<div class="se">'+svgIcon(p.ic)+'</div>'+
+        '<div class="st"><b>'+p.name+'</b><span>'+CATS[p.cat]+'</span></div>'+
+        '<div class="sp">'+p.price+'</div></div>';
     }).join('');
   }
   drop.classList.add('open');
@@ -866,8 +987,9 @@ function renderDrop(){
 function goProduct(p){
   drop.classList.remove('open');
   activateTab(p.cat);
-  document.getElementById('b6').scrollIntoView({behavior:'smooth',block:'start'});
+  document.getElementById('products').scrollIntoView({behavior:'smooth',block:'start'});
   setTimeout(function(){
+    /* лента отфильтрована — карточка уже первая, подсвечиваем */
     p.el.classList.add('hit');
     setTimeout(function(){p.el.classList.remove('hit')},1300);
   },450);
@@ -879,7 +1001,7 @@ input.addEventListener('keydown',function(e){
   if(e.key==='Escape')drop.classList.remove('open');
 });
 drop.addEventListener('click',function(e){
-  var it=e.target.closest('.drop-item');
+  var it=e.target.closest('.sd-item');
   if(it)goProduct(products[+it.dataset.i]);
 });
 document.getElementById('searchBtn').addEventListener('click',function(){
@@ -887,14 +1009,15 @@ document.getElementById('searchBtn').addEventListener('click',function(){
   if(m&&m.length)goProduct(m[0]); else renderDrop();
 });
 
+/* ---------- каталог ---------- */
 var catMenu=document.getElementById('catMenu');
 var catBtn=document.getElementById('catBtn');
-catMenu.innerHTML='<div class="drop-item" data-cat="all"><div class="di-box"></div>'+
-  '<div class="di-t"><b>Все продукты</b><span>'+products.length+'</span></div><div class="di-p">→</div></div>'+
+catMenu.innerHTML='<div class="sd-item" data-cat="all"><div class="se">'+svgIcon('all')+'</div>'+
+  '<div class="st"><b>Все продукты</b><span>'+products.length+' в каталоге</span></div><div class="sp">→</div></div>'+
 Object.keys(CATS).map(function(k){
   var n=products.filter(function(p){return p.cat===k}).length;
-  return '<div class="drop-item" data-cat="'+k+'"><div class="di-box"></div>'+
-    '<div class="di-t"><b>'+CATS_PLURAL[k]+'</b><span>'+n+'</span></div><div class="di-p">→</div></div>';
+  return '<div class="sd-item" data-cat="'+k+'"><div class="se">'+svgIcon(CAT_ICON[k])+'</div>'+
+    '<div class="st"><b>'+CATS_PLURAL[k]+'</b><span>'+n+' в каталоге</span></div><div class="sp">→</div></div>';
 }).join('');
 catBtn.addEventListener('click',function(e){
   e.stopPropagation();
@@ -902,13 +1025,15 @@ catBtn.addEventListener('click',function(e){
   drop.classList.remove('open');
 });
 catMenu.addEventListener('click',function(e){
-  var it=e.target.closest('.drop-item');
+  var it=e.target.closest('.sd-item');
   if(it){catMenu.classList.remove('open');goProducts(it.dataset.cat)}
 });
 document.addEventListener('click',function(e){
   if(!e.target.closest('.search-wrap'))drop.classList.remove('open');
   if(!e.target.closest('.cat-wrap'))catMenu.classList.remove('open');
 });
+
+updateRailNav();
 </script>
 </body>
 </html>
