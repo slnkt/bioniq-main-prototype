@@ -16,623 +16,870 @@
   --white:#ffffff;
   --grad:linear-gradient(135deg,#1098D4 0%,#63BCE3 100%);
   --muted:#5b6b73;
+  --muted-dark:#8fa3ad;
   --line:#e3edf2;
-  --radius:22px;
-  --shadow:0 10px 40px rgba(5,19,26,.08);
-  --shadow-sm:0 4px 18px rgba(5,19,26,.06);
+  --line-dark:rgba(255,255,255,.12);
+  --radius:20px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   font-family:"Montserrat",Arial,Helvetica,sans-serif;
-  color:var(--dark);
-  background:var(--white);
-  font-size:14px;
-  line-height:1.5;
-  -webkit-font-smoothing:antialiased;
+  color:var(--dark);background:var(--white);
+  font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;
 }
-.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
 a{color:inherit;text-decoration:none}
-button{font-family:inherit;cursor:pointer;border:none}
-h1,h2,h3{font-weight:600;line-height:1.15;letter-spacing:-.01em}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+h1,h2,h3{font-weight:600;line-height:1.08;letter-spacing:-.025em}
 img{max-width:100%}
 
-/* buttons */
-.btn{
-  display:inline-flex;align-items:center;gap:8px;
-  font-weight:600;font-size:14px;border-radius:14px;
-  padding:13px 22px;transition:.2s;white-space:nowrap;
-}
-.btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 20px rgba(16,152,212,.28)}
-.btn-primary:hover{filter:brightness(1.05);transform:translateY(-1px)}
+/* premium primitives */
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+.eyebrow-light{color:var(--blue-light)}
+.hr-num{font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--muted)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:14px;border-radius:100px;padding:14px 26px;transition:.25s;white-space:nowrap}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:#0d84ba;transform:translateY(-1px)}
 .btn-dark{background:var(--dark);color:#fff}
-.btn-dark:hover{background:#0c2530}
-.btn-ghost{background:#fff;color:var(--dark);border:1.5px solid var(--line)}
-.btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
-.btn-white{background:#fff;color:var(--blue)}
+.btn-dark:hover{background:#12303f;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--dark);border:1px solid var(--line);border-radius:100px}
+.btn-ghost:hover{border-color:var(--dark)}
+.btn-white{background:#fff;color:var(--dark)}
 .btn-white:hover{transform:translateY(-1px)}
+.btn-glass{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(10px)}
+.btn-glass:hover{background:rgba(255,255,255,.18)}
+.btn-outline-light{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35)}
+.btn-outline-light:hover{border-color:#fff}
+.link-arrow{font-weight:600;color:var(--dark);border-bottom:1px solid var(--line);padding-bottom:3px;transition:.2s}
+.link-arrow:hover{border-color:var(--dark)}
+
+/* ============ ANNOUNCE ============ */
+.announce{background:var(--dark);color:#fff;text-align:center;padding:11px 20px;font-size:12.5px;font-weight:500;letter-spacing:.01em}
+.announce a{color:var(--blue-light);border-bottom:1px solid rgba(99,188,227,.4);padding-bottom:1px}
 
 /* ============ HEADER ============ */
-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.topbar{display:flex;align-items:center;gap:26px;padding:16px 0}
-.logo{font-weight:700;font-size:24px;letter-spacing:-.02em;color:var(--blue)}
+header{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.topbar{display:flex;align-items:center;gap:36px;padding:18px 0}
+.logo{font-weight:700;font-size:22px;letter-spacing:-.03em;color:var(--blue)}
 .logo span{color:var(--dark)}
-.phone{font-weight:600;color:var(--dark)}
-.nav-main{display:flex;gap:22px;margin-left:8px}
-.nav-main a{color:var(--dark);font-weight:500;padding:6px 0;position:relative}
-.nav-main a:hover{color:var(--blue)}
-.header-right{margin-left:auto;display:flex;align-items:center;gap:16px}
-.bonus{display:inline-flex;align-items:center;gap:6px;background:var(--bg-light);color:var(--blue);font-weight:600;padding:6px 12px;border-radius:20px;font-size:13px}
-.icn{width:24px;height:24px;stroke:var(--dark);fill:none;stroke-width:1.8}
-.icn-btn{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:transparent}
+.nav-main{display:flex;gap:26px}
+.nav-main a{font-weight:500;font-size:13.5px;color:var(--dark);opacity:.75;transition:.2s}
+.nav-main a:hover{opacity:1;color:var(--blue)}
+.header-right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.header-right .lnk{font-size:13px;font-weight:500;color:var(--muted)}
+.header-right .lnk:hover{color:var(--dark)}
+.icn-btn{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;transition:.2s}
 .icn-btn:hover{background:var(--bg-light)}
-.city{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font-weight:500}
-.city svg{width:16px;height:16px;stroke:var(--blue);fill:none;stroke-width:1.8}
-.subbar{display:flex;align-items:center;gap:24px;padding:0 0 14px}
-
-/* ============ PROMO CAROUSEL ============ */
-.promo{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:26px 0}
-.promo-card{border-radius:var(--radius);padding:26px;min-height:180px;position:relative;overflow:hidden;color:#fff;display:flex;flex-direction:column;justify-content:space-between}
-.promo-card h3{font-size:20px;margin-bottom:6px;max-width:70%}
-.promo-card p{font-size:13px;opacity:.9;max-width:65%}
-.promo-card .btn{align-self:flex-start;margin-top:14px}
-.promo-1{background:var(--grad)}
-.promo-2{background:linear-gradient(135deg,#05131A 0%,#153a4d 100%)}
-.promo-3{background:linear-gradient(135deg,#63BCE3 0%,#1098D4 100%)}
-.promo-emoji{position:absolute;right:-6px;bottom:-10px;font-size:96px;opacity:.9;line-height:1}
-.promo-tag{position:absolute;top:16px;right:18px;font-size:11px;background:rgba(255,255,255,.2);padding:3px 9px;border-radius:20px}
+.icn-btn svg{width:20px;height:20px;stroke:var(--dark);fill:none;stroke-width:1.5}
 
 /* ============ HERO ============ */
-.hero{text-align:center;padding:44px 0 30px}
-.hero h1{font-size:40px;max-width:820px;margin:0 auto 26px}
-.hero h1 b{color:var(--dark);font-weight:600;background:linear-gradient(var(--grad));background:var(--grad);background-repeat:no-repeat;background-position:0 92%;background-size:100% 10px;padding-bottom:2px}
-.searchbar{display:flex;gap:12px;max-width:720px;margin:0 auto;justify-content:center}
+.hero{position:relative;background:var(--dark);color:#fff;overflow:hidden;min-height:640px;display:flex;flex-direction:column;justify-content:flex-end}
+.hero-bg{position:absolute;inset:0;
+  background:
+    radial-gradient(900px 600px at 78% 38%, rgba(16,152,212,.55) 0%, rgba(16,152,212,0) 62%),
+    radial-gradient(600px 500px at 92% 18%, rgba(99,188,227,.42) 0%, rgba(99,188,227,0) 60%),
+    radial-gradient(700px 700px at 12% 92%, rgba(16,152,212,.16) 0%, rgba(16,152,212,0) 65%),
+    linear-gradient(160deg,#05131A 0%,#071d28 48%,#05131A 100%);
+}
+.hero-orb{position:absolute;right:9%;top:20%;width:330px;height:330px;border-radius:50%;
+  background:radial-gradient(circle at 36% 30%, rgba(160,220,245,.85) 0%, rgba(16,152,212,.65) 40%, rgba(10,95,136,.3) 70%, rgba(5,19,26,0) 100%);
+  filter:blur(14px);opacity:.75;
+}
+.hero-rings{position:absolute;right:9%;top:20%;width:330px;height:330px;border-radius:50%;
+  border:1px solid rgba(99,188,227,.22);
+  box-shadow:0 0 0 1px rgba(99,188,227,.05) inset;
+}
+.hero-rings::before,.hero-rings::after{content:'';position:absolute;border-radius:50%;border:1px solid rgba(99,188,227,.14)}
+.hero-rings::before{inset:-58px}
+.hero-rings::after{inset:-120px;border-color:rgba(99,188,227,.07)}
+.hero-grid{position:absolute;inset:0;opacity:.35;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:88px 88px;
+  mask-image:radial-gradient(circle at 50% 40%,#000 0%,transparent 78%);
+}
+.hero-inner{position:relative;z-index:2;padding:96px 0 0}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.22);border-radius:100px;padding:6px 14px;font-size:11.5px;font-weight:600;letter-spacing:.04em;margin-bottom:26px;backdrop-filter:blur(8px)}
+.hero-badge i{width:5px;height:5px;border-radius:50%;background:var(--blue-light);display:block}
+.hero h1{font-size:clamp(38px,5.2vw,66px);max-width:800px;margin-bottom:20px;letter-spacing:-.035em}
+.hero .sub{font-size:16px;color:#c3d5de;max-width:480px;margin-bottom:34px;line-height:1.6}
+.hero .sub b{color:#fff;font-weight:600}
+
+/* hero search */
+.searchbar{display:flex;gap:10px;max-width:660px;margin-bottom:18px}
 .search-wrap{flex:1;position:relative}
 .cat-wrap{position:relative}
-.search-input{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:0 18px;box-shadow:var(--shadow-sm)}
-.search-input:focus-within{border-color:var(--blue)}
-.search-input input{border:none;outline:none;flex:1;font-family:inherit;font-size:15px;padding:16px 0;background:transparent;color:var(--dark)}
-.search-input svg{width:20px;height:20px;stroke:var(--muted);fill:none;stroke-width:1.8}
-.search-drop,.cat-menu{position:absolute;top:calc(100% + 8px);left:0;right:0;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 20px 60px rgba(5,19,26,.16);padding:8px;display:none;z-index:60;text-align:left;max-height:400px;overflow:auto}
-.cat-menu{left:auto;width:280px}
+.search-input{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.2);border-radius:100px;padding:0 22px;backdrop-filter:blur(14px);transition:.2s}
+.search-input:focus-within{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.45)}
+.search-input input{border:none;outline:none;flex:1;font-family:inherit;font-size:14.5px;padding:16px 0;background:transparent;color:#fff}
+.search-input input::placeholder{color:#8fa3ad}
+.search-input svg{width:18px;height:18px;stroke:#8fa3ad;fill:none;stroke-width:1.6}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:56px}
+.chip{border:1px solid rgba(255,255,255,.18);border-radius:100px;padding:8px 16px;font-weight:500;font-size:12.5px;color:#c3d5de;transition:.2s;cursor:pointer;backdrop-filter:blur(6px)}
+.chip:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.08)}
+
+/* dropdowns */
+.search-drop,.cat-menu{position:absolute;top:calc(100% + 10px);left:0;right:0;background:#fff;border-radius:20px;box-shadow:0 24px 70px rgba(5,19,26,.3);padding:8px;display:none;z-index:90;text-align:left;max-height:420px;overflow:auto}
+.cat-menu{left:auto;width:300px}
 .search-drop.open,.cat-menu.open{display:block}
-.sd-label{padding:8px 12px 4px;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
-.sd-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;cursor:pointer}
+.sd-label{padding:10px 14px 6px;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.14em;font-weight:600}
+.sd-item{display:flex;align-items:center;gap:14px;padding:11px 14px;border-radius:14px;cursor:pointer;transition:.15s}
 .sd-item:hover{background:var(--bg-light)}
-.sd-item .se{width:38px;height:38px;border-radius:10px;background:var(--bg-light);display:grid;place-items:center;font-size:20px;flex:none}
+.sd-item .se{width:42px;height:42px;border-radius:12px;background:var(--bg-light);display:grid;place-items:center;flex:none}
+.sd-item .se svg{width:22px;height:22px;stroke:var(--blue);fill:none;stroke-width:1.4}
 .sd-item .st{flex:1;min-width:0}
-.sd-item .st b{display:block;font-size:14px;font-weight:600;color:var(--dark)}
-.sd-item .st span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-.sd-item .sp{font-weight:700;font-size:13px;white-space:nowrap;color:var(--dark)}
-.sd-empty{padding:16px;text-align:center;color:var(--muted);font-size:13px}
-@keyframes hitPulse{0%{box-shadow:0 0 0 0 rgba(16,152,212,.5)}100%{box-shadow:0 0 0 22px rgba(16,152,212,0)}}
-.product.hit{animation:hitPulse 1.1s ease-out;border-color:var(--blue)}
-.chips{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
-.chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:11px 18px;font-weight:600;font-size:13px;transition:.2s}
-.chip:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px)}
-.chip .e{font-size:16px}
+.sd-item .st b{display:block;font-size:14px;font-weight:600;color:var(--dark);letter-spacing:-.01em}
+.sd-item .st span{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+.sd-item .sp{font-weight:600;font-size:13px;white-space:nowrap;color:var(--dark)}
+.sd-empty{padding:20px;text-align:center;color:var(--muted);font-size:13px}
 
-/* ============ CATEGORY CARDS ============ */
-.section{padding:56px 0}
-.section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px}
-.section-head h2{font-size:30px}
-.section-head a{color:var(--blue);font-weight:600}
-.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.cat{background:var(--bg-light);border-radius:var(--radius);padding:26px 24px;display:flex;flex-direction:column;transition:.25s;border:1px solid transparent}
-.cat:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#d5e9f3;background:#fff}
-.cat-ic{width:64px;height:64px;border-radius:18px;background:var(--grad);display:grid;place-items:center;margin-bottom:18px;box-shadow:0 8px 18px rgba(16,152,212,.28)}
-.cat-ic svg{width:32px;height:32px;stroke:#fff;fill:none;stroke-width:1.8}
-.cat h3{font-size:20px;margin-bottom:8px}
-.cat p{color:var(--muted);font-size:13px;flex:1;margin-bottom:18px}
-.cat .btn{align-self:flex-start}
+/* hero stat strip */
+.hero-stats{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.14);display:grid;grid-template-columns:repeat(3,1fr)}
+.hstat{padding:26px 0 30px;padding-right:40px;border-right:1px solid rgba(255,255,255,.14)}
+.hstat:last-child{border-right:none}
+.hstat b{display:block;font-size:14px;font-weight:600;margin-bottom:5px}
+.hstat span{font-size:12.5px;color:#8fa3ad}
 
-/* ============ PROGRAM FEATURE BLOCK ============ */
-.feature{background:var(--bg-light);border-radius:32px;padding:52px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;overflow:hidden}
-.feature h2{font-size:30px;margin-bottom:8px}
-.feature .lead{color:var(--muted);margin-bottom:26px;font-size:15px}
-.flist{display:flex;flex-direction:column;gap:18px;margin-bottom:30px}
-.fitem{display:flex;gap:14px;align-items:flex-start}
-.fitem .num{flex:none;width:38px;height:38px;border-radius:12px;background:#fff;display:grid;place-items:center;box-shadow:var(--shadow-sm)}
-.fitem .num svg{width:20px;height:20px;stroke:var(--blue);fill:none;stroke-width:1.9}
-.fitem b{display:block;font-weight:600;margin-bottom:2px}
-.fitem span{color:var(--muted);font-size:13px}
-.feature-visual{background:var(--grad);border-radius:26px;padding:36px;color:#fff;position:relative;min-height:320px}
-.pill-list{display:flex;flex-direction:column;gap:12px}
-.pill{background:rgba(255,255,255,.16);border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px;font-weight:600;backdrop-filter:blur(4px)}
-.pill .plus{margin-left:auto;font-size:20px;opacity:.7}
-.pill .e{font-size:22px}
-.feature-visual .eq{text-align:center;font-size:26px;margin:14px 0;opacity:.85}
-.feature-visual .result{background:#fff;color:var(--dark);border-radius:14px;padding:16px;font-weight:600;text-align:center}
+/* ============ TRUST LOGOS ============ */
+.logos{padding:44px 0;border-bottom:1px solid var(--line)}
+.logos .cap{text-align:center;font-size:12px;color:var(--muted);margin-bottom:24px;letter-spacing:.02em}
+.logos-row{display:flex;justify-content:center;align-items:center;gap:56px;flex-wrap:wrap;opacity:.55}
+.logos-row .lg{font-weight:600;font-size:15px;letter-spacing:.04em;color:var(--dark);white-space:nowrap}
 
-/* ============ PRODUCT CARDS ============ */
+/* ============ SECTIONS ============ */
+.section{padding:112px 0}
+.section-head{margin-bottom:52px;max-width:720px}
+.section-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.section-head .eyebrow{margin-bottom:16px;display:block}
+.section-head h2{font-size:clamp(28px,3.4vw,44px);margin-bottom:14px}
+.section-head p{color:var(--muted);font-size:15.5px;line-height:1.6;max-width:520px}
+.section-head.center p{margin:0 auto}
+.head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:44px}
+.head-row .section-head{margin-bottom:0}
+
+/* ============ HOW IT WORKS ============ */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.step{background:#fff;padding:34px 28px 30px;transition:.3s}
+.step:hover{background:var(--bg-light)}
+.step .n{font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--blue);margin-bottom:44px;display:block}
+.step .ic{margin-bottom:18px}
+.step .ic svg{width:26px;height:26px;stroke:var(--dark);fill:none;stroke-width:1.4}
+.step h3{font-size:18px;margin-bottom:8px}
+.step p{color:var(--muted);font-size:13px;line-height:1.55}
+
+/* ============ STOREFRONT (dark) ============ */
+.store{background:var(--dark);color:#fff;padding:112px 0}
+.store .section-head h2{color:#fff}
+.store .section-head p{color:var(--muted-dark)}
+.store .link-arrow{color:#fff;border-color:var(--line-dark)}
+.store .link-arrow:hover{border-color:#fff}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:34px}
+.tab{border:1px solid var(--line-dark);border-radius:100px;padding:9px 20px;font-weight:500;font-size:12.5px;color:var(--muted-dark);transition:.2s}
+.tab:hover{border-color:rgba(255,255,255,.4);color:#fff}
+.tab.active{background:#fff;color:var(--dark);border-color:#fff;font-weight:600}
 .products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.product{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;transition:.2s}
-.product:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
-.product .thumb{height:150px;border-radius:16px;background:var(--bg-light);margin-bottom:16px;display:grid;place-items:center;font-size:56px;position:relative}
-.product .badge{position:absolute;top:10px;left:10px;background:var(--grad);color:#fff;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px}
-.product .fav{position:absolute;top:10px;right:10px;width:32px;height:32px;border-radius:10px;background:#fff;display:grid;place-items:center;box-shadow:var(--shadow-sm)}
-.product .fav svg{width:17px;height:17px;stroke:var(--muted);fill:none;stroke-width:1.8}
-.product .cat-label{font-size:11px;color:var(--dark);font-weight:600;text-transform:uppercase;letter-spacing:.04em;opacity:.55;margin-bottom:6px}
-.product h3{font-size:16px;font-weight:600;margin-bottom:6px;line-height:1.3}
-.product .desc{color:var(--muted);font-size:12.5px;flex:1;margin-bottom:14px}
-.product .price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:14px}
-.product .price{font-size:20px;font-weight:700}
-.product .old{color:var(--muted);text-decoration:line-through;font-size:13px}
-.product .btn{width:100%;justify-content:center}
+.product{background:rgba(255,255,255,.04);border:1px solid var(--line-dark);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;transition:.3s;position:relative}
+.product:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.28);transform:translateY(-4px)}
+.p-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;min-height:22px}
+.p-code{font-size:10px;font-weight:600;letter-spacing:.12em;color:var(--blue-light);border:1px solid rgba(99,188,227,.3);border-radius:100px;padding:3px 9px}
+.badge{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:var(--blue);color:#fff;padding:3px 9px;border-radius:100px}
+.badge.soft{background:rgba(255,255,255,.12);color:#fff}
+.thumb{height:150px;border-radius:14px;margin-bottom:20px;display:grid;place-items:center;
+  background:radial-gradient(circle at 50% 42%, rgba(16,152,212,.28) 0%, rgba(16,152,212,0) 68%), rgba(255,255,255,.03);
+  border:1px solid var(--line-dark)}
+.thumb svg{width:58px;height:58px;stroke:var(--blue-light);fill:none;stroke-width:1.1}
+.p-cat{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-dark);margin-bottom:8px}
+.product h3{font-size:17px;margin-bottom:8px;color:#fff}
+.product .desc{color:var(--muted-dark);font-size:12.5px;line-height:1.55;flex:1;margin-bottom:20px}
+.p-foot{border-top:1px solid var(--line-dark);padding-top:16px}
+.price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:14px}
+.price{font-size:19px;font-weight:600;letter-spacing:-.02em}
+.per{font-size:12px;color:var(--muted-dark)}
+.old{color:var(--muted-dark);text-decoration:line-through;font-size:12.5px}
+.product .btn{width:100%}
+@keyframes hitGlow{0%{box-shadow:0 0 0 0 rgba(99,188,227,.6)}100%{box-shadow:0 0 0 26px rgba(99,188,227,0)}}
+.product.hit{animation:hitGlow 1.2s ease-out;border-color:var(--blue-light)}
 
-/* ============ CATALOG TABS ============ */
-.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
-.tab{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:9px 18px;font-weight:600;font-size:13px;color:var(--dark);transition:.2s}
-.tab:hover{border-color:var(--blue)}
-.tab.active{background:var(--dark);color:#fff;border-color:var(--dark)}
+/* ============ COMPARE TABLE ============ */
+.compare{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;max-width:900px;margin:0 auto}
+.crow{display:grid;grid-template-columns:1fr 190px 190px;align-items:center}
+.crow>div{padding:16px 24px;font-size:13.5px}
+.crow:nth-child(even){background:#fafcfd}
+.chead{background:var(--bg-light)!important;border-bottom:1px solid var(--line)}
+.chead>div{padding:18px 24px;font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.chead .us{background:var(--dark);color:#fff;letter-spacing:-.01em;text-transform:none;font-size:14px;font-weight:600}
+.crow .us{background:rgba(16,152,212,.06);border-left:1px solid rgba(16,152,212,.16);border-right:1px solid rgba(16,152,212,.16);font-weight:600;text-align:center}
+.crow .them{color:var(--muted);text-align:center}
+.crow:last-child .us{border-bottom:1px solid rgba(16,152,212,.16)}
+.ck{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--blue)}
+.ck svg{width:11px;height:11px;stroke:#fff;fill:none;stroke-width:2.6}
+.xx{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#e7eef2}
+.xx svg{width:9px;height:9px;stroke:#9fb3bd;fill:none;stroke-width:2.6}
+.compare-cta{text-align:center;margin-top:36px}
 
-/* ============ GIFT + PARTNER DUO ============ */
-.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.duo-card{border-radius:32px;padding:44px;color:#fff;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;min-height:300px}
-.duo-gift{background:var(--grad)}
-.duo-partner{background:linear-gradient(135deg,#05131A 0%,#0c2f42 100%)}
-.duo-card h2{font-size:26px;margin-bottom:10px;max-width:80%}
-.duo-card p{opacity:.92;margin-bottom:20px;max-width:75%;font-size:14px}
-.duo-list{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
-.duo-list span{display:flex;align-items:center;gap:8px;font-size:13px;opacity:.95}
-.duo-cta{display:flex;gap:12px;margin-top:auto;flex-wrap:wrap}
-.btn-outline-light{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.45)}
-.btn-outline-light:hover{border-color:#fff}
-.duo-emoji{position:absolute;right:16px;bottom:8px;font-size:88px;opacity:.9;line-height:1}
+/* ============ BIOMARKERS GRID ============ */
+.markers{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.marker{background:#fff;padding:36px 30px;transition:.3s}
+.marker:hover{background:var(--bg-light)}
+.marker h3{font-size:20px;margin-bottom:12px;letter-spacing:-.02em}
+.marker .cnt{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--blue);letter-spacing:.06em;margin-bottom:18px}
+.marker .cnt svg{width:12px;height:12px;stroke:var(--blue);fill:none;stroke-width:1.8}
+.marker ul{list-style:none}
+.marker li{font-size:13px;color:var(--muted);padding:3px 0}
+.marker li:nth-child(4){opacity:.55}
+.marker li:nth-child(5){opacity:.3}
+.marker.more{background:var(--bg-light);display:flex;flex-direction:column;justify-content:center}
+.marker.more h3{color:var(--blue)}
+.marker.more .btn{align-self:flex-start;margin-top:8px}
 
-/* ============ APP BLOCK ============ */
-.app{background:linear-gradient(135deg,#05131A 0%,#0c2f42 100%);border-radius:32px;padding:52px;display:grid;grid-template-columns:.85fr 1fr;gap:40px;align-items:center;color:#fff;overflow:hidden}
-.app h2{font-size:30px;margin-bottom:26px}
-.app .afeat{display:flex;gap:14px;margin-bottom:20px}
-.app .afeat .ic{flex:none;width:44px;height:44px;border-radius:12px;background:var(--grad);display:grid;place-items:center}
-.app .afeat .ic svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.8}
-.app .afeat b{display:block;margin-bottom:2px}
-.app .afeat span{color:#9fb3bd;font-size:13px}
-.app-cta{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
-.phone-mock{justify-self:center;width:250px;height:500px;background:#05131A;border-radius:38px;border:9px solid #1c2a33;box-shadow:0 30px 60px rgba(0,0,0,.4);position:relative;overflow:hidden}
-.phone-notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:90px;height:22px;background:#05131A;border-radius:14px;z-index:3}
-.phone-screen{position:absolute;inset:0;background:var(--bg-light);padding:44px 16px 16px}
-.ps-head{font-weight:600;font-size:13px;color:var(--dark);margin-bottom:4px}
-.ps-sub{font-size:11px;color:var(--muted);margin-bottom:14px}
-.ps-ring{width:120px;height:120px;border-radius:50%;margin:0 auto 16px;background:conic-gradient(var(--blue) 0 76%,#d7e9f2 76% 100%);display:grid;place-items:center}
-.ps-ring .in{width:92px;height:92px;border-radius:50%;background:#fff;display:grid;place-items:center;flex-direction:column;text-align:center}
-.ps-ring .in b{font-size:26px;color:var(--blue);line-height:1}
-.ps-ring .in span{font-size:9px;color:var(--muted)}
-.ps-row{background:#fff;border-radius:12px;padding:10px 12px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
-.ps-row .dot{width:26px;height:26px;border-radius:8px;background:var(--bg-light);display:grid;place-items:center;font-size:14px}
-.ps-row .t{flex:1}
-.ps-row .t b{font-size:11px;display:block}
+/* ============ DOCTORS ============ */
+.docs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.doc{border:1px solid var(--line);border-radius:var(--radius);padding:28px;transition:.3s}
+.doc:hover{border-color:#cfe4ee;box-shadow:0 14px 40px rgba(5,19,26,.06)}
+.doc-av{width:64px;height:64px;border-radius:50%;margin-bottom:20px;
+  background:linear-gradient(140deg,#63BCE3,#1098D4);display:grid;place-items:center;
+  font-weight:600;font-size:19px;color:#fff;letter-spacing:.02em}
+.doc h3{font-size:16px;margin-bottom:5px}
+.doc .role{font-size:12px;color:var(--blue);font-weight:600;margin-bottom:14px}
+.doc p{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* ============ APP ============ */
+.app{background:var(--bg-light);border-radius:28px;padding:64px;display:grid;grid-template-columns:.9fr 1fr;gap:56px;align-items:center;overflow:hidden}
+.app h2{font-size:clamp(26px,3vw,38px);margin-bottom:12px}
+.app .lead{color:var(--muted);margin-bottom:34px;font-size:15px;max-width:400px}
+.afeat{display:flex;gap:16px;margin-bottom:22px;max-width:440px}
+.afeat .ic{flex:none;width:40px;height:40px;border-radius:50%;background:#fff;display:grid;place-items:center}
+.afeat .ic svg{width:19px;height:19px;stroke:var(--blue);fill:none;stroke-width:1.5}
+.afeat b{display:block;margin-bottom:3px;font-size:14px}
+.afeat span{color:var(--muted);font-size:13px;line-height:1.5}
+.app-cta{display:flex;gap:10px;margin-top:34px;flex-wrap:wrap}
+.phone-mock{justify-self:center;width:268px;height:540px;background:#05131A;border-radius:44px;border:8px solid #1c2a33;box-shadow:0 40px 80px rgba(5,19,26,.28);position:relative;overflow:hidden}
+.phone-notch{position:absolute;top:14px;left:50%;transform:translateX(-50%);width:88px;height:24px;background:#05131A;border-radius:14px;z-index:3}
+.phone-screen{position:absolute;inset:0;background:#fff;padding:52px 18px 18px}
+.ps-head{font-weight:600;font-size:13px;margin-bottom:2px}
+.ps-sub{font-size:10.5px;color:var(--muted);margin-bottom:18px}
+.ps-ring{width:132px;height:132px;border-radius:50%;margin:0 auto 20px;background:conic-gradient(var(--blue) 0 76%,#e3edf2 76% 100%);display:grid;place-items:center}
+.ps-ring .in{width:106px;height:106px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.ps-ring .in b{font-size:28px;color:var(--dark);line-height:1;font-weight:600;letter-spacing:-.03em}
+.ps-ring .in span{font-size:9px;color:var(--muted);margin-top:3px}
+.ps-row{background:#f6fafc;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.ps-row .dot{width:26px;height:26px;border-radius:8px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;flex:none}
+.ps-row .dot svg{width:13px;height:13px;stroke:var(--blue);fill:none;stroke-width:1.6}
+.ps-row .t{flex:1;min-width:0}
+.ps-row .t b{font-size:11px;display:block;font-weight:600}
 .ps-row .t span{font-size:9px;color:var(--muted)}
-.ps-row .bar{width:44px;height:6px;border-radius:6px;background:#e3edf2;overflow:hidden}
-.ps-row .bar i{display:block;height:100%;background:var(--grad)}
+.ps-row .bar{width:40px;height:5px;border-radius:6px;background:#e3edf2;overflow:hidden;flex:none}
+.ps-row .bar i{display:block;height:100%;background:var(--blue)}
 
-/* ============ TRUST ============ */
-.trust h2{font-size:32px;text-align:center;margin-bottom:8px}
-.trust h2 b{color:var(--dark);font-weight:600;background:var(--grad);background-repeat:no-repeat;background-position:0 92%;background-size:100% 9px;padding-bottom:1px}
-.trust .sub{text-align:center;color:var(--muted);margin-bottom:36px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.stat{background:var(--bg-light);border-radius:var(--radius);padding:28px 24px}
-.stat .ic{width:48px;height:48px;border-radius:14px;background:#fff;display:grid;place-items:center;margin-bottom:16px;box-shadow:var(--shadow-sm)}
-.stat .ic svg{width:24px;height:24px;stroke:var(--blue);fill:none;stroke-width:1.8}
-.stat .big{font-size:26px;font-weight:700;color:var(--dark);margin-bottom:4px}
-.stat b{display:block;font-weight:600;margin-bottom:6px}
-.stat p{color:var(--muted);font-size:13px}
+/* ============ DUO: GIFT + PARTNER ============ */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.duo-card{border-radius:28px;padding:52px 48px;position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:340px}
+.duo-gift{background:var(--bg-light);color:var(--dark)}
+.duo-partner{background:var(--dark);color:#fff}
+.duo-card .eyebrow{margin-bottom:16px;display:block}
+.duo-card h2{font-size:27px;margin-bottom:12px;max-width:85%}
+.duo-card p{margin-bottom:26px;max-width:80%;font-size:14px;line-height:1.6}
+.duo-gift p{color:var(--muted)}
+.duo-partner p{color:var(--muted-dark)}
+.duo-list{display:flex;flex-direction:column;gap:11px;margin-bottom:32px}
+.duo-list span{display:flex;align-items:center;gap:10px;font-size:13px}
+.duo-list svg{width:15px;height:15px;stroke:var(--blue);fill:none;stroke-width:1.8;flex:none}
+.duo-partner .duo-list svg{stroke:var(--blue-light)}
+.duo-partner .duo-list span{color:#c3d5de}
+.duo-cta{display:flex;gap:10px;margin-top:auto;flex-wrap:wrap}
+.duo-orb{position:absolute;right:-70px;bottom:-80px;width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle at 36% 34%,#8fd3ef 0%,#1098D4 48%,#0a5f88 100%);opacity:.22}
+.duo-partner .duo-orb{opacity:.32}
 
-/* ============ CTA BANNER ============ */
-.cta-banner{background:var(--grad);border-radius:32px;padding:52px;text-align:center;color:#fff;position:relative;overflow:hidden}
-.cta-banner h2{font-size:32px;margin-bottom:12px}
-.cta-banner p{opacity:.92;max-width:520px;margin:0 auto 26px;font-size:15px}
+/* ============ CTA ============ */
+.cta{background:var(--dark);color:#fff;border-radius:28px;padding:88px 52px;text-align:center;position:relative;overflow:hidden}
+.cta-bg{position:absolute;inset:0;background:radial-gradient(700px 400px at 50% 120%,rgba(16,152,212,.5) 0%,rgba(16,152,212,0) 70%)}
+.cta-in{position:relative;z-index:2}
+.cta h2{font-size:clamp(28px,3.6vw,44px);margin-bottom:16px;max-width:640px;margin-inline:auto}
+.cta p{color:#c3d5de;max-width:460px;margin:0 auto 34px;font-size:15px;line-height:1.6}
+.cta .note{font-size:12px;color:var(--muted-dark);margin-top:20px}
 
 /* ============ FOOTER ============ */
-footer{background:var(--dark);color:#fff;padding:56px 0 32px;margin-top:56px}
-.foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;margin-bottom:40px}
-.foot-logo{font-weight:700;font-size:26px;color:#fff;margin-bottom:14px}
+footer{background:var(--dark);color:#fff;padding:80px 0 36px;margin-top:16px;border-top:1px solid var(--line-dark)}
+.foot-top{display:flex;justify-content:space-between;gap:56px;flex-wrap:wrap;margin-bottom:56px}
+.foot-logo{font-weight:700;font-size:22px;color:#fff;margin-bottom:14px;letter-spacing:-.03em}
 .foot-logo span{color:var(--blue-light)}
-.foot-cols{display:grid;grid-template-columns:repeat(5,1fr);gap:28px;flex:1;max-width:900px}
-.foot-col h4{font-size:14px;margin-bottom:14px;color:#fff}
-.foot-col a{display:block;color:#9fb3bd;padding:5px 0;font-size:13px}
+.foot-brand p{color:var(--muted-dark);font-size:13px;max-width:260px;line-height:1.6;margin-bottom:22px}
+.foot-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;flex:1;max-width:720px}
+.foot-col h4{font-size:11px;margin-bottom:16px;color:var(--muted-dark);text-transform:uppercase;letter-spacing:.12em;font-weight:600}
+.foot-col a{display:block;color:#c3d5de;padding:6px 0;font-size:13px;transition:.2s}
 .foot-col a:hover{color:#fff}
-.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;color:#6d8391;font-size:12px}
-.socials{display:flex;gap:10px}
-.socials a{width:38px;height:38px;border-radius:12px;background:rgba(255,255,255,.08);display:grid;place-items:center}
+.foot-bottom{border-top:1px solid var(--line-dark);padding-top:26px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;color:var(--muted-dark);font-size:11.5px;line-height:1.6}
+.socials{display:flex;gap:8px}
+.socials a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.06);display:grid;place-items:center;transition:.2s}
 .socials a:hover{background:var(--blue)}
-.socials svg{width:20px;height:20px;fill:#fff}
+.socials svg{width:17px;height:17px;fill:#fff}
 
 /* ============ RESPONSIVE ============ */
-@media(max-width:960px){
-  .promo,.cats,.products,.stats{grid-template-columns:repeat(2,1fr)}
+@media(max-width:1060px){
+  .products,.steps,.markers,.docs{grid-template-columns:repeat(2,1fr)}
+  .app{grid-template-columns:1fr;padding:44px;gap:44px}
   .duo{grid-template-columns:1fr}
-  .feature,.app{grid-template-columns:1fr;padding:36px}
   .foot-cols{grid-template-columns:repeat(2,1fr)}
-  .hero h1{font-size:30px}
-  .nav-main,.city,.phone{display:none}
+  .nav-main,.header-right .lnk{display:none}
+  .hero-orb,.hero-rings{width:260px;height:260px;right:-50px;opacity:.5}
+  .hero-rings::after{display:none}
 }
-@media(max-width:600px){
-  .promo,.cats,.products,.stats{grid-template-columns:1fr}
+@media(max-width:720px){
+  .wrap{padding:0 20px}
+  .section,.store{padding:72px 0}
+  .products,.steps,.markers,.docs,.hero-stats{grid-template-columns:1fr}
+  .hstat{border-right:none;border-bottom:1px solid rgba(255,255,255,.14);padding:20px 0}
   .searchbar{flex-direction:column}
-  .hero h1{font-size:26px}
-  .section{padding:40px 0}
+  .cat-menu{width:100%}
+  .crow{grid-template-columns:1fr 90px 90px}
+  .crow>div{padding:13px 14px;font-size:12px}
+  .duo-card,.cta{padding:38px 28px}
+  .duo-card h2,.duo-card p{max-width:100%}
+  .hero-inner{padding-top:64px}
 }
 </style>
 </head>
 <body>
 
+<!-- ============ ANNOUNCE ============ -->
+<div class="announce">Первый чек-ап за 1 ₽ при оформлении программы <a href="#products">Подробнее →</a></div>
+
 <!-- ============ HEADER ============ -->
 <header>
   <div class="wrap">
     <div class="topbar">
-      <div class="logo">bio<span>niq</span></div>
-      <a class="phone" href="tel:+74951234567">+7 (495) 123-45-67</a>
+      <a class="logo" href="#">bio<span>niq</span></a>
       <nav class="nav-main">
-        <a href="#cats">Чек-апы</a>
-        <a href="#cats">Витамины</a>
-        <a href="#products">Наборы</a>
-        <a href="#program">Программы</a>
+        <a href="#" data-goto="checkup">Чек-апы</a>
+        <a href="#" data-goto="vitamins">Витамины</a>
+        <a href="#" data-goto="nabor">Наборы</a>
+        <a href="#" data-goto="programma">Программы</a>
         <a href="#gift">Сертификаты</a>
+        <a href="#markers">Наука</a>
       </nav>
       <div class="header-right">
-        <span class="bonus">◈ 350 баллов</span>
-        <button class="icn-btn" title="Избранное"><svg class="icn" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C.5 8 2.5 4 6 4c2 0 3 1 6 4 3-3 4-4 6-4 3.5 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></button>
-        <button class="icn-btn" title="Корзина"><svg class="icn" viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg></button>
-        <a class="btn btn-ghost" href="#">Войти</a>
+        <a class="lnk" href="#partner">Партнёрам</a>
+        <a class="lnk" href="#">Войти</a>
+        <button class="icn-btn" title="Корзина">
+          <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.6 9H7.5z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg>
+        </button>
+        <a class="btn btn-dark" href="#products">Начать</a>
       </div>
-    </div>
-    <div class="subbar">
-      <span class="city"><svg viewBox="0 0 24 24"><path d="M12 21c4-4 7-7.5 7-11a7 7 0 10-14 0c0 3.5 3 7 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Москва</span>
-      <a class="city" style="color:var(--muted)" href="#">Как это работает</a>
-      <a class="city" style="color:var(--muted)" href="#">Доставка</a>
-      <a class="city" style="color:var(--muted)" href="#">Помощь</a>
-      <a class="city" style="color:var(--muted);margin-left:auto" href="#partner">Партнёрский кабинет</a>
     </div>
   </div>
 </header>
 
-<div class="wrap">
-
-<!-- ============ PROMO CAROUSEL ============ -->
-<div class="promo">
-  <div class="promo-card promo-1">
-    <span class="promo-tag">до 31 июля</span>
-    <div>
-      <h3>Персональные витамины по анализу крови</h3>
-      <p>Скидка 20% на первый набор</p>
-    </div>
-    <button class="btn btn-white">Подробнее</button>
-    <span class="promo-emoji">🧬</span>
-  </div>
-  <div class="promo-card promo-2">
-    <span class="promo-tag">хит</span>
-    <div>
-      <h3>Программа «Год здоровья»</h3>
-      <p>Витамины + 2 чек-апа + врач</p>
-    </div>
-    <button class="btn btn-white">Выбрать</button>
-    <span class="promo-emoji">🩺</span>
-  </div>
-  <div class="promo-card promo-3">
-    <span class="promo-tag">−1 ₽</span>
-    <div>
-      <h3>Чек-ап за 1 ₽</h3>
-      <p>При заказе программы</p>
-    </div>
-    <button class="btn btn-white">Получить</button>
-    <span class="promo-emoji">🧪</span>
-  </div>
-</div>
-
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <h1>Персональные витамины, чек-апы и программы — <b>здоровье под вас</b>, а не для всех</h1>
-  <div class="searchbar">
-    <div class="search-wrap">
-      <div class="search-input">
-        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
-        <input id="searchInput" placeholder="Найти витамины, чек-ап или программу" autocomplete="off">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-rings"></div>
+  <div class="wrap hero-inner">
+    <span class="hero-badge"><i></i> Формула пересобирается каждый месяц</span>
+    <h1>Витамины, собранные по вашей крови</h1>
+    <p class="sub">Чек-ап, персональная формула и врач в одной программе. <b>От 3 990 ₽ в месяц</b> — 130 ₽ в день.</p>
+
+    <div class="searchbar">
+      <div class="search-wrap">
+        <div class="search-input">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+          <input id="searchInput" placeholder="Найти чек-ап, витамины или программу" autocomplete="off">
+        </div>
+        <div class="search-drop" id="searchDrop"></div>
       </div>
-      <div class="search-drop" id="searchDrop"></div>
+      <button class="btn btn-primary" id="searchBtn">Найти</button>
+      <div class="cat-wrap">
+        <button class="btn btn-glass" id="catBtn">Каталог</button>
+        <div class="cat-menu" id="catMenu"></div>
+      </div>
     </div>
-    <button class="btn btn-primary" id="searchBtn">Найти</button>
-    <div class="cat-wrap">
-      <button class="btn btn-ghost" id="catBtn">☰ Каталог</button>
-      <div class="cat-menu" id="catMenu"></div>
+
+    <div class="chips">
+      <button class="chip" data-goto="checkup">Чек-апы</button>
+      <button class="chip" data-goto="vitamins">Витамины</button>
+      <button class="chip" data-goto="nabor">Наборы</button>
+      <button class="chip" data-goto="programma">Программы</button>
+      <button class="chip" data-goto="cert">Сертификаты</button>
     </div>
   </div>
-  <div class="chips">
-    <a class="chip" data-goto="checkup" href="#products"><span class="e">🧪</span> Чек-апы</a>
-    <a class="chip" data-goto="vitamins" href="#products"><span class="e">💊</span> Витамины</a>
-    <a class="chip" data-goto="nabor" href="#products"><span class="e">📦</span> Наборы</a>
-    <a class="chip" data-goto="programma" href="#products"><span class="e">🩺</span> Программы</a>
-    <a class="chip" data-goto="cert" href="#products"><span class="e">🎁</span> Сертификаты</a>
-    <a class="chip" href="#app"><span class="e">📱</span> Приложение</a>
+  <div class="wrap">
+    <div class="hero-stats">
+      <div class="hstat"><b>60+ показателей крови</b><span>Витамины, минералы, гормоны и ферритин</span></div>
+      <div class="hstat"><b>Персональная формула</b><span>Одно саше в день вместо горсти банок</span></div>
+      <div class="hstat"><b>Врач ведёт программу</b><span>Разбор результатов и коррекция состава</span></div>
+    </div>
   </div>
 </section>
 
-<!-- ============ CATEGORY CARDS ============ -->
-<section class="section" id="cats">
-  <div class="section-head">
-    <h2>С чего начать</h2>
-    <a href="#">Весь каталог →</a>
-  </div>
-  <div class="cats">
-    <div class="cat">
-      <div class="cat-ic"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 8a3 3 0 003 4h8a3 3 0 003-4l-5-8V3"/><path d="M7.5 15h9"/></svg></div>
-      <h3>Чек-апы</h3>
-      <p>Сдайте кровь и узнайте, каких витаминов и минералов вам не хватает.</p>
-      <button class="btn btn-ghost" data-goto="checkup">Выбрать чек-ап</button>
+<!-- ============ TRUST LOGOS ============ -->
+<section class="logos">
+  <div class="wrap">
+    <p class="cap">Работаем с аккредитованными лабораториями и врачами</p>
+    <div class="logos-row">
+      <span class="lg">ГЕМОТЕСТ</span>
+      <span class="lg">KDL</span>
+      <span class="lg">ИНВИТРО</span>
+      <span class="lg">ХЕЛИКС</span>
+      <span class="lg">CMD</span>
     </div>
-    <div class="cat">
-      <div class="cat-ic"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="8" rx="4"/><path d="M12 8v8"/></svg></div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Как это работает</span>
+      <h2>Четыре шага до формулы, которая нужна именно вам</h2>
+      <p>Начинается с одной пробирки крови — дальше собираем состав и ведём вас вместе с врачом.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="n">01</span>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M9 2h6M10 2v6.5l-4.6 7.6A3 3 0 008 21h8a3 3 0 002.6-4.9L14 8.5V2"/><path d="M7.5 15h9"/></svg></div>
+        <h3>Чек-ап крови</h3>
+        <p>Сдайте кровь в лаборатории рядом с домом или вызовите медсестру.</p>
+      </div>
+      <div class="step">
+        <span class="n">02</span>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 13h4l2.5 6 4-15 2.5 9h5"/></svg></div>
+        <h3>Разбор результатов</h3>
+        <p>Врач объясняет, что происходит с организмом, и ставит цели на 3–12 месяцев.</p>
+      </div>
+      <div class="step">
+        <span class="n">03</span>
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="2.5" y="8.5" width="19" height="7" rx="3.5"/><path d="M12 8.5v7"/></svg></div>
+        <h3>Персональная формула</h3>
+        <p>Собираем ваши дозировки в дневные саше и привозим на месяц вперёд.</p>
+      </div>
+      <div class="step">
+        <span class="n">04</span>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-3.2-6.9"/><path d="M21 4v5h-5"/></svg></div>
+        <h3>Пересдача и коррекция</h3>
+        <p>Повторный чек-ап показывает динамику — формула пересобирается под новые данные.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STOREFRONT ============ -->
+<section class="store" id="products">
+  <div class="wrap">
+    <div class="head-row">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-light">Каталог</span>
+        <h2>Популярное сейчас</h2>
+        <p>Начните с чек-апа, готового набора или соберите полную программу с врачом.</p>
+      </div>
+      <a class="link-arrow" href="#">Весь каталог →</a>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-filter="all">Все</button>
+      <button class="tab" data-filter="checkup">Чек-апы</button>
+      <button class="tab" data-filter="vitamins">Витамины</button>
+      <button class="tab" data-filter="nabor">Наборы</button>
+      <button class="tab" data-filter="programma">Программы</button>
+      <button class="tab" data-filter="cert">Сертификаты</button>
+    </div>
+
+    <div class="products">
+      <!-- PROGRAMMA -->
+      <div class="product" data-cat="programma" data-ic="heart">
+        <div class="p-top"><span class="p-code">PR-01</span><span class="badge">Хит</span></div>
+        <div class="thumb"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.4-9.1C.4 8 2.5 4 6 4c2 0 3 1 6 4 3-3 4-4 6-4 3.5 0 5.6 4 3.4 7.9C19 16.4 12 21 12 21z"/></svg></div>
+        <div class="p-cat">Программа</div>
+        <h3>Год здоровья</h3>
+        <p class="desc">Два чек-апа, витамины на 12 месяцев и врач, который ведёт вас весь год.</p>
+        <div class="p-foot">
+          <div class="price-row"><span class="price">24 900 ₽</span><span class="old">32 000 ₽</span></div>
+          <button class="btn btn-primary">В корзину</button>
+        </div>
+      </div>
+      <div class="product" data-cat="programma" data-ic="rocket">
+        <div class="p-top"><span class="p-code">PR-02</span></div>
+        <div class="thumb"><svg viewBox="0 0 24 24"><path d="M12 2c3.5 2.4 5.5 6 5.5 10.2L17 18H7l-.5-5.8C6.5 8 8.5 4.4 12 2z"/><circle cx="12" cy="10" r="2"/><path d="M7 18l-2.5 3.5M17 18l2.5 3.5"/></svg></div>
+        <div class="p-cat">Программа</div>
+        <h3>Старт</h3>
+        <p class="desc">Чек-ап, витамины на три месяца и консультация врача — попробовать подход.</p>
+        <div class="p-foot">
+          <div class="price-row"><span class="price">9 900 ₽</span></div>
+          <button class="btn btn-primary">В корзину</button>
+        </div>
+      </div>
+      <!-- CHECKUP -->
+      <div class="product" data-cat="checkup" data-ic="vial">
+        <div class="p-top"><span class="p-code">CH-01</span></div>
+        <div class="thumb"><svg viewBox="0 0 24 24"><path d="M9 2h6M10 2v6.5l-4.6 7.6A3 3 0 008 21h8a3 3 0 002.6-4.9L14 8.5V2"/><path d="M7.5 15h9"/></svg></div>
+        <div class="p-cat">Чек-ап</div>
+        <h3>Базовый чек-ап</h3>
+        <p class="desc">Ключевые витамины и минералы. Стартовая точка для подбора формулы.</p>
+        <div class="p-foot">
+          <div class="price-row"><span class="price">2 990 ₽</span></div>
+          <button class="btn btn-primary">В корзину</button>
+        </div>
+      </div>
+      <div class="product" data-cat="checkup" data-ic="micro">
+        <div class="p-top"><span class="p-code">CH-02</span><span class="badge soft">60+ маркеров</span></div>
+        <div class="thumb"><svg viewBox="0 0 24 24"><path d="M6 20h13"/><path d="M9 20V9a3 3 0 016 0v11"/><circle cx="12" cy="6" r="2.5"/><path d="M4 16c2-5 6-7 8-7"/></svg></div>
+        <div class="p-cat">Чек-ап</div>
+        <h3>Расширенный чек-ап</h3>
+        <p class="desc">Витамины, минералы, гормоны, ферритин и маркеры воспаления.</p>
+        <div class="p-foot">
+          <div class="price-row"><span class="price">5 990 ₽</span></div>
+          <button class="btn btn-primary">В корзину</button>
+        </div>
+      </div>
+      <!-- VITAMINS -->
+      <div class="product" data-cat="vitamins" data-ic="sachet">
+        <div class="p-top"><span class="p-code">BQ-01</span><span class="badge">Подписка</span></div>
+        <div class="thumb"><svg viewBox="0 0 24 24"><rect x="2.5" y="8.5" width="19" height="7" rx="3.5"/><path d="M12 8.5v7"/></svg></div>
+        <div class="p-cat">Витамины</div>
+        <h3>Персональные витамины</h3>
+        <p class="desc">Дневные саше по вашему анализу крови. Доставка каждый месяц.</p>
+        <div class="p-foot">
+          <div class="price-row"><span class="price">от 3 990 ₽</span><span class="per">/ месяц</span></div>
+          <button class="btn btn-primary">Подобрать</button>
+        </div>
+      </div>
+      <!-- NABOR -->
+      <div class="product" data-cat="nabor" data-ic="bolt">
+        <div class="p-top"><span class="p-code">NB-01</span><span class="badge soft">Бестселлер</span></div>
+        <div class="thumb"><svg viewBox="0 0 24 24"><path d="M13 2L4.5 13.5H11L10 22l8.5-11.5H12L13 2z"/></svg></div>
+        <div class="p-cat">Набор</div>
+        <h3>Энергия и тонус</h3>
+        <p class="desc">B-комплекс, магний, железо и CoQ10 — против дневной усталости.</p>
+        <div class="p-foot">
+          <div class="price-row"><span class="price">4 490 ₽</span><span class="old">5 600 ₽</span></div>
+          <button class="btn btn-primary">В корзину</button>
+        </div>
+      </div>
+      <div class="product" data-cat="nabor" data-ic="moon">
+        <div class="p-top"><span class="p-code">NB-02</span></div>
+        <div class="thumb"><svg viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z"/></svg></div>
+        <div class="p-cat">Набор</div>
+        <h3>Спокойный сон</h3>
+        <p class="desc">Магний, глицин, L-теанин и витамин D для ночного восстановления.</p>
+        <div class="p-foot">
+          <div class="price-row"><span class="price">3 890 ₽</span></div>
+          <button class="btn btn-primary">В корзину</button>
+        </div>
+      </div>
+      <!-- CERT -->
+      <div class="product" data-cat="cert" data-ic="gift">
+        <div class="p-top"><span class="p-code">GC-01</span></div>
+        <div class="thumb"><svg viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="12" rx="2"/><path d="M2 9h20M12 9v12"/><path d="M12 9S9.5 3 7 4.5 9 9 12 9zM12 9s2.5-6 5-4.5S15 9 12 9z"/></svg></div>
+        <div class="p-cat">Сертификат</div>
+        <h3>Подарочный сертификат</h3>
+        <p class="desc">На чек-ап, витамины или программу — получатель выбирает сам.</p>
+        <div class="p-foot">
+          <div class="price-row"><span class="price">от 5 000 ₽</span></div>
+          <button class="btn btn-primary">Выбрать номинал</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPARE ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">Программа Bioniq</span>
+      <h2>Это не витамины с полки</h2>
+      <p>Обычная банка сделана для «среднего человека». Программа — для вашего результата анализов.</p>
+    </div>
+    <div class="compare">
+      <div class="crow chead">
+        <div>Что входит</div>
+        <div class="us">Программа Bioniq</div>
+        <div>Витамины с полки</div>
+      </div>
+      <div class="crow">
+        <div>Состав по анализу крови</div>
+        <div class="us"><span class="ck"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span></div>
+        <div class="them"><span class="xx"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></span></div>
+      </div>
+      <div class="crow">
+        <div>Чек-ап 60+ показателей</div>
+        <div class="us"><span class="ck"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span></div>
+        <div class="them"><span class="xx"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></span></div>
+      </div>
+      <div class="crow">
+        <div>Консультация врача</div>
+        <div class="us"><span class="ck"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span></div>
+        <div class="them"><span class="xx"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></span></div>
+      </div>
+      <div class="crow">
+        <div>Пересдача и коррекция формулы</div>
+        <div class="us"><span class="ck"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span></div>
+        <div class="them"><span class="xx"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></span></div>
+      </div>
+      <div class="crow">
+        <div>Динамика показателей в приложении</div>
+        <div class="us"><span class="ck"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span></div>
+        <div class="them"><span class="xx"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></span></div>
+      </div>
+      <div class="crow">
+        <div>Сколько банок на столе</div>
+        <div class="us">1 саше в день</div>
+        <div class="them">5–8 банок</div>
+      </div>
+      <div class="crow">
+        <div>Доставка на месяц</div>
+        <div class="us"><span class="ck"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span></div>
+        <div class="them"><span class="xx"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></span></div>
+      </div>
+    </div>
+    <div class="compare-cta">
+      <button class="btn btn-dark" data-goto="programma">Собрать программу</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BIOMARKERS ============ -->
+<section id="markers">
+  <div class="wrap">
+    <div class="section-head center" style="margin-bottom:44px">
+      <span class="eyebrow">Что мы измеряем</span>
+      <h2>60+ показателей, отобранных врачами</h2>
+      <p>Не ради длинного списка, а чтобы точно понять, чего не хватает организму.</p>
+    </div>
+  </div>
+  <div class="markers">
+    <div class="marker">
       <h3>Витамины</h3>
-      <p>Персональные саше по вашему анализу крови. Ровно то, что нужно организму.</p>
-      <button class="btn btn-ghost" data-goto="vitamins">Подобрать витамины</button>
+      <span class="cnt"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>14 показателей</span>
+      <ul>
+        <li>Витамин D (25-OH)</li>
+        <li>Витамин B12</li>
+        <li>Фолиевая кислота</li>
+        <li>Витамин A</li>
+        <li>Витамин E</li>
+      </ul>
     </div>
-    <div class="cat">
-      <div class="cat-ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4-8 4-8-4 8-4z"/><path d="M4 7v10l8 4 8-4V7"/><path d="M12 11v10"/></svg></div>
-      <h3>Наборы</h3>
-      <p>Готовые комплексы под цель: энергия, сон, иммунитет, красота, спорт.</p>
-      <button class="btn btn-ghost" data-goto="nabor">Смотреть наборы</button>
+    <div class="marker">
+      <h3>Минералы</h3>
+      <span class="cnt"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>12 показателей</span>
+      <ul>
+        <li>Железо и ферритин</li>
+        <li>Магний</li>
+        <li>Цинк</li>
+        <li>Селен</li>
+        <li>Кальций ионизированный</li>
+      </ul>
     </div>
-    <div class="cat">
-      <div class="cat-ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C.5 8 2.5 4 6 4c2 0 3 1 6 4 3-3 4-4 6-4 3.5 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></div>
-      <h3>Программы</h3>
-      <p>Витамины + чек-ап + консультация врача. Полный цикл заботы о здоровье.</p>
-      <button class="btn btn-primary" data-goto="programma">Выбрать программу</button>
+    <div class="marker">
+      <h3>Гормоны</h3>
+      <span class="cnt"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>16 показателей</span>
+      <ul>
+        <li>ТТГ, Т3, Т4 свободный</li>
+        <li>Кортизол</li>
+        <li>Тестостерон общий</li>
+        <li>Инсулин</li>
+        <li>ДГЭА-сульфат</li>
+      </ul>
     </div>
-  </div>
-</section>
-
-<!-- ============ PROGRAM FEATURE BLOCK ============ -->
-<section class="section" id="program" style="padding-top:0">
-  <div class="feature">
-    <div>
-      <h2>Программа — это не просто витамины</h2>
-      <p class="lead">Комплексный подход: анализируем, подбираем, ведём и корректируем — вместе с врачом.</p>
-      <div class="flist">
-        <div class="fitem">
-          <div class="num"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 8a3 3 0 003 4h8a3 3 0 003-4l-5-8V3"/></svg></div>
-          <div><b>Чек-ап крови</b><span>40+ показателей: витамины, минералы, гормоны</span></div>
-        </div>
-        <div class="fitem">
-          <div class="num"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="8" rx="4"/><path d="M12 8v8"/></svg></div>
-          <div><b>Персональные витамины</b><span>Формула саше пересобирается под ваш результат</span></div>
-        </div>
-        <div class="fitem">
-          <div class="num"><svg viewBox="0 0 24 24"><path d="M8 3v4M16 3v4M4 9h16M5 5h14a1 1 0 011 1v13a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1z"/><path d="M9 14l2 2 4-4"/></svg></div>
-          <div><b>Консультация врача</b><span>Разбор результатов и план на 3–12 месяцев</span></div>
-        </div>
-      </div>
-      <button class="btn btn-primary">Собрать программу</button>
+    <div class="marker">
+      <h3>Кровь и обмен</h3>
+      <span class="cnt"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>18 показателей</span>
+      <ul>
+        <li>Общий анализ крови</li>
+        <li>Липидный профиль</li>
+        <li>Глюкоза и гликированный Hb</li>
+        <li>Гомоцистеин</li>
+        <li>Печёночные ферменты</li>
+      </ul>
     </div>
-    <div class="feature-visual">
-      <div class="pill-list">
-        <div class="pill"><span class="e">🧪</span> Чек-ап <span class="plus">+</span></div>
-        <div class="pill"><span class="e">💊</span> Витамины <span class="plus">+</span></div>
-        <div class="pill"><span class="e">🩺</span> Врач</div>
-      </div>
-      <div class="eq">↓</div>
-      <div class="result">Персональная программа здоровья</div>
+    <div class="marker">
+      <h3>Воспаление</h3>
+      <span class="cnt"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>6 показателей</span>
+      <ul>
+        <li>С-реактивный белок (вч-СРБ)</li>
+        <li>СОЭ</li>
+        <li>Омега-3 индекс</li>
+        <li>Ревматоидный фактор</li>
+      </ul>
     </div>
-  </div>
-</section>
-
-<!-- ============ PRODUCT CARDS ============ -->
-<section class="section" id="products" style="padding-top:0">
-  <div class="section-head">
-    <h2>Популярное сейчас</h2>
-    <a href="#">Весь каталог →</a>
-  </div>
-  <div class="tabs">
-    <button class="tab active" data-filter="all">Все</button>
-    <button class="tab" data-filter="checkup">Чек-апы</button>
-    <button class="tab" data-filter="vitamins">Витамины</button>
-    <button class="tab" data-filter="nabor">Наборы</button>
-    <button class="tab" data-filter="programma">Программы</button>
-    <button class="tab" data-filter="cert">Сертификаты</button>
-  </div>
-  <div class="products">
-    <div class="product" data-cat="nabor">
-      <div class="thumb">⚡<span class="badge">хит</span><span class="fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C.5 8 2.5 4 6 4c2 0 3 1 6 4 3-3 4-4 6-4 3.5 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></span></div>
-      <div class="cat-label">Набор</div>
-      <h3>Энергия и тонус</h3>
-      <p class="desc">B-комплекс, магний, железо, CoQ10 — против усталости</p>
-      <div class="price-row"><span class="price">4 490 ₽</span><span class="old">5 600 ₽</span></div>
-      <button class="btn btn-primary">В корзину</button>
-    </div>
-    <div class="product" data-cat="nabor">
-      <div class="thumb">🌙<span class="fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C.5 8 2.5 4 6 4c2 0 3 1 6 4 3-3 4-4 6-4 3.5 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></span></div>
-      <div class="cat-label">Набор</div>
-      <h3>Спокойный сон</h3>
-      <p class="desc">Магний, глицин, L-теанин, витамин D для восстановления</p>
-      <div class="price-row"><span class="price">3 890 ₽</span></div>
-      <button class="btn btn-primary">В корзину</button>
-    </div>
-    <div class="product" data-cat="programma">
-      <div class="thumb">🩺<span class="badge">программа</span><span class="fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C.5 8 2.5 4 6 4c2 0 3 1 6 4 3-3 4-4 6-4 3.5 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></span></div>
-      <div class="cat-label">Программа</div>
-      <h3>Год здоровья</h3>
-      <p class="desc">2 чек-апа + витамины на 12 месяцев + врач</p>
-      <div class="price-row"><span class="price">24 900 ₽</span><span class="old">32 000 ₽</span></div>
-      <button class="btn btn-primary">В корзину</button>
-    </div>
-    <div class="product" data-cat="programma">
-      <div class="thumb">🚀<span class="fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C.5 8 2.5 4 6 4c2 0 3 1 6 4 3-3 4-4 6-4 3.5 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></span></div>
-      <div class="cat-label">Программа</div>
-      <h3>Старт</h3>
-      <p class="desc">Чек-ап + витамины на 3 месяца + консультация врача</p>
-      <div class="price-row"><span class="price">9 900 ₽</span></div>
-      <button class="btn btn-primary">В корзину</button>
-    </div>
-    <div class="product" data-cat="checkup">
-      <div class="thumb">🧪<span class="fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C.5 8 2.5 4 6 4c2 0 3 1 6 4 3-3 4-4 6-4 3.5 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></span></div>
-      <div class="cat-label">Чек-ап</div>
-      <h3>Базовый чек-ап</h3>
-      <p class="desc">Ключевые витамины и минералы — старт для подбора</p>
-      <div class="price-row"><span class="price">2 990 ₽</span></div>
-      <button class="btn btn-primary">В корзину</button>
-    </div>
-    <div class="product" data-cat="checkup">
-      <div class="thumb">🔬<span class="fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C.5 8 2.5 4 6 4c2 0 3 1 6 4 3-3 4-4 6-4 3.5 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></span></div>
-      <div class="cat-label">Чек-ап</div>
-      <h3>Расширенный чек-ап</h3>
-      <p class="desc">60+ показателей: витамины, минералы, гормоны, ферритин</p>
-      <div class="price-row"><span class="price">5 990 ₽</span></div>
-      <button class="btn btn-primary">В корзину</button>
-    </div>
-    <div class="product" data-cat="vitamins">
-      <div class="thumb">💊<span class="badge">подписка</span><span class="fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C.5 8 2.5 4 6 4c2 0 3 1 6 4 3-3 4-4 6-4 3.5 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></span></div>
-      <div class="cat-label">Витамины</div>
-      <h3>Персональные витамины</h3>
-      <p class="desc">Саше по вашему анализу крови, доставка каждый месяц</p>
-      <div class="price-row"><span class="price">от 3 990 ₽/мес</span></div>
-      <button class="btn btn-primary">Подобрать</button>
-    </div>
-    <div class="product" data-cat="cert">
-      <div class="thumb">🎁<span class="fav"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C.5 8 2.5 4 6 4c2 0 3 1 6 4 3-3 4-4 6-4 3.5 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></span></div>
-      <div class="cat-label">Сертификат</div>
-      <h3>Подарочный сертификат</h3>
-      <p class="desc">На чек-ап, витамины или программу — любой номинал</p>
-      <div class="price-row"><span class="price">от 5 000 ₽</span></div>
-      <button class="btn btn-primary">Выбрать номинал</button>
+    <div class="marker more">
+      <h3>И это ещё не всё</h3>
+      <p style="color:var(--muted);font-size:13px;margin-bottom:20px;line-height:1.6">Полный список показателей и то, как каждый влияет на вашу формулу.</p>
+      <button class="btn btn-ghost">Все показатели</button>
     </div>
   </div>
 </section>
 
-<!-- ============ GIFT + PARTNER ============ -->
-<section class="section" id="gift" style="padding-top:0">
-  <div class="duo">
-    <div class="duo-card duo-gift">
-      <h2>Подарите здоровье — сертификат Bioniq</h2>
-      <p>Чек-ап, витамины или целая программа — получатель выберет сам.</p>
-      <div class="duo-list">
-        <span>✓ Номинал от 5 000 до 50 000 ₽</span>
-        <span>✓ Электронный или в подарочном конверте</span>
-        <span>✓ Действует 12 месяцев</span>
-      </div>
-      <div class="duo-cta">
-        <button class="btn btn-white">Выбрать сертификат</button>
-      </div>
-      <span class="duo-emoji">🎁</span>
+<!-- ============ DOCTORS ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Медицинская команда</span>
+      <h2>Программу ведут врачи, а не алгоритм</h2>
+      <p>Каждую формулу утверждает врач — он же разбирает ваш чек-ап и корректирует состав.</p>
     </div>
-    <div class="duo-card duo-partner" id="partner">
-      <h2>Партнёрский кабинет</h2>
-      <p>Для врачей, нутрициологов, тренеров и компаний. Рекомендуйте Bioniq — зарабатывайте с каждого заказа.</p>
-      <div class="duo-list">
-        <span>✓ Вознаграждение с каждого заказа</span>
-        <span>✓ Личные промокоды и ссылки</span>
-        <span>✓ Статистика и выплаты в кабинете</span>
+    <div class="docs">
+      <div class="doc">
+        <div class="doc-av">АК</div>
+        <h3>Анна Ковалёва</h3>
+        <div class="role">Эндокринолог, к.м.н.</div>
+        <p>12 лет практики. Ведёт направление витаминов и микроэлементов, отвечает за протоколы подбора формул.</p>
       </div>
-      <div class="duo-cta">
-        <button class="btn btn-primary">Стать партнёром</button>
-        <button class="btn btn-outline-light">Войти в кабинет</button>
+      <div class="doc">
+        <div class="doc-av">ДС</div>
+        <h3>Дмитрий Соколов</h3>
+        <div class="role">Терапевт, нутрициолог</div>
+        <p>Разбирает чек-апы и ставит цели на программу. Специализируется на дефицитах железа и витамина D.</p>
       </div>
-      <span class="duo-emoji">🤝</span>
+      <div class="doc">
+        <div class="doc-av">МЛ</div>
+        <h3>Мария Лебедева</h3>
+        <div class="role">Врач лабораторной диагностики</div>
+        <p>Отвечает за качество анализов и интерпретацию показателей. Работает с сетью партнёрских лабораторий.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ APP BLOCK ============ -->
+<!-- ============ APP ============ -->
 <section class="section" id="app" style="padding-top:0">
-  <div class="app">
-    <div class="phone-mock">
-      <div class="phone-notch"></div>
-      <div class="phone-screen">
-        <div class="ps-head">Ваш прогресс</div>
-        <div class="ps-sub">Марина, программа «Год здоровья»</div>
-        <div class="ps-ring"><div class="in"><b>76%</b><span>цель месяца</span></div></div>
-        <div class="ps-row"><div class="dot">💊</div><div class="t"><b>Витамин D</b><span>норма</span></div><div class="bar"><i style="width:90%"></i></div></div>
-        <div class="ps-row"><div class="dot">🩸</div><div class="t"><b>Железо</b><span>растёт</span></div><div class="bar"><i style="width:64%"></i></div></div>
-        <div class="ps-row"><div class="dot">⚡</div><div class="t"><b>B12</b><span>норма</span></div><div class="bar"><i style="width:82%"></i></div></div>
+  <div class="wrap">
+    <div class="app">
+      <div class="phone-mock">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="ps-head">Ваш прогресс</div>
+          <div class="ps-sub">Марина, программа «Год здоровья»</div>
+          <div class="ps-ring"><div class="in"><b>76%</b><span>цель месяца</span></div></div>
+          <div class="ps-row">
+            <div class="dot"><svg viewBox="0 0 24 24"><rect x="2.5" y="8.5" width="19" height="7" rx="3.5"/><path d="M12 8.5v7"/></svg></div>
+            <div class="t"><b>Витамин D</b><span>в норме</span></div>
+            <div class="bar"><i style="width:90%"></i></div>
+          </div>
+          <div class="ps-row">
+            <div class="dot"><svg viewBox="0 0 24 24"><path d="M12 3s6 6.4 6 10.4A6 6 0 016 13.4C6 9.4 12 3 12 3z"/></svg></div>
+            <div class="t"><b>Ферритин</b><span>растёт</span></div>
+            <div class="bar"><i style="width:64%"></i></div>
+          </div>
+          <div class="ps-row">
+            <div class="dot"><svg viewBox="0 0 24 24"><path d="M13 2L4.5 13.5H11L10 22l8.5-11.5H12L13 2z"/></svg></div>
+            <div class="t"><b>B12</b><span>в норме</span></div>
+            <div class="bar"><i style="width:82%"></i></div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div>
-      <h2>Следите за здоровьем в приложении</h2>
-      <div class="afeat">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 12h4l2 6 4-14 2 8h6"/></svg></div>
-        <div><b>Динамика показателей</b><span>Смотрите, как меняются витамины от чек-апа к чек-апу</span></div>
-      </div>
-      <div class="afeat">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg></div>
-        <div><b>Напоминания о приёме</b><span>Не пропустите саше и вовремя обновите набор</span></div>
-      </div>
-      <div class="afeat">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M8 10h8M8 14h5"/><path d="M21 12a8 8 0 01-8 8H4l2-3a8 8 0 1115-5z"/></svg></div>
-        <div><b>Чат с врачом</b><span>Задавайте вопросы по программе прямо в приложении</span></div>
-      </div>
-      <div class="app-cta">
-        <button class="btn btn-white"> App Store</button>
-        <button class="btn btn-white">▶ Google Play</button>
+      <div>
+        <span class="eyebrow" style="display:block;margin-bottom:16px">Приложение</span>
+        <h2>Вся программа — в кармане</h2>
+        <p class="lead">Результаты, динамика и врач в одном месте. Без папок с бумажными анализами.</p>
+        <div class="afeat">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 13h4l2.5 6 4-15 2.5 9h5"/></svg></div>
+          <div><b>Динамика показателей</b><span>Видно, как меняются витамины от чек-апа к чек-апу</span></div>
+        </div>
+        <div class="afeat">
+          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+          <div><b>Напоминания о приёме</b><span>Не пропустите саше и вовремя обновите набор</span></div>
+        </div>
+        <div class="afeat">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M8 10.5h8M8 14h5"/><path d="M21 12a8.5 8.5 0 01-8.5 8.5H4l2.2-3.2A8.5 8.5 0 1121 12z"/></svg></div>
+          <div><b>Чат с врачом</b><span>Вопросы по программе — прямо в приложении</span></div>
+        </div>
+        <div class="app-cta">
+          <button class="btn btn-dark">App Store</button>
+          <button class="btn btn-ghost">Google Play</button>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ TRUST ============ -->
-<section class="section trust" style="padding-top:0">
-  <h2><b>Bioniq</b> — витамины, собранные по вашей крови</h2>
-  <p class="sub">Не универсальные банки, а точная формула под ваш организм</p>
-  <div class="stats">
-    <div class="stat">
-      <div class="ic"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 8a3 3 0 003 4h8a3 3 0 003-4l-5-8V3"/></svg></div>
-      <div class="big">40+</div>
-      <b>Показателей крови</b>
-      <p>Анализируем витамины, минералы и гормоны в каждом чек-апе</p>
-    </div>
-    <div class="stat">
-      <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="8" rx="4"/><path d="M12 8v8"/></svg></div>
-      <div class="big">100%</div>
-      <b>Персональная формула</b>
-      <p>Состав саше пересобирается под ваш результат, а не под средних людей</p>
-    </div>
-    <div class="stat">
-      <div class="ic"><svg viewBox="0 0 24 24"><path d="M8 3v4M16 3v4M4 9h16M5 5h14a1 1 0 011 1v13a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1z"/><path d="M9 14l2 2 4-4"/></svg></div>
-      <div class="big">Врач</div>
-      <b>Ведёт вашу программу</b>
-      <p>Разбирает чек-ап, ставит цели и корректирует подбор</p>
-    </div>
-    <div class="stat">
-      <div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
-      <div class="big">Доставка</div>
-      <b>Саше на месяц</b>
-      <p>Готовые дневные саше приезжают к вам домой каждый месяц</p>
+<!-- ============ DUO ============ -->
+<section class="section" id="gift" style="padding-top:0">
+  <div class="wrap">
+    <div class="duo">
+      <div class="duo-card duo-gift">
+        <span class="eyebrow">Сертификаты</span>
+        <h2>Подарите здоровье, а не ещё одну свечу</h2>
+        <p>Чек-ап, витамины или целая программа — получатель выберет сам.</p>
+        <div class="duo-list">
+          <span><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Номинал от 5 000 до 50 000 ₽</span>
+          <span><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Электронный или в подарочном конверте</span>
+          <span><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Действует 12 месяцев</span>
+        </div>
+        <div class="duo-cta">
+          <button class="btn btn-dark" data-goto="cert">Выбрать сертификат</button>
+        </div>
+        <div class="duo-orb"></div>
+      </div>
+      <div class="duo-card duo-partner" id="partner">
+        <span class="eyebrow eyebrow-light">Партнёрам</span>
+        <h2>Партнёрский кабинет</h2>
+        <p>Для врачей, нутрициологов, тренеров и компаний. Рекомендуйте Bioniq — получайте вознаграждение с каждого заказа.</p>
+        <div class="duo-list">
+          <span><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Вознаграждение с каждого заказа</span>
+          <span><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Личные промокоды и ссылки</span>
+          <span><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Статистика и выплаты в кабинете</span>
+        </div>
+        <div class="duo-cta">
+          <button class="btn btn-primary">Стать партнёром</button>
+          <button class="btn btn-outline-light">Войти в кабинет</button>
+        </div>
+        <div class="duo-orb"></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ CTA BANNER ============ -->
+<!-- ============ CTA ============ -->
 <section class="section" style="padding-top:0">
-  <div class="cta-banner">
-    <h2>Начните с чек-апа — остальное соберём под вас</h2>
-    <p>Сдайте кровь, получите персональные витамины и программу с врачом. Первый шаг — 5 минут.</p>
-    <button class="btn btn-white" style="font-size:15px;padding:15px 30px">Пройти чек-ап</button>
+  <div class="wrap">
+    <div class="cta">
+      <div class="cta-bg"></div>
+      <div class="cta-in">
+        <span class="eyebrow eyebrow-light" style="display:block;margin-bottom:20px">Начните сегодня</span>
+        <h2>Начните с чек-апа — остальное соберём под вас</h2>
+        <p>Одна пробирка крови, персональная формула и врач рядом. Первый шаг занимает пять минут.</p>
+        <button class="btn btn-primary" data-goto="checkup" style="padding:16px 34px;font-size:15px">Пройти чек-ап</button>
+        <p class="note">Первый чек-ап за 1 ₽ при оформлении программы</p>
+      </div>
+    </div>
   </div>
 </section>
-
-</div><!-- /wrap -->
 
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="wrap">
     <div class="foot-top">
-      <div>
+      <div class="foot-brand">
         <div class="foot-logo">bio<span>niq</span></div>
-        <a class="phone" style="color:#9fb3bd" href="tel:+74951234567">+7 (495) 123-45-67</a>
-        <div style="margin-top:16px"><button class="btn btn-primary">Скачать приложение</button></div>
+        <p>Персональные витамины, собранные по вашему анализу крови. С врачами — с 2016 года.</p>
+        <a class="btn btn-primary" href="#app">Скачать приложение</a>
       </div>
       <div class="foot-cols">
         <div class="foot-col">
           <h4>Каталог</h4>
-          <a href="#">Чек-апы</a>
-          <a href="#">Витамины</a>
-          <a href="#">Наборы</a>
-          <a href="#">Программы</a>
+          <a href="#" data-goto="checkup">Чек-апы</a>
+          <a href="#" data-goto="vitamins">Витамины</a>
+          <a href="#" data-goto="nabor">Наборы</a>
+          <a href="#" data-goto="programma">Программы</a>
           <a href="#gift">Сертификаты</a>
         </div>
         <div class="foot-col">
           <h4>Клиентам</h4>
-          <a href="#">Как это работает</a>
+          <a href="#how">Как это работает</a>
+          <a href="#markers">Что мы измеряем</a>
           <a href="#">Доставка и оплата</a>
           <a href="#">Личный кабинет</a>
           <a href="#">Помощь</a>
+        </div>
+        <div class="foot-col">
+          <h4>Партнёрам</h4>
+          <a href="#partner">Партнёрский кабинет</a>
+          <a href="#partner">Врачам и нутрициологам</a>
+          <a href="#partner">Корпоративным клиентам</a>
+          <a href="#partner">Лабораториям</a>
         </div>
         <div class="foot-col">
           <h4>Компания</h4>
@@ -640,23 +887,12 @@ footer{background:var(--dark);color:#fff;padding:56px 0 32px;margin-top:56px}
           <a href="#">Наука</a>
           <a href="#">Блог</a>
           <a href="#">Вакансии</a>
-        </div>
-        <div class="foot-col">
-          <h4>Партнёрам</h4>
-          <a href="#partner">Партнёрский кабинет</a>
-          <a href="#partner">Врачам и нутрициологам</a>
-          <a href="#partner">Корпоративным клиентам</a>
-        </div>
-        <div class="foot-col">
-          <h4>Документы</h4>
-          <a href="#">Персональные данные</a>
           <a href="#">Оферта</a>
-          <a href="#">Лицензии</a>
         </div>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 Bioniq. БАД. Не является лекарственным средством. Есть противопоказания.</span>
+      <span>© 2026 Bioniq. БАД. Не является лекарственным средством. Есть противопоказания, необходима консультация специалиста.</span>
       <div class="socials">
         <a href="#" title="Telegram"><svg viewBox="0 0 24 24"><path d="M21 4L3 11l5 2 2 6 3-4 5 4 3-15z"/></svg></a>
         <a href="#" title="VK"><svg viewBox="0 0 24 24"><path d="M4 7h2c0 4 2 7 4 7V7h2v3c1 0 2-1 3-3h2c-.5 2-2 3-2 3s1.5 1 2.5 4h-2c-1-2-2-3-3-3v3h-1c-4 0-7-4-7-11z"/></svg></a>
@@ -667,11 +903,27 @@ footer{background:var(--dark);color:#fff;padding:56px 0 32px;margin-top:56px}
 </footer>
 
 <script>
-/* ---------- витрина: табы-фильтры ---------- */
+/* ---------- иконки для поиска и каталога ---------- */
+var ICONS={
+  vial:'<path d="M9 2h6M10 2v6.5l-4.6 7.6A3 3 0 008 21h8a3 3 0 002.6-4.9L14 8.5V2"/><path d="M7.5 15h9"/>',
+  micro:'<path d="M6 20h13"/><path d="M9 20V9a3 3 0 016 0v11"/><circle cx="12" cy="6" r="2.5"/>',
+  sachet:'<rect x="2.5" y="8.5" width="19" height="7" rx="3.5"/><path d="M12 8.5v7"/>',
+  bolt:'<path d="M13 2L4.5 13.5H11L10 22l8.5-11.5H12L13 2z"/>',
+  moon:'<path d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z"/>',
+  heart:'<path d="M12 21s-7-4.6-9.4-9.1C.4 8 2.5 4 6 4c2 0 3 1 6 4 3-3 4-4 6-4 3.5 0 5.6 4 3.4 7.9C19 16.4 12 21 12 21z"/>',
+  rocket:'<path d="M12 2c3.5 2.4 5.5 6 5.5 10.2L17 18H7l-.5-5.8C6.5 8 8.5 4.4 12 2z"/><circle cx="12" cy="10" r="2"/>',
+  gift:'<rect x="3" y="9" width="18" height="12" rx="2"/><path d="M2 9h20M12 9v12"/>',
+  all:'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>'
+};
+function svgIcon(k){return '<svg viewBox="0 0 24 24">'+(ICONS[k]||ICONS.all)+'</svg>'}
+
+var CATS={checkup:'Чек-ап',vitamins:'Витамины',nabor:'Набор',programma:'Программа',cert:'Сертификат'};
+var CATS_PLURAL={checkup:'Чек-апы',vitamins:'Витамины',nabor:'Наборы',programma:'Программы',cert:'Сертификаты'};
+var CAT_ICON={checkup:'vial',vitamins:'sachet',nabor:'bolt',programma:'heart',cert:'gift'};
+
+/* ---------- витрина: фильтры ---------- */
 function activateTab(f){
-  document.querySelectorAll('.tab').forEach(function(x){
-    x.classList.toggle('active', x.dataset.filter===f);
-  });
+  document.querySelectorAll('.tab').forEach(function(x){x.classList.toggle('active',x.dataset.filter===f)});
   document.querySelectorAll('.product').forEach(function(p){
     p.style.display=(f==='all'||p.dataset.cat===f)?'':'none';
   });
@@ -680,41 +932,46 @@ document.querySelectorAll('.tab').forEach(function(t){
   t.addEventListener('click',function(){activateTab(t.dataset.filter)});
 });
 
-/* ---------- индекс продуктов из витрины ---------- */
-var CATS={checkup:'Чек-ап',vitamins:'Витамины',nabor:'Набор',programma:'Программа',cert:'Сертификат'};
-var CATS_PLURAL={checkup:'Чек-апы',vitamins:'Витамины',nabor:'Наборы',programma:'Программы',cert:'Сертификаты'};
-var CAT_EMOJI={checkup:'🧪',vitamins:'💊',nabor:'📦',programma:'🩺',cert:'🎁'};
+/* ---------- индекс продуктов ---------- */
 var products=[].map.call(document.querySelectorAll('.product'),function(p){
   return {
-    el:p, cat:p.dataset.cat,
+    el:p, cat:p.dataset.cat, ic:p.dataset.ic,
     name:p.querySelector('h3').textContent,
     desc:p.querySelector('.desc').textContent,
     price:p.querySelector('.price').textContent,
-    emoji:p.querySelector('.thumb').childNodes[0].textContent.trim()
+    code:p.querySelector('.p-code').textContent
   };
 });
 
-/* ---------- переходы: чипы и карточки категорий ---------- */
+/* ---------- переходы ---------- */
 function goProducts(f){
   activateTab(f);
-  document.getElementById('products').scrollIntoView({behavior:'smooth'});
+  document.getElementById('products').scrollIntoView({behavior:'smooth',block:'start'});
 }
 document.querySelectorAll('[data-goto]').forEach(function(el){
-  el.addEventListener('click',function(e){
-    e.preventDefault();
-    goProducts(el.dataset.goto);
-  });
+  el.addEventListener('click',function(e){e.preventDefault();goProducts(el.dataset.goto)});
 });
 
 /* ---------- живой поиск ---------- */
 var input=document.getElementById('searchInput');
 var drop=document.getElementById('searchDrop');
+/* совпадение в начале слова весит больше, чем внутри слова:
+   «сон» → «Спокойный сон», а не «Персональные витамины» */
+function score(text,q,weight){
+  var t=text.toLowerCase(), i=t.indexOf(q);
+  if(i<0) return 0;
+  var atStart=i===0, atWord=i>0 && /[\s(«"-]/.test(t[i-1]);
+  return weight*(atStart?3:atWord?2:1);
+}
 function findMatches(q){
   q=q.trim().toLowerCase();
   if(!q) return null;
-  return products.filter(function(p){
-    return (p.name+' '+p.desc+' '+CATS[p.cat]).toLowerCase().indexOf(q)>-1;
-  });
+  return products.map(function(p){
+    var s=score(p.code,q,40)+score(p.name,q,20)+score(CATS[p.cat],q,10)+score(p.desc,q,2);
+    return {p:p,s:s};
+  }).filter(function(x){return x.s>0})
+    .sort(function(a,b){return b.s-a.s})
+    .map(function(x){return x.p});
 }
 function renderDrop(){
   var m=findMatches(input.value);
@@ -725,7 +982,7 @@ function renderDrop(){
   }else{
     drop.innerHTML=head+list.slice(0,8).map(function(p){
       return '<div class="sd-item" data-i="'+products.indexOf(p)+'">'+
-        '<div class="se">'+p.emoji+'</div>'+
+        '<div class="se">'+svgIcon(p.ic)+'</div>'+
         '<div class="st"><b>'+p.name+'</b><span>'+CATS[p.cat]+'</span></div>'+
         '<div class="sp">'+p.price+'</div></div>';
     }).join('');
@@ -735,11 +992,11 @@ function renderDrop(){
 function goProduct(p){
   drop.classList.remove('open');
   activateTab(p.cat);
-  document.getElementById('products').scrollIntoView({behavior:'smooth'});
+  document.getElementById('products').scrollIntoView({behavior:'smooth',block:'start'});
   setTimeout(function(){
     p.el.classList.add('hit');
-    setTimeout(function(){p.el.classList.remove('hit')},1300);
-  },450);
+    setTimeout(function(){p.el.classList.remove('hit')},1400);
+  },500);
 }
 input.addEventListener('focus',renderDrop);
 input.addEventListener('input',renderDrop);
@@ -756,13 +1013,14 @@ document.getElementById('searchBtn').addEventListener('click',function(){
   if(m&&m.length)goProduct(m[0]); else renderDrop();
 });
 
-/* ---------- меню каталога ---------- */
+/* ---------- каталог ---------- */
 var catMenu=document.getElementById('catMenu');
 var catBtn=document.getElementById('catBtn');
-catMenu.innerHTML='<div class="sd-item" data-cat="all"><div class="se">🗂️</div><div class="st"><b>Все продукты</b><span>'+products.length+' в каталоге</span></div><div class="sp">→</div></div>'+
+catMenu.innerHTML='<div class="sd-item" data-cat="all"><div class="se">'+svgIcon('all')+'</div>'+
+  '<div class="st"><b>Все продукты</b><span>'+products.length+' в каталоге</span></div><div class="sp">→</div></div>'+
 Object.keys(CATS).map(function(k){
   var n=products.filter(function(p){return p.cat===k}).length;
-  return '<div class="sd-item" data-cat="'+k+'"><div class="se">'+CAT_EMOJI[k]+'</div>'+
+  return '<div class="sd-item" data-cat="'+k+'"><div class="se">'+svgIcon(CAT_ICON[k])+'</div>'+
     '<div class="st"><b>'+CATS_PLURAL[k]+'</b><span>'+n+' в каталоге</span></div><div class="sp">→</div></div>';
 }).join('');
 catBtn.addEventListener('click',function(e){
@@ -772,10 +1030,8 @@ catBtn.addEventListener('click',function(e){
 });
 catMenu.addEventListener('click',function(e){
   var it=e.target.closest('.sd-item');
-  if(it){catMenu.classList.remove('open');goProducts(it.dataset.cat);}
+  if(it){catMenu.classList.remove('open');goProducts(it.dataset.cat)}
 });
-
-/* закрытие по клику вне */
 document.addEventListener('click',function(e){
   if(!e.target.closest('.search-wrap'))drop.classList.remove('open');
   if(!e.target.closest('.cat-wrap'))catMenu.classList.remove('open');
