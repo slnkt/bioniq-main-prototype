@@ -155,7 +155,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);backdro
 .head-row .section-head{margin-bottom:0}
 
 /* ============ КАТЕГОРИИ ============ */
-.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .cat{background:var(--bg-light);border-radius:var(--radius);padding:28px 26px;display:flex;flex-direction:column;
   transition:.25s;border:1px solid transparent}
 .cat:hover{background:#fff;border-color:var(--line);box-shadow:var(--shadow);transform:translateY(-3px)}
@@ -377,10 +377,6 @@ footer{background:var(--dark);color:#fff;padding:72px 0 32px;margin-top:20px}
         <a href="#products" data-goto="checkup">Чек-апы</a>
       </nav>
       <div class="header-right">
-        <span class="bonus">
-          <svg viewBox="0 0 24 24"><path d="M12 3l2.5 5.5 6 .8-4.4 4.2 1.1 6-5.2-2.9-5.2 2.9 1.1-6L3.5 9.3l6-.8L12 3z"/></svg>
-          5000 <span>баллов</span>
-        </span>
         <button class="icn-btn" title="Корзина">
           <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.6 9H7.5z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg>
         </button>
@@ -393,40 +389,39 @@ footer{background:var(--dark);color:#fff;padding:72px 0 32px;margin-top:20px}
 <div class="wrap">
 
 <!-- ============ ПРОМО ============ -->
-<div class="promo">
+<div class="promo" id="promo">
   <div class="promo-card promo-1">
-    <span class="promo-tag">до 31 июля</span>
+    <span class="promo-tag">новым клиентам</span>
     <div>
-      <h3>Персональные витамины по анализу крови</h3>
-      <p>Скидка 20% на первый набор</p>
+      <h3>Скидка 20% на первый заказ</h3>
+      <p>На витамины, чек-апы и программы</p>
     </div>
-    <button class="btn btn-white btn-sm" data-goto="vitamins">Подробнее</button>
-    <span class="promo-art"><svg viewBox="0 0 100 100"><path d="M30 5c0 22 40 28 40 45S30 73 30 95"/><path d="M70 5c0 22-40 28-40 45s40 23 40 45"/><path d="M34 25h32M31 40h38M31 60h38M34 75h32"/></svg></span>
+    <button class="btn btn-white btn-sm" data-goto="all">Выбрать продукт</button>
+    <span class="promo-art"><svg viewBox="0 0 100 100"><circle cx="32" cy="32" r="14"/><circle cx="68" cy="68" r="14"/><path d="M78 22L22 78"/></svg></span>
   </div>
   <div class="promo-card promo-2">
-    <span class="promo-tag">хит</span>
+    <span class="promo-tag">бонусы</span>
     <div>
-      <h3>Программа «Год здоровья»</h3>
-      <p>Витамины, два чек-апа и врач</p>
+      <h3>Приведите друга</h3>
+      <p>Бонусы вам и другу за первый заказ</p>
     </div>
-    <button class="btn btn-white btn-sm" data-goto="programma">Выбрать</button>
-    <span class="promo-art"><svg viewBox="0 0 100 100"><path d="M25 12v26a20 20 0 0040 0V12"/><path d="M18 12h14M58 12h14"/><path d="M45 58v6a18 18 0 0036 0v-8"/><circle cx="81" cy="48" r="8"/></svg></span>
+    <button class="btn btn-white btn-sm">Пригласить</button>
+    <span class="promo-art"><svg viewBox="0 0 100 100"><circle cx="34" cy="30" r="13"/><circle cx="70" cy="30" r="13"/><path d="M10 82c0-14 11-25 24-25s24 11 24 25"/><path d="M46 82c0-14 11-25 24-25s24 11 24 25"/></svg></span>
   </div>
   <div class="promo-card promo-3">
-    <span class="promo-tag">1 ₽</span>
+    <span class="promo-tag">лето</span>
     <div>
-      <h3>Чек-ап за 1 ₽</h3>
-      <p>При оформлении программы</p>
+      <h3>Летний чек-ап</h3>
+      <p>Специальный набор показателей на сезон</p>
     </div>
-    <button class="btn btn-primary btn-sm" data-goto="checkup">Получить</button>
-    <span class="promo-art"><svg viewBox="0 0 100 100"><path d="M38 8h24M42 8v28l-19 33a13 13 0 0011 20h32a13 13 0 0011-20L58 36V8"/><path d="M30 62h40"/></svg></span>
+    <button class="btn btn-primary btn-sm" data-goto="checkup">Записаться</button>
+    <span class="promo-art"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="17"/><path d="M50 14v10M50 76v10M14 50h10M76 50h10M25 25l7 7M68 68l7 7M75 25l-7 7M32 68l-7 7"/></svg></span>
   </div>
 </div>
 
 <!-- ============ ГЕРОЙ ============ -->
 <section class="hero">
-  <h1>Персональные витамины, чек-апы и программы — <b>здоровье под вас</b>, а не для всех</h1>
-  <p class="sub">Сдайте кровь, получите свою формулу и врача, который ведёт программу. <b>От 3 990 ₽ в месяц</b></p>
+  <h1>Персональные витамины, чек-апы и программы</h1>
   <div class="searchbar">
     <div class="search-wrap">
       <div class="search-input">
@@ -442,20 +437,12 @@ footer{background:var(--dark);color:#fff;padding:72px 0 32px;margin-top:20px}
     </div>
   </div>
   <div class="chips">
-    <a class="chip" data-goto="checkup" href="#products">
-      <svg viewBox="0 0 24 24"><path d="M9 2h6M10 2v6.5l-4.6 7.6A3 3 0 008 21h8a3 3 0 002.6-4.9L14 8.5V2"/><path d="M7.5 15h9"/></svg>Чек-апы</a>
-    <a class="chip" data-goto="vitamins" href="#products">
-      <svg viewBox="0 0 24 24"><rect x="2.5" y="8.5" width="19" height="7" rx="3.5"/><path d="M12 8.5v7"/></svg>Витамины</a>
-    <a class="chip" data-goto="nabor" href="#products">
-      <svg viewBox="0 0 24 24"><path d="M12 2.5l9 4.5-9 4.5-9-4.5 9-4.5z"/><path d="M3 7v10l9 4.5 9-4.5V7"/><path d="M12 11.5v10"/></svg>Наборы</a>
-    <a class="chip" data-goto="programma" href="#products">
-      <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.4-9.1C.4 8 2.5 4 6 4c2 0 3 1 6 4 3-3 4-4 6-4 3.5 0 5.6 4 3.4 7.9C19 16.4 12 21 12 21z"/></svg>Программы PRO</a>
+    <a class="chip" href="#">
+      <svg viewBox="0 0 24 24"><path d="M12 21c4-4 7-7.6 7-11.2A7 7 0 105 9.8C5 13.4 8 17 12 21z"/><circle cx="12" cy="9.8" r="2.4"/></svg>Адреса</a>
     <a class="chip" data-goto="cert" href="#products">
       <svg viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="12" rx="2"/><path d="M2 9h20M12 9v12"/><path d="M12 9S9.5 3.5 7 5s2 4 5 4zM12 9s2.5-5.5 5-4-2 4-5 4z"/></svg>Сертификаты</a>
-    <a class="chip" href="#blog">
-      <svg viewBox="0 0 24 24"><path d="M4 4.5h11a3 3 0 013 3v13H7a3 3 0 01-3-3v-13z"/><path d="M18 7.5h2v10a3 3 0 01-3 3"/><path d="M8 9h6M8 13h6"/></svg>Блог</a>
-    <a class="chip" href="#app">
-      <svg viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 5.5h3"/></svg>Приложение</a>
+    <a class="chip" href="#promo">
+      <svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="16" r="3"/><path d="M19 5L5 19"/></svg>Акции</a>
   </div>
 </section>
 
@@ -464,7 +451,7 @@ footer{background:var(--dark);color:#fff;padding:72px 0 32px;margin-top:20px}
   <div class="head-row">
     <div class="section-head">
       <span class="eyebrow">С чего начать</span>
-      <h2>Четыре способа начать</h2>
+      <h2>Наши продукты</h2>
     </div>
     <a class="link-arrow" href="#products">Весь каталог →</a>
   </div>
@@ -482,60 +469,10 @@ footer{background:var(--dark);color:#fff;padding:72px 0 32px;margin-top:20px}
       <button class="btn btn-ghost btn-sm" data-goto="vitamins">Подобрать витамины</button>
     </div>
     <div class="cat">
-      <div class="cat-ic"><svg viewBox="0 0 24 24"><path d="M12 2.5l9 4.5-9 4.5-9-4.5 9-4.5z"/><path d="M3 7v10l9 4.5 9-4.5V7"/><path d="M12 11.5v10"/></svg></div>
-      <h3>Наборы</h3>
-      <p>Готовые комплексы под цель: энергия, сон, иммунитет, красота, спорт.</p>
-      <button class="btn btn-ghost btn-sm" data-goto="nabor">Смотреть наборы</button>
-    </div>
-    <div class="cat">
       <div class="cat-ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.4-9.1C.4 8 2.5 4 6 4c2 0 3 1 6 4 3-3 4-4 6-4 3.5 0 5.6 4 3.4 7.9C19 16.4 12 21 12 21z"/></svg></div>
       <h3>Программы PRO</h3>
       <p>Витамины, чек-ап и консультация врача. Полный цикл заботы о здоровье.</p>
       <button class="btn btn-primary btn-sm" data-goto="programma">Выбрать программу</button>
-    </div>
-  </div>
-</section>
-
-<!-- ============ ПРОГРАММА ============ -->
-<section class="section" id="how" style="padding-top:0">
-  <div class="feature">
-    <div>
-      <span class="eyebrow">Программы PRO</span>
-      <h2>Программа — это не просто витамины</h2>
-      <p class="lead">Анализируем, подбираем, ведём и корректируем — вместе с врачом.</p>
-      <div class="flist">
-        <div class="fitem">
-          <div class="num"><svg viewBox="0 0 24 24"><path d="M9 2h6M10 2v6.5l-4.6 7.6A3 3 0 008 21h8a3 3 0 002.6-4.9L14 8.5V2"/></svg></div>
-          <div><b>Чек-ап крови</b><span>60+ показателей: витамины, минералы, гормоны</span></div>
-        </div>
-        <div class="fitem">
-          <div class="num"><svg viewBox="0 0 24 24"><rect x="2.5" y="8.5" width="19" height="7" rx="3.5"/><path d="M12 8.5v7"/></svg></div>
-          <div><b>Персональные витамины</b><span>Формула саше пересобирается под ваш результат</span></div>
-        </div>
-        <div class="fitem">
-          <div class="num"><svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M4 9h16M5 5h14a1 1 0 011 1v13a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1z"/><path d="M9 14l2 2 4-4"/></svg></div>
-          <div><b>Консультация врача</b><span>Разбор результатов и план на 3–12 месяцев</span></div>
-        </div>
-      </div>
-      <button class="btn btn-primary" data-goto="programma">Собрать программу</button>
-    </div>
-    <div class="feature-visual">
-      <div class="pill-list">
-        <div class="pill">
-          <svg viewBox="0 0 24 24"><path d="M9 2h6M10 2v6.5l-4.6 7.6A3 3 0 008 21h8a3 3 0 002.6-4.9L14 8.5V2"/></svg>
-          Чек-ап <span class="plus">+</span>
-        </div>
-        <div class="pill">
-          <svg viewBox="0 0 24 24"><rect x="2.5" y="8.5" width="19" height="7" rx="3.5"/><path d="M12 8.5v7"/></svg>
-          Витамины <span class="plus">+</span>
-        </div>
-        <div class="pill">
-          <svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M4 9h16M5 5h14a1 1 0 011 1v13a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1z"/></svg>
-          Врач
-        </div>
-      </div>
-      <div class="eq">↓</div>
-      <div class="result">Персональная программа здоровья</div>
     </div>
   </div>
 </section>
@@ -657,78 +594,6 @@ footer{background:var(--dark);color:#fff;padding:72px 0 32px;margin-top:20px}
   </div>
 </section>
 
-</div><!-- /wrap -->
-
-<!-- ============ РИЧ-КОНТЕНТ ============ -->
-<!-- Место под сторителлинг: сюда встают фото продукта, видео, инфографика.
-     Слоты рассчитаны на реальные материалы — сейчас в них заглушки. -->
-<section class="rich">
-  <div class="wrap">
-    <span class="eyebrow">Наука</span>
-    <h2>Одно саше вместо горсти банок</h2>
-    <p class="lead">Формула собирается под ваши показатели крови и пересобирается после каждого чек-апа.</p>
-    <div class="rich-grid">
-      <div class="rich-media">
-        <span class="rich-slot"><svg viewBox="0 0 100 100"><path d="M30 5c0 22 40 28 40 45S30 73 30 95"/><path d="M70 5c0 22-40 28-40 45s40 23 40 45"/><path d="M34 25h32M31 40h38M31 60h38M34 75h32"/></svg></span>
-        <h3>Как собирается формула</h3>
-        <p>Место под видео или разворот с фото производства и составом саше.</p>
-      </div>
-      <div class="rich-side">
-        <div class="rich-cell">
-          <div class="big">60+</div>
-          <b>показателей крови</b>
-          <p>Витамины, минералы, гормоны, ферритин и маркеры воспаления</p>
-        </div>
-        <div class="rich-cell">
-          <div class="big">1</div>
-          <b>саше в день</b>
-          <p>Вместо пяти-восьми отдельных банок на столе</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="wrap">
-
-<!-- ============ БЛОГ ============ -->
-<section class="section" id="blog">
-  <div class="head-row">
-    <div class="section-head">
-      <span class="eyebrow">Блог</span>
-      <h2>Разбираемся в здоровье</h2>
-      <p>Статьи врачей о витаминах, анализах и том, как читать свои показатели.</p>
-    </div>
-    <a class="link-arrow" href="#">Все статьи →</a>
-  </div>
-  <div class="posts">
-    <article class="post">
-      <div class="post-media"><svg viewBox="0 0 24 24"><path d="M12 3s6 6.4 6 10.4A6 6 0 016 13.4C6 9.4 12 3 12 3z"/></svg></div>
-      <div class="post-body">
-        <div class="post-meta"><span class="post-cat">Дефициты</span><span class="post-date">12 июля</span></div>
-        <h3>Заголовок статьи</h3>
-        <p>Краткое описание материала в две строки — о чём статья и зачем её читать.</p>
-      </div>
-    </article>
-    <article class="post">
-      <div class="post-media"><svg viewBox="0 0 24 24"><path d="M3 13h4l2.5 6 4-15 2.5 9h5"/></svg></div>
-      <div class="post-body">
-        <div class="post-meta"><span class="post-cat">Анализы</span><span class="post-date">5 июля</span></div>
-        <h3>Заголовок статьи</h3>
-        <p>Краткое описание материала в две строки — о чём статья и зачем её читать.</p>
-      </div>
-    </article>
-    <article class="post">
-      <div class="post-media"><svg viewBox="0 0 24 24"><rect x="2.5" y="8.5" width="19" height="7" rx="3.5"/><path d="M12 8.5v7"/></svg></div>
-      <div class="post-body">
-        <div class="post-meta"><span class="post-cat">Витамины</span><span class="post-date">28 июня</span></div>
-        <h3>Заголовок статьи</h3>
-        <p>Краткое описание материала в две строки — о чём статья и зачем её читать.</p>
-      </div>
-    </article>
-  </div>
-</section>
-
 <!-- ============ ПРИЛОЖЕНИЕ ============ -->
 <section class="section" id="app" style="padding-top:0">
   <div class="app">
@@ -778,6 +643,78 @@ footer{background:var(--dark);color:#fff;padding:72px 0 32px;margin-top:20px}
     </div>
   </div>
 </section>
+
+</div><!-- /wrap -->
+
+<!-- ============ О НАС ============ -->
+<!-- Место под сторителлинг: сюда встают фото команды, производства, видео. -->
+<section class="rich" id="about">
+  <div class="wrap">
+    <span class="eyebrow">О нас</span>
+    <h2>Bioniq — персональное здоровье по анализу крови</h2>
+    <p class="lead">Собираем витамины под показатели конкретного человека и ведём его вместе с врачами.</p>
+    <div class="rich-grid">
+      <div class="rich-media">
+        <span class="rich-slot"><svg viewBox="0 0 100 100"><path d="M30 5c0 22 40 28 40 45S30 73 30 95"/><path d="M70 5c0 22-40 28-40 45s40 23 40 45"/><path d="M34 25h32M31 40h38M31 60h38M34 75h32"/></svg></span>
+        <h3>Как собирается формула</h3>
+        <p>Место под видео или разворот с фото производства и составом саше.</p>
+      </div>
+      <div class="rich-side">
+        <div class="rich-cell">
+          <div class="big">2016</div>
+          <b>год основания</b>
+          <p>Работаем с врачами и аккредитованными лабораториями</p>
+        </div>
+        <div class="rich-cell">
+          <div class="big">60+</div>
+          <b>показателей крови</b>
+          <p>Витамины, минералы, гормоны, ферритин и маркеры воспаления</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+<!-- ============ БЛОГ ============ -->
+<section class="section" id="blog">
+  <div class="head-row">
+    <div class="section-head">
+      <span class="eyebrow">Блог</span>
+      <h2>Разбираемся в здоровье</h2>
+      <p>Статьи врачей о витаминах, анализах и том, как читать свои показатели.</p>
+    </div>
+    <a class="link-arrow" href="#">Все статьи →</a>
+  </div>
+  <div class="posts">
+    <article class="post">
+      <div class="post-media"><svg viewBox="0 0 24 24"><path d="M12 3s6 6.4 6 10.4A6 6 0 016 13.4C6 9.4 12 3 12 3z"/></svg></div>
+      <div class="post-body">
+        <div class="post-meta"><span class="post-cat">Дефициты</span><span class="post-date">12 июля</span></div>
+        <h3>Заголовок статьи</h3>
+        <p>Краткое описание материала в две строки — о чём статья и зачем её читать.</p>
+      </div>
+    </article>
+    <article class="post">
+      <div class="post-media"><svg viewBox="0 0 24 24"><path d="M3 13h4l2.5 6 4-15 2.5 9h5"/></svg></div>
+      <div class="post-body">
+        <div class="post-meta"><span class="post-cat">Анализы</span><span class="post-date">5 июля</span></div>
+        <h3>Заголовок статьи</h3>
+        <p>Краткое описание материала в две строки — о чём статья и зачем её читать.</p>
+      </div>
+    </article>
+    <article class="post">
+      <div class="post-media"><svg viewBox="0 0 24 24"><rect x="2.5" y="8.5" width="19" height="7" rx="3.5"/><path d="M12 8.5v7"/></svg></div>
+      <div class="post-body">
+        <div class="post-meta"><span class="post-cat">Витамины</span><span class="post-date">28 июня</span></div>
+        <h3>Заголовок статьи</h3>
+        <p>Краткое описание материала в две строки — о чём статья и зачем её читать.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
 
 <!-- ============ СЕРТИФИКАТ + ПАРТНЁРЫ ============ -->
 <section class="section" id="gift" style="padding-top:0">
@@ -847,7 +784,7 @@ footer{background:var(--dark);color:#fff;padding:72px 0 32px;margin-top:20px}
         </div>
         <div class="foot-col">
           <h4>Клиентам</h4>
-          <a href="#how">Как это работает</a>
+          <a href="#about">Как это работает</a>
           <a href="#">Доставка и оплата</a>
           <a href="#">Личный кабинет</a>
           <a href="#">Помощь</a>
