@@ -64,12 +64,29 @@ img{max-width:100%;display:block}
 
 /* ============ ХЕДЕР ============ */
 header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
-.topbar{display:flex;align-items:center;gap:32px;padding:18px 0}
+.topbar{display:flex;align-items:center;gap:28px;padding:18px 0}
+.topbar>a:first-child{flex:none}
 .logo{height:26px;width:auto}
 .nav-main{display:flex;gap:26px}
 .nav-main a{font-size:13.5px;font-weight:500;color:var(--muted);transition:.2s}
 .nav-main a:hover{color:var(--dark)}
 .header-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.phone{font-weight:600;font-size:13.5px;color:var(--dark);white-space:nowrap}
+.phone:hover{color:var(--blue)}
+/* поиск в шапке — появляется после пролистывания первого экрана */
+.hdr-search{display:none;flex:1;max-width:340px;margin-left:auto}
+.hdr-search .search-input{box-shadow:none;background:var(--bg-light);border-color:transparent}
+.hdr-search .search-input:focus-within{background:#fff;border-color:var(--blue)}
+.hdr-search .search-input input{padding:10px 0;font-size:13.5px}
+header.scrolled .hdr-search{display:block}
+header.scrolled .header-right{margin-left:0}
+
+/* виджет чата — всегда в правом нижнем углу */
+.chat-fab{position:fixed;right:22px;bottom:22px;z-index:95;width:56px;height:56px;border-radius:50%;
+  background:var(--blue);display:grid;place-items:center;box-shadow:0 10px 30px rgba(16,152,212,.4);
+  transition:.25s;cursor:pointer}
+.chat-fab:hover{transform:translateY(-3px);background:#0d84ba}
+.chat-fab svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:1.7}
 .bonus{display:inline-flex;align-items:center;gap:7px;background:var(--bg-light);color:var(--dark);
   font-weight:600;padding:8px 14px;border-radius:100px;font-size:13px}
 .bonus svg{width:14px;height:14px;stroke:var(--blue);fill:none;stroke-width:1.8}
@@ -79,8 +96,8 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);backdro
 
 /* ============ ПРОМО ============ */
 .promo{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0 8px}
-.promo-card{border-radius:var(--radius);padding:28px;min-height:190px;position:relative;overflow:hidden;
-  display:flex;flex-direction:column;justify-content:space-between;transition:.25s}
+.promo-card{border-radius:var(--radius);padding:48px 28px 28px;min-height:190px;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:space-between;gap:14px;transition:.25s}
 .promo-card:hover{transform:translateY(-3px)}
 .promo-card h3{font-size:19px;margin-bottom:6px;max-width:74%;position:relative;z-index:2}
 .promo-card p{font-size:12.5px;max-width:70%;position:relative;z-index:2}
@@ -197,26 +214,26 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);backdro
 .rail::-webkit-scrollbar{height:4px}
 .rail::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
 .rail::-webkit-scrollbar-track{background:transparent}
-.product{flex:0 0 272px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);
-  border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;transition:.25s}
+.product{flex:0 0 208px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);
+  border-radius:16px;padding:14px;display:flex;flex-direction:column;transition:.25s}
 .product:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
-.p-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:14px;min-height:21px}
-.p-code{font-size:10px;font-weight:600;letter-spacing:.11em;color:var(--muted-2);border:1px solid var(--line);
-  border-radius:100px;padding:3px 9px}
-.badge{font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;background:var(--blue);
-  color:#fff;padding:3px 9px;border-radius:100px}
+.p-top{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:10px;min-height:19px}
+.p-code{font-size:9px;font-weight:600;letter-spacing:.1em;color:var(--muted-2);border:1px solid var(--line);
+  border-radius:100px;padding:2px 7px}
+.badge{font-size:9px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;background:var(--blue);
+  color:#fff;padding:2px 7px;border-radius:100px}
 .badge.soft{background:var(--bg-light);color:var(--dark)}
-.thumb{height:132px;border-radius:14px;background:var(--bg-light);margin-bottom:16px;display:grid;place-items:center}
-.thumb svg{width:46px;height:46px;stroke:var(--blue);fill:none;stroke-width:1.1}
-.p-cat{font-size:10px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted-2);margin-bottom:7px}
-.product h3{font-size:16px;margin-bottom:7px}
-.product .desc{color:var(--muted);font-size:12.5px;line-height:1.5;flex:1;margin-bottom:16px}
-.p-foot{border-top:1px solid var(--line);padding-top:14px}
-.price-row{display:flex;align-items:baseline;gap:7px;margin-bottom:12px}
-.price{font-size:18px;font-weight:600;letter-spacing:-.02em}
+.thumb{height:92px;border-radius:12px;background:var(--bg-light);margin-bottom:12px;display:grid;place-items:center}
+.thumb svg{width:34px;height:34px;stroke:var(--blue);fill:none;stroke-width:1.1}
+.p-cat{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);margin-bottom:5px}
+.product h3{font-size:14px;margin-bottom:5px}
+.product .desc{color:var(--muted);font-size:11.5px;line-height:1.45;flex:1;margin-bottom:12px}
+.p-foot{border-top:1px solid var(--line);padding-top:10px}
+.price-row{display:flex;align-items:baseline;gap:6px;margin-bottom:9px}
+.price{font-size:15px;font-weight:600;letter-spacing:-.02em}
 .per,.old{font-size:12px;color:var(--muted-2)}
 .old{text-decoration:line-through}
-.product .btn{width:100%}
+.product .btn{width:100%;padding:8px 14px;font-size:12px}
 @keyframes hitPulse{0%{box-shadow:0 0 0 0 rgba(16,152,212,.45)}100%{box-shadow:0 0 0 20px rgba(16,152,212,0)}}
 .product.hit{animation:hitPulse 1.2s ease-out;border-color:var(--blue)}
 .rail-nav{display:flex;gap:8px}
@@ -352,6 +369,11 @@ footer{background:var(--dark);color:#fff;padding:72px 0 32px;margin-top:20px}
 }
 @media(max-width:700px){
   .wrap{padding:0 18px}
+  .phone{display:none}
+  .topbar{gap:12px}
+  .header-right{gap:8px}
+  .hdr-search{max-width:none;min-width:0}
+  .chat-fab{right:16px;bottom:16px;width:50px;height:50px}
   .section,.rich{padding:60px 0}
   .promo,.cats,.posts{grid-template-columns:1fr}
   .searchbar{flex-direction:column}
@@ -376,7 +398,15 @@ footer{background:var(--dark);color:#fff;padding:72px 0 32px;margin-top:20px}
         <a href="#products" data-goto="programma">Программы PRO</a>
         <a href="#products" data-goto="checkup">Чек-апы</a>
       </nav>
+      <div class="search-wrap hdr-search">
+        <div class="search-input">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+          <input id="hdrSearchInput" placeholder="Поиск" autocomplete="off">
+        </div>
+        <div class="search-drop" id="hdrSearchDrop"></div>
+      </div>
       <div class="header-right">
+        <a class="phone" href="tel:+74951234567">+7 (495) 123-45-67</a>
         <button class="icn-btn" title="Корзина">
           <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.6 9H7.5z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg>
         </button>
@@ -439,6 +469,8 @@ footer{background:var(--dark);color:#fff;padding:72px 0 32px;margin-top:20px}
   <div class="chips">
     <a class="chip" href="#">
       <svg viewBox="0 0 24 24"><path d="M12 21c4-4 7-7.6 7-11.2A7 7 0 105 9.8C5 13.4 8 17 12 21z"/><circle cx="12" cy="9.8" r="2.4"/></svg>Адреса</a>
+    <a class="chip" href="#">
+      <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg>Выезд на дом</a>
     <a class="chip" data-goto="cert" href="#products">
       <svg viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="12" rx="2"/><path d="M2 9h20M12 9v12"/><path d="M12 9S9.5 3.5 7 5s2 4 5 4zM12 9s2.5-5.5 5-4-2 4-5 4z"/></svg>Сертификаты</a>
     <a class="chip" href="#promo">
@@ -447,14 +479,7 @@ footer{background:var(--dark);color:#fff;padding:72px 0 32px;margin-top:20px}
 </section>
 
 <!-- ============ КАТЕГОРИИ ============ -->
-<section class="section" id="cats">
-  <div class="head-row">
-    <div class="section-head">
-      <span class="eyebrow">С чего начать</span>
-      <h2>Наши продукты</h2>
-    </div>
-    <a class="link-arrow" href="#products">Весь каталог →</a>
-  </div>
+<section class="section" id="cats" style="padding-top:40px">
   <div class="cats">
     <div class="cat">
       <div class="cat-ic"><svg viewBox="0 0 24 24"><path d="M9 2h6M10 2v6.5l-4.6 7.6A3 3 0 008 21h8a3 3 0 002.6-4.9L14 8.5V2"/><path d="M7.5 15h9"/></svg></div>
@@ -481,23 +506,12 @@ footer{background:var(--dark);color:#fff;padding:72px 0 32px;margin-top:20px}
 <section class="section" id="products" style="padding-top:0">
   <div class="head-row">
     <div class="section-head">
-      <span class="eyebrow">Каталог</span>
       <h2>Популярное сейчас</h2>
-      <p>Программы PRO, витамины, чек-апы, наборы и сертификаты — в одной ленте.</p>
     </div>
     <div class="rail-nav">
       <button class="rail-btn" id="railPrev" title="Назад"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
       <button class="rail-btn" id="railNext" title="Вперёд"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
-  </div>
-
-  <div class="tabs">
-    <button class="tab active" data-filter="all">Все</button>
-    <button class="tab" data-filter="programma">Программы PRO</button>
-    <button class="tab" data-filter="vitamins">Витамины</button>
-    <button class="tab" data-filter="checkup">Чек-апы</button>
-    <button class="tab" data-filter="nabor">Наборы</button>
-    <button class="tab" data-filter="cert">Сертификаты</button>
   </div>
 
   <div class="rail-wrap">
@@ -677,90 +691,6 @@ footer{background:var(--dark);color:#fff;padding:72px 0 32px;margin-top:20px}
 
 <div class="wrap">
 
-<!-- ============ БЛОГ ============ -->
-<section class="section" id="blog">
-  <div class="head-row">
-    <div class="section-head">
-      <span class="eyebrow">Блог</span>
-      <h2>Разбираемся в здоровье</h2>
-      <p>Статьи врачей о витаминах, анализах и том, как читать свои показатели.</p>
-    </div>
-    <a class="link-arrow" href="#">Все статьи →</a>
-  </div>
-  <div class="posts">
-    <article class="post">
-      <div class="post-media"><svg viewBox="0 0 24 24"><path d="M12 3s6 6.4 6 10.4A6 6 0 016 13.4C6 9.4 12 3 12 3z"/></svg></div>
-      <div class="post-body">
-        <div class="post-meta"><span class="post-cat">Дефициты</span><span class="post-date">12 июля</span></div>
-        <h3>Заголовок статьи</h3>
-        <p>Краткое описание материала в две строки — о чём статья и зачем её читать.</p>
-      </div>
-    </article>
-    <article class="post">
-      <div class="post-media"><svg viewBox="0 0 24 24"><path d="M3 13h4l2.5 6 4-15 2.5 9h5"/></svg></div>
-      <div class="post-body">
-        <div class="post-meta"><span class="post-cat">Анализы</span><span class="post-date">5 июля</span></div>
-        <h3>Заголовок статьи</h3>
-        <p>Краткое описание материала в две строки — о чём статья и зачем её читать.</p>
-      </div>
-    </article>
-    <article class="post">
-      <div class="post-media"><svg viewBox="0 0 24 24"><rect x="2.5" y="8.5" width="19" height="7" rx="3.5"/><path d="M12 8.5v7"/></svg></div>
-      <div class="post-body">
-        <div class="post-meta"><span class="post-cat">Витамины</span><span class="post-date">28 июня</span></div>
-        <h3>Заголовок статьи</h3>
-        <p>Краткое описание материала в две строки — о чём статья и зачем её читать.</p>
-      </div>
-    </article>
-  </div>
-</section>
-
-
-<!-- ============ СЕРТИФИКАТ + ПАРТНЁРЫ ============ -->
-<section class="section" id="gift" style="padding-top:0">
-  <div class="duo">
-    <div class="duo-card duo-gift">
-      <span class="eyebrow">Сертификаты</span>
-      <h2>Подарите здоровье</h2>
-      <p>Чек-ап, витамины или целая программа — получатель выберет сам.</p>
-      <div class="duo-list">
-        <span><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Номинал от 5 000 до 50 000 ₽</span>
-        <span><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Электронный или в подарочном конверте</span>
-        <span><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Действует 12 месяцев</span>
-      </div>
-      <div class="duo-cta">
-        <button class="btn btn-white btn-sm" data-goto="cert">Выбрать сертификат</button>
-      </div>
-      <span class="duo-art"><svg viewBox="0 0 100 100"><rect x="12" y="38" width="76" height="52" rx="4"/><path d="M8 38h84M50 38v52"/><path d="M50 38S38 10 26 18s10 20 24 20zM50 38s12-28 24-20-10 20-24 20z"/></svg></span>
-    </div>
-    <div class="duo-card duo-partner" id="partner">
-      <span class="eyebrow">Партнёрам</span>
-      <h2>Партнёрский кабинет</h2>
-      <p>Для врачей, нутрициологов, тренеров и компаний. Рекомендуйте Bioniq — получайте вознаграждение с каждого заказа.</p>
-      <div class="duo-list">
-        <span><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Вознаграждение с каждого заказа</span>
-        <span><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Личные промокоды и ссылки</span>
-        <span><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Статистика и выплаты в кабинете</span>
-      </div>
-      <div class="duo-cta">
-        <button class="btn btn-primary btn-sm">Стать партнёром</button>
-        <button class="btn btn-outline-light btn-sm">Войти в кабинет</button>
-      </div>
-      <span class="duo-art"><svg viewBox="0 0 100 100"><circle cx="34" cy="30" r="13"/><circle cx="70" cy="30" r="13"/><path d="M10 82c0-14 11-25 24-25s24 11 24 25"/><path d="M46 82c0-14 11-25 24-25s24 11 24 25"/></svg></span>
-    </div>
-  </div>
-</section>
-
-<!-- ============ ФИНАЛ ============ -->
-<section class="section" style="padding-top:0">
-  <div class="cta">
-    <span class="eyebrow">Начните сегодня</span>
-    <h2>Начните с чек-апа — остальное соберём под вас</h2>
-    <p>Одна пробирка крови, персональная формула и врач рядом. Первый шаг занимает пять минут.</p>
-    <button class="btn btn-primary" data-goto="checkup" style="padding:15px 32px;font-size:15px">Пройти чек-ап</button>
-    <p class="note">Первый чек-ап за 1 ₽ при оформлении программы</p>
-  </div>
-</section>
 
 </div><!-- /wrap -->
 
@@ -791,13 +721,13 @@ footer{background:var(--dark);color:#fff;padding:72px 0 32px;margin-top:20px}
         </div>
         <div class="foot-col">
           <h4>Партнёрам</h4>
-          <a href="#partner">Партнёрский кабинет</a>
-          <a href="#partner">Врачам и нутрициологам</a>
-          <a href="#partner">Корпоративным клиентам</a>
+          <a href="#">Партнёрский кабинет</a>
+          <a href="#">Врачам и нутрициологам</a>
+          <a href="#">Корпоративным клиентам</a>
         </div>
         <div class="foot-col">
           <h4>Компания</h4>
-          <a href="#blog">Блог</a>
+          <a href="#">Блог</a>
           <a href="#">О Bioniq</a>
           <a href="#">Наука</a>
           <a href="#">Оферта</a>
@@ -835,33 +765,20 @@ var CAT_ICON={checkup:'vial',vitamins:'sachet',nabor:'bolt',programma:'heart',ce
 
 var rail=document.getElementById('rail');
 
-/* ---------- фильтры ленты ---------- */
-function activateTab(f){
-  document.querySelectorAll('.tab').forEach(function(x){x.classList.toggle('active',x.dataset.filter===f)});
-  document.querySelectorAll('.product').forEach(function(p){
-    p.style.display=(f==='all'||p.dataset.cat===f)?'':'none';
-  });
-  rail.scrollLeft=0;
-  updateRailNav();
-}
-document.querySelectorAll('.tab').forEach(function(t){
-  t.addEventListener('click',function(){activateTab(t.dataset.filter)});
-});
-
 /* ---------- стрелки ленты ---------- */
 function updateRailNav(){
   var nav=document.querySelector('.rail-nav');
   var scrollable=rail.scrollWidth-rail.clientWidth>1;
-  nav.style.display=scrollable?'':'none';   /* листать нечего — стрелок нет */
+  nav.style.display=scrollable?'':'none';
   if(!scrollable) return;
   var max=rail.scrollWidth-rail.clientWidth-1;
   document.getElementById('railPrev').disabled=rail.scrollLeft<=0;
   document.getElementById('railNext').disabled=rail.scrollLeft>=max;
 }
 function railStep(dir){
-  var card=rail.querySelector('.product:not([style*="none"])');
-  var w=card?card.offsetWidth+16:288;
-  rail.scrollBy({left:dir*w*2,behavior:'smooth'});
+  var card=rail.querySelector('.product');
+  var w=card?card.offsetWidth+12:220;
+  rail.scrollBy({left:dir*w*3,behavior:'smooth'});
 }
 document.getElementById('railPrev').addEventListener('click',function(){railStep(-1)});
 document.getElementById('railNext').addEventListener('click',function(){railStep(1)});
@@ -877,20 +794,34 @@ var products=[].map.call(document.querySelectorAll('.product'),function(p){
     code:p.querySelector('.p-code').textContent};
 });
 
-/* ---------- переходы ---------- */
+/* ---------- прокрутка ленты к карточке ---------- */
+function railTo(card){
+  var left=card.getBoundingClientRect().left-rail.getBoundingClientRect().left+rail.scrollLeft-4;
+  rail.scrollTo({left:left,behavior:'smooth'});
+}
+function highlight(card){
+  card.classList.add('hit');
+  setTimeout(function(){card.classList.remove('hit')},1300);
+}
+/* переход из шапки/чипов: лента не фильтруется — скроллим к первой карточке категории */
 function goProducts(f){
-  activateTab(f);
   document.getElementById('products').scrollIntoView({behavior:'smooth',block:'start'});
+  if(f && f!=='all'){
+    var first=products.filter(function(p){return p.cat===f})[0];
+    if(first){setTimeout(function(){railTo(first.el);highlight(first.el)},450);}
+  }
 }
 document.querySelectorAll('[data-goto]').forEach(function(el){
   el.addEventListener('click',function(e){e.preventDefault();goProducts(el.dataset.goto)});
 });
+function goProduct(p){
+  document.getElementById('products').scrollIntoView({behavior:'smooth',block:'start'});
+  setTimeout(function(){railTo(p.el);highlight(p.el)},450);
+}
 
-/* ---------- живой поиск ---------- */
-var input=document.getElementById('searchInput');
-var drop=document.getElementById('searchDrop');
+/* ---------- живой поиск (герой + шапка) ---------- */
 /* совпадение в начале слова весит больше, чем внутри:
-   «сон» → «Спокойный сон», а не «Персональные витамины» */
+   «сон» — «Спокойный сон», а не «Персональные витамины» */
 function score(text,q,weight){
   var t=text.toLowerCase(), i=t.indexOf(q);
   if(i<0) return 0;
@@ -905,45 +836,48 @@ function findMatches(q){
     .sort(function(a,b){return b.s-a.s})
     .map(function(x){return x.p});
 }
-function renderDrop(){
-  var m=findMatches(input.value);
-  var list=m===null?products.slice(0,4):m;
-  var head=m===null?'<div class="sd-label">Часто ищут</div>':'';
-  if(!list.length){
-    drop.innerHTML='<div class="sd-empty">Ничего не нашли. Попробуйте «чек-ап», «магний» или «программа»</div>';
-  }else{
-    drop.innerHTML=head+list.slice(0,8).map(function(p){
-      return '<div class="sd-item" data-i="'+products.indexOf(p)+'">'+
-        '<div class="se">'+svgIcon(p.ic)+'</div>'+
-        '<div class="st"><b>'+p.name+'</b><span>'+CATS[p.cat]+'</span></div>'+
-        '<div class="sp">'+p.price+'</div></div>';
-    }).join('');
+var openDrops=[];
+function bindSearch(input,drop){
+  function render(){
+    var m=findMatches(input.value);
+    var list=m===null?products.slice(0,4):m;
+    var head=m===null?'<div class="sd-label">Часто ищут</div>':'';
+    if(!list.length){
+      drop.innerHTML='<div class="sd-empty">Ничего не нашли. Попробуйте «чек-ап», «магний» или «программа»</div>';
+    }else{
+      drop.innerHTML=head+list.slice(0,8).map(function(p){
+        return '<div class="sd-item" data-i="'+products.indexOf(p)+'">'+
+          '<div class="se">'+svgIcon(p.ic)+'</div>'+
+          '<div class="st"><b>'+p.name+'</b><span>'+CATS[p.cat]+'</span></div>'+
+          '<div class="sp">'+p.price+'</div></div>';
+      }).join('');
+    }
+    drop.classList.add('open');
   }
-  drop.classList.add('open');
+  function pick(p){
+    drop.classList.remove('open');
+    input.blur();
+    goProduct(p);
+  }
+  input.addEventListener('focus',render);
+  input.addEventListener('input',render);
+  input.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){var m=findMatches(input.value);if(m&&m.length)pick(m[0])}
+    if(e.key==='Escape')drop.classList.remove('open');
+  });
+  drop.addEventListener('click',function(e){
+    var it=e.target.closest('.sd-item');
+    if(it)pick(products[+it.dataset.i]);
+  });
+  openDrops.push(drop);
+  return render;
 }
-function goProduct(p){
-  drop.classList.remove('open');
-  activateTab(p.cat);
-  document.getElementById('products').scrollIntoView({behavior:'smooth',block:'start'});
-  setTimeout(function(){
-    /* лента отфильтрована — карточка уже первая, подсвечиваем */
-    p.el.classList.add('hit');
-    setTimeout(function(){p.el.classList.remove('hit')},1300);
-  },450);
-}
-input.addEventListener('focus',renderDrop);
-input.addEventListener('input',renderDrop);
-input.addEventListener('keydown',function(e){
-  if(e.key==='Enter'){var m=findMatches(input.value);if(m&&m.length)goProduct(m[0])}
-  if(e.key==='Escape')drop.classList.remove('open');
-});
-drop.addEventListener('click',function(e){
-  var it=e.target.closest('.sd-item');
-  if(it)goProduct(products[+it.dataset.i]);
-});
+var renderHero=bindSearch(document.getElementById('searchInput'),document.getElementById('searchDrop'));
+bindSearch(document.getElementById('hdrSearchInput'),document.getElementById('hdrSearchDrop'));
 document.getElementById('searchBtn').addEventListener('click',function(){
-  var m=findMatches(input.value);
-  if(m&&m.length)goProduct(m[0]); else renderDrop();
+  var m=findMatches(document.getElementById('searchInput').value);
+  if(m&&m.length){document.getElementById('searchDrop').classList.remove('open');goProduct(m[0]);}
+  else renderHero();
 });
 
 /* ---------- каталог ---------- */
@@ -959,18 +893,30 @@ Object.keys(CATS).map(function(k){
 catBtn.addEventListener('click',function(e){
   e.stopPropagation();
   catMenu.classList.toggle('open');
-  drop.classList.remove('open');
+  openDrops.forEach(function(d){d.classList.remove('open')});
 });
 catMenu.addEventListener('click',function(e){
   var it=e.target.closest('.sd-item');
   if(it){catMenu.classList.remove('open');goProducts(it.dataset.cat)}
 });
 document.addEventListener('click',function(e){
-  if(!e.target.closest('.search-wrap'))drop.classList.remove('open');
+  if(!e.target.closest('.search-wrap'))openDrops.forEach(function(d){d.classList.remove('open')});
   if(!e.target.closest('.cat-wrap'))catMenu.classList.remove('open');
 });
 
+/* ---------- поиск в шапке после пролистывания героя ---------- */
+var heroSearch=document.querySelector('.hero .searchbar');
+var headerEl=document.querySelector('header');
+new IntersectionObserver(function(entries){
+  headerEl.classList.toggle('scrolled',!entries[0].isIntersecting);
+},{rootMargin:'-70px 0px 0px 0px'}).observe(heroSearch);
+
 updateRailNav();
 </script>
+
+<!-- ============ ВИДЖЕТ ЧАТА ============ -->
+<button class="chat-fab" title="Чат с поддержкой">
+  <svg viewBox="0 0 24 24"><path d="M21 12a8.5 8.5 0 01-8.5 8.5H4l2.2-3.2A8.5 8.5 0 1121 12z"/><path d="M8 10.5h8M8 14h5"/></svg>
+</button>
 </body>
 </html>
